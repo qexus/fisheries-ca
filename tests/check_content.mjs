@@ -120,3 +120,28 @@ assert(html.includes('src="i18n.js"')&&html.includes('href="i18n.css"')&&html.in
 assert(fs.existsSync("public/i18n.js")&&fs.existsSync("public/i18n.css")&&fs.existsSync("public/locale-note.js"),"Language assets must be deployable");
 assert(!/<(?:strong|b)>qexus lab<\/(?:strong|b)>/.test(html),"Clickable icon should not have redundant brand text");
 assert(fs.readFileSync("public/i18n.js","utf8").includes("qx-language-switch"),"Language selector script missing");
+
+// Localized static course quality: every lesson must be a crawlable self-canonical page.
+for(const lang of ["fr","uk"]){
+ const base="public/"+lang+"/";
+ const start=fs.readFileSync(base+"index.html","utf8");
+ const hub=fs.readFileSync(base+"guides/index.html","utf8");
+ assert(start.includes('<html lang="'+lang+'">'),"Localized project hub needs HTML lang");
+ assert(hub.includes('<html lang="'+lang+'">'),"Localized guide hub needs HTML lang");
+ assert(hub.includes('rel="canonical" href="https://qexus.github.io/fisheries-ca/'+lang+'/guides/"'),"Missing self-canonical");
+ assert((hub.match(/class="lesson-card"/g)||[]).length===12,"All 12 translated lessons must appear");
+ for(let i=1;i<=12;i++){
+  const id=String(i).padStart(2,"0");
+  const file=base+"guides/lesson-"+id+".html";
+  const content=fs.readFileSync(file,"utf8");
+  const url="https://qexus.github.io/fisheries-ca/"+lang+"/guides/lesson-"+id+".html";
+  assert(content.includes('<html lang="'+lang+'">'),"Wrong language on "+file);
+  assert(content.includes('rel="canonical" href="'+url+'"'),"Bad canonical on "+file);
+  assert(content.includes('hreflang="ru"')&&content.includes('hreflang="fr"')&&content.includes('hreflang="uk"'),"Missing reciprocal alternate on "+file);
+  assert((content.match(/<h3>/g)||[]).length>=4,"Technical lesson needs explanation plus practical task");
+  assert(content.includes("https://")&&content.includes('target="_blank"'),"Missing official source");
+  if(lang==="fr")assert(!/Особливості Норвегії|Практическая задача|Проверь понимание/.test(content),"Untranslated Russian article section in "+file);
+  if(lang==="uk" && "fisheries-ca"==="fisheries-ca")assert(!content.includes("Особливості Норвегії"),"Wrong country in Ukraine Canada course");
+ }
+}
+console.log("Static FR/UK localized project hubs and 24 lessons verified.");
