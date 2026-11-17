@@ -8,6 +8,9 @@ An empty/unconfigured state is published until a permitted feed is connected.
 import argparse
 import datetime as dt
 import json
+import os
+import ipaddress
+from urllib.request import Request, urlopen
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -27,7 +30,17 @@ def safe_https(value):
     if not isinstance(value, str) or len(value)>800:
         return False
     x=urlparse(value)
-    return x.scheme=="https" and bool(x.hostname) and not x.username and not x.password
+    if x.scheme!="https" or not x.hostname or x.username or x.password:
+        return False
+    if x.hostname.lower() in ("localhost",) or x.hostname.lower().endswith((".localhost", ".local", ".internal")):
+        return False
+    try:
+        ip=ipaddress.ip_address(x.hostname)
+        if not ip.is_global:
+            return False
+    except ValueError:
+        pass
+    return True
 
 def compile_feed(rows, now=None, provenance=""):
     now=now or dt.datetime.now(UTC)
@@ -69,7 +82,20 @@ def compile_feed(rows, now=None, provenance=""):
     active=sorted(found.values(), key=lambda x:x["verified_at"], reverse=True)[:MAX_ROWS]
     return active,errors
 
-def build(input_path=None, now=None):
+def load_authorized_feed(url, token=""):
+    if not safe_https(url):
+        raise ValueError("Authorized feed URL must be public HTTPS")
+    headers={"Accept":"application/json", "User-Agent":"qexus-fisheries-public-jobs/1.0"}
+    if token:
+        headers["Authorization"]="Bearer "+token
+    req=Request(url,headers=headers)
+    with urlopen(req,timeout=20) as response:
+        raw=response.read(2_000_001)
+    if len(raw)>2_000_000:
+        raise ValueError("Authorized feed JSON exceeds 2 MB")
+    return json.loads(raw.decode("utf-8"))
+
+def build(input_path=None, now=None, feed_url=None, bearer_token="", feed_loader=None):
     now=now or dt.datetime.now(UTC)
     result={
         "schema_version":1,"generated_at":now.isoformat(),"status":"not_connected",
@@ -80,10 +106,13 @@ def build(input_path=None, now=None):
         ],
         "max_verification_age_hours":MAX_AGE_HOURS
     }
-    if not input_path:
+    if not input_path and not feed_url:
         return result
     try:
-        data=json.loads(Path(input_path).read_text(encoding="utf-8"))
+        if input_path:
+            data=json.loads(Path(input_path).read_text(encoding="utf-8"))
+        else:
+            data=(feed_loader or load_authorized_feed)(feed_url,bearer_token)
         if not isinstance(data,dict) or not data.get("distribution_authorized") is True:
             raise ValueError("Source must explicitly document redistribution permission")
         jobs,problems=compile_feed(data.get("jobs"),now=now,provenance=str(data.get("source","")))
@@ -101,7 +130,7 @@ def main(argv=None):
     p.add_argument("--input",type=Path,help="JSON export from explicitly authorized, licensed data source")
     p.add_argument("--out",type=Path,default=Path("public/generated/jobs.json"))
     args=p.parse_args(argv)
-    value=build(args.input)
+    value=build(args.input,feed_url=os.environ.get("FISHERIES_JOBS_FEED_URL"),bearer_token=os.environ.get("FISHERIES_JOBS_FEED_TOKEN",""))
     args.out.parent.mkdir(parents=True,exist_ok=True)
     args.out.write_text(json.dumps(value,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("Vacancy feed: "+value["status"]+", verified live: "+str(len(value["verified_live"])))
