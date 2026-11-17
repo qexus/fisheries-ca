@@ -42,13 +42,17 @@ function matrix(){
  '<div class="qx-panel qx-warning">Главная экономия: для работы на береговой рыбной фабрике морской сертификат не нужен автоматически. Для судна сначала уточняй тип, маршрут и роль. Примеры учебных цен не являются универсальной обязательной стоимостью.</div>'+
  '<div class="qx-filter-row"><label for="qx-role-filter">Отрасль</label><select id="qx-role-filter"><option value="all">Все направления</option><option>Береговая фабрика</option><option>Аквакультура</option><option>Судно</option></select></div>'+
  '<div class="qx-role-grid">'+roles.map(r=>'<article class="qx-role" data-qx-sector="'+escape(r.sector)+'"><div class="qx-role-top"><span>'+escape(r.sector)+'</span><span>'+escape(r.level)+'</span></div><h3>'+escape(r.role)+'</h3><details><summary>Документы, обучение и стоимость <span>⌄</span></summary><div class="qx-role-body"><h4>Обязательные условия / что уточнить</h4><ul>'+r.paper.map(x=>'<li>'+escape(x)+'</li>').join("")+'</ul><h4>Дополнительное обучение</h4><ul>'+r.optional.map(x=>'<li>'+escape(x)+'</li>').join("")+'</ul><h4>Сколько закладывать</h4><p class="qx-money">'+escape(r.budget)+'</p><p><b>Где:</b> '+escape(r.location)+'</p><div class="qx-links">'+makeLink(r.source,"Официальные требования")+(r.training?makeLink(r.training,"Учебный провайдер"):"")+'</div></div></details></article>').join("")+'</div>'+
- '<p class="qx-small">Обновлено вручную: '+escape(checkDate)+'. Матрица показывает ориентиры и примеры, а не гарантию действующей цены, регистрации или трудоустройства.</p>';
+ '<p class="qx-small">Обновлено вручную: '+escape(checkDate)+'. Матрица показывает ориентиры и примеры, а не гарантию действующей цены, регистрации или трудоустройства.</p>'+
+ '<details class="qx-subsection"><summary>Стоимость сертификатов и учебные центры <span>⌄</span></summary><div class="qx-subsection-content">'+(window.qexusAcademyCertificates?.()||"")+'</div></details>';
 }
 function employer(){
  return '<div class="qx-intro"><div class="qx-overline">КАРЬЕРА · ПРОВЕРЕННЫЕ ОФИЦИАЛЬНЫЕ КАНАЛЫ</div><h1>Работодатели и контакты</h1><p>Прямые карьерные страницы и только публичные служебные контакты. Включение в список не означает, что компания сейчас нанимает. По ссылкам проверяй вакансии и отправляй CV только по инструкции работодателя.</p></div>'+
  '<div class="qx-filter-row"><input id="qx-employer-search" type="search" placeholder="Название, провинция, отрасль, техника..."><label class="qx-fav-toggle"><input id="qx-only-fav" type="checkbox"> Только избранные</label></div>'+
  '<div class="qx-employer-stats" id="qx-employer-count"></div><div class="qx-employer-grid" id="qx-employer-grid"></div>'+
- '<p class="qx-small">Карьерные каналы проверены: '+escape(checkDate)+'. Вакансии могут закрываться; отслеживание новых объявлений здесь пока не автоматизировано. Не отправляй паспортные данные случайным посредникам.</p>';
+ '<p class="qx-small">Карьерные каналы проверены: '+escape(checkDate)+'. Вакансии могут закрываться; отслеживание новых объявлений здесь пока не автоматизировано. Не отправляй паспортные данные случайным посредникам.</p>'+
+ '<details class="qx-subsection"><summary>Резюме, документы, собеседование и контракт <span>⌄</span></summary><div class="qx-subsection-content">'+(window.qexusAcademyCareer?.()||"")+'</div></details>'+
+ '<details class="qx-subsection"><summary>Официальные источники и библиотека <span>⌄</span></summary><div class="qx-subsection-content">'+(window.qexusAcademySources?.()||"")+'</div></details>'+
+ '<div class="qx-subtools"><h3>Дополнительные инструменты</h3><button data-view="salary">Калькулятор зарплаты</button><button data-view="glossary">Словарь</button><button data-view="documents">Список документов</button><button data-view="'+(isCA?"sources":"import")+'">Источники и импорт</button></div>';
 }
 function employerCard(e,index){
  const favorites=getStore("favorites");
@@ -81,6 +85,7 @@ function show(view){
 document.addEventListener("click",e=>{
  const btn=e.target.closest("[data-qx-view]");
  if(btn){e.preventDefault();show(btn.dataset.qxView);return}
+ if(e.target.closest("[data-view],[data-qa-view]"))document.querySelectorAll("[data-qx-view]").forEach(b=>b.classList.remove("active"));
  const quiz=e.target.closest("[data-qx-grade]");if(quiz){e.preventDefault();grade(quiz.dataset.qxGrade,quiz);return}
  const favorite=e.target.closest("[data-qx-favorite]");
  if(favorite){const data=getStore("favorites");data[favorite.dataset.qxFavorite]=!data[favorite.dataset.qxFavorite];saveStore("favorites",data);filteredEmployers();}
