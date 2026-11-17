@@ -66,6 +66,11 @@ assert(expanded.includes("qx-subtools"),"Tools should remain accessible outside 
 const app=fs.readFileSync("public/app.js","utf8");
 assert(app.includes("generated/registry.json"),"Public registry auto-load must remain enabled");
 assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work");
+
+assert(app.includes("window.qexusReloadRegistry"),"Manual published-registry reload hook is required");
+assert(app.includes("window.qexusRegistryInfo"),"The current source date must be visible to visitors");
+assert(app.includes("cache:force?'no-store':'no-cache'"),"Manual refresh must bypass browser caches");
+
 console.log("qexus compact menu: seven sections; merged course, resources, job registry and tools validated.");
 
 
