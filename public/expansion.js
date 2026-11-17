@@ -22,8 +22,10 @@ window.qexusExpansionLesson=id=>{
  const header='<section class="qx-expanded" aria-label="Подробный урок"><div class="qx-lesson-tag">РАСШИРЕННЫЙ УРОК · QEXUS LAB</div><h3>'+escape(info.title)+'</h3>';
  const sections=info.sections.map(([h,t])=>'<section><h4>'+escape(h)+'</h4><p>'+escape(t)+'</p></section>').join("");
  const caseNote='<aside class="qx-case"><b>'+(isCA?"🇨🇦 Канада":"🇳🇴 Норвегия")+'</b><p>'+escape(note)+'</p></aside>';
+ const sources=(info.references?.[country]||[]).filter(u=>/^https:\/\//.test(u)).map(u=>makeLink(u,"Первичный источник")).join("");
+ const evidence=sources?'<div class="qx-links"><b>Документы и правила:</b> '+sources+'</div>':"";
  const quiz='<div class="qx-quiz"><h4>Проверка знаний · '+info.questions.length+' вопроса</h4>'+info.questions.map(([q,opts,ans,explain],i)=>'<fieldset class="qx-question"><legend>'+(i+1)+'. '+escape(q)+'</legend>'+opts.map((opt,j)=>'<label><input name="qx_'+country+'_'+id+'_'+i+'" type="radio" value="'+j+'"> '+escape(opt)+'</label>').join('')+'</fieldset>').join('')+'<button class="qx-grade" data-qx-grade="'+escape(id)+'">Проверить ответы</button><div class="qx-feedback" role="status" aria-live="polite"></div></div>';
- return header+sections+caseNote+quiz+'</section>';
+ return header+sections+caseNote+evidence+quiz+'</section>';
 };
 function grade(id,button){
  const info=lessons.find(l=>l.id===id);if(!info)return;
