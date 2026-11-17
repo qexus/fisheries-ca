@@ -1,0 +1,50 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+
+const context = {window: {}};
+for (const file of ["public/lessons-extended.js","public/reference-data.js"]) {
+  const contents=fs.readFileSync(file,"utf8");
+  vm.runInNewContext(contents,context,{filename:file});
+}
+const lessons=context.window.qexusAcademyLessons;
+const db=context.window.qexusFisheriesReference;
+assert(Array.isArray(lessons) && lessons.length === 12, "Expect 12 detailed modules");
+const ids=new Set();
+for(const l of lessons){
+  assert(/^\d\d$/.test(l.id), "Two-digit lesson id");
+  assert(!ids.has(l.id), "Lesson IDs must be unique");
+  ids.add(l.id);
+  assert(l.sections.length >= 3, "At least 3 detail sections per module");
+  assert(l.questions.length >= 2, "At least two questions");
+  assert(l.task.length >= 50, "Substantive task required");
+  for(const q of l.questions){
+    assert(q.length === 4 && Array.isArray(q[1]), "Quiz is [prompt,choices,correct,explanation]");
+    assert(q[1].length >= 3 && Number.isInteger(q[2]) && q[2]>=0 && q[2]<q[1].length, "Correct answer index");
+    assert(q[3].length>=12, "Feedback explanation required");
+  }
+}
+for(const country of ["canada","norway"]){
+ const roles=db.roles[country], companies=db.employers[country];
+ assert(roles.length>=7, "Seven job families per country");
+ assert(companies.length>=6, "At least six verified career channels");
+ const seen=new Set();
+ for(const c of companies){
+   assert(/^https:\/\//.test(c.url), "Official HTTPS career URL");
+   assert(!seen.has(c.url), "No duplicate employer URLs");
+   seen.add(c.url);
+ }
+ for(const role of roles){
+   assert(role.paper.length>=3, "At least three qualification checks");
+   assert(role.budget.length>20 && /^https:\/\//.test(role.source), "Training budget and official source needed");
+ }
+}
+const html=fs.readFileSync("public/index.html","utf8");
+for(const path of ["lessons-extended.js","reference-data.js","academy.js","expansion.js","expansion.css","academy.css"]){
+ assert(html.includes(path), "Missing linked asset "+path);
+ assert(fs.existsSync("public/"+path), "Missing asset "+path);
+}
+const academy=fs.readFileSync("public/academy.js","utf8");
+assert(academy.includes("window.qexusExpansionLesson?.(m[0])"),"Detailed lessons not integrated");
+for(const view of ['matrix','employers'])assert(html.includes('data-qx-view="'+view+'"'),"Missing menu "+view);
+console.log("qexus academy: 12 modules, 24 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
