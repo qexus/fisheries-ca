@@ -1,0 +1,70 @@
+name: Canada fisheries — refresh registry and deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '43 8 * * 1' # Weekly Monday UTC, approximate timing
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-canada
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Download official CFIA and DFO BC registries
+        # Network/schema problems are reported in the generated JSON; stale snapshots are retained.
+        run: python scripts/refresh_registry.py --out public/generated/registry.json
+      - name: Validate public-only site
+        run: |
+          test -s public/index.html
+          test -s public/app.js
+          test -s public/data.js
+          test -s public/generated/registry.json
+          python -m json.tool public/generated/registry.json > /dev/null
+          if find public -type f \( -iname '*.pdf' -o -iname '*.docx' -o -iname '*.xlsx' -o -iname '*.env' -o -iname '*resume*' -o -iname '*cv_*' \) | grep .; then
+            echo 'Private or unexpected file in public/'
+            exit 1
+          fi
+      - name: Commit validated registry snapshot for fallback on next run
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/generated/registry.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: refresh public Canada registry [skip ci]"
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
