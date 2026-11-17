@@ -2,3 +2,9 @@
 /* Current guide section is a label, not a link to itself. */
 .menu .menu-current{display:inline-block;border:1px solid #3b7773;border-radius:8px;padding:9px 11px;background:#16443f;color:#bff7e6;font-size:12px;font-weight:750}
 .crumb span{color:#b5cbd3}
+
+/* Accessible icon-only brand and compact selector in guide headers. */
+.topline .brand{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;flex:none}
+.qx-guide-logo{width:44px;height:44px;object-fit:contain;border-radius:10px}
+.topline .qx-language-switch{margin-left:auto}
+@media(max-width:620px){.topline{gap:8px}.topline .region{order:3;width:100%;display:flex;flex-wrap:wrap;gap:6px}.topline .region a{margin-left:0}.topline .qx-language-switch{margin-left:auto}}
