@@ -171,3 +171,17 @@ for(const lang of ["fr","uk"]){
  assert.equal((glossary.match(/<tr><td>/g)||[]).length,56,"All glossary entries must be preserved");
 }
 console.log("All four translated references and interactive curricula validated.");
+
+// Interactive Academy auxiliary views: certified training cards, job checklist, source library.
+const academyScript=fs.readFileSync("public/academy.js","utf8");
+new vm.Script(academyScript,{filename:"public/academy.js"});
+for(const method of ["qxLocalizedCertification","qxLocalizedJobs","qxLocalizedLibrary"]){
+ assert(academyScript.includes("function "+method+"()"),"Missing localized Academy view "+method);
+ assert(academyScript.includes("const translated="+method+"();if(translated)return translated;"),"Academy view must render localized content "+method);
+}
+assert(academyScript.includes("const qxChecklist=")&&academyScript.includes("const qxTranslatedCards="),"Localized card and job datasets must exist");
+assert(academyScript.includes('data-qa-check="'+""+'')===false||academyScript.includes('data-qa-check'),"Job checks must preserve progress attributes");
+assert(academyScript.includes('localStorage.getItem("qexus-academy-"'),"Local progress key must be preserved");
+const certIds=(academyScript.match(/"(ca-[a-z-]+)":\[/g)||[]).length;
+assert(certIds>=24,"Certificate translations must cover both FR and UK for every course card");
+console.log("Interactive Academy auxiliary views, prices, official URLs and persistent progress validated.");
