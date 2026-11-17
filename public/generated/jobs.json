@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-16T21:48:00-05:00",
+  "status": "not_connected",
+  "source": "No authorized vacancy feed configured",
+  "verified_live": [],
+  "warnings": [
+    "Official industry registries and archived announcements are not active job openings.",
+    "Open the official NAV / Job Bank search links while authorized automatic feed access is pending."
+  ],
+  "max_verification_age_hours": 36
+}
