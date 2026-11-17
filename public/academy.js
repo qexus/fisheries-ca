@@ -34,8 +34,7 @@ const L={
   nav:"https://arbeidsplassen.nav.no/stillinger",
   fdir:"https://www.fiskeridir.no/",
   mat:"https://www.mattilsynet.no/",
-  codex:"https://www.fao.org/fao-who-codexalimentarius/en/",
-  training:"https://bfisherman.com/programma-kursa/"
+  codex:"https://www.fao.org/fao-who-codexalimentarius/en/"
 };
 const certCA=[
 {id:"ca-sdv",kind:"Для экипажа на определённых судах",name:"SDV-BS — Small Non-Pleasure Domestic Vessel Basic Safety",price:"925 CAD в Lévis (885 + 40 сбор)",location:"CFMU — Lévis, Québec; также ÉPAQ Grande-Rivière и Eastern Shores New Carlisle",duration:"12,5 часа в CFMU",role:"Для экипажей соответствующих малых коммерческих/рыболовных судов. Ранее назывался MED A3. Условия применения зависят от района плавания и судна.",source:L.tc,offer:L.cfmu,todo:"Проверь тип судна, язык преподавания и срок действия сертификата Fatigue Management. В ÉPAQ опубликовано 525 CAD на 2025–2026, 13 часов; актуальную цену перепроверь."},
@@ -96,9 +95,25 @@ return '<div class="qa-intro"><div class="qa-label">ПОДТВЕРЖДЕННЫЕ
 '<div class="qa-alert">⚠️ Бесплатная академия qexus lab НЕ выдаёт STCW, MED, медицинские заключения или дипломы Maricert. Официальные квалификации оформляются только через соответствующих провайдеров и органы.</div>'+
 '<div class="qa-cards">'+cards.map(c=>'<article class="qa-cert"><div class="qa-row"><span class="qa-kicker">'+E(c.kind)+'</span><span class="qa-price">'+E(c.price)+'</span></div><h3>'+E(c.name)+'</h3><p>'+E(c.role)+'</p><div class="qa-details"><span>📍 '+E(c.location)+'</span><span>🕒 '+E(c.duration)+'</span></div><div class="qa-tip">Перед оплатой: '+E(c.todo)+'</div><div class="qa-actions">'+external(c.source,"Правила и требования")+external(c.offer,"Курс / провайдер")+'</div></article>').join('')+'</div>';
 }
+
+function legacyExtras(id){
+ const map=isCA
+ ?{"01":["01"],"02":["02"],"04":["06"],"05":["05","07"],"06":["08"],"07":["04"],"08":["03"],"09":["10"],"10":["09"]}
+ :{"01":[1],"03":[4],"04":[3],"05":[5],"06":[6],"07":[7],"08":[2],"09":[9],"10":[8],"11":[10]};
+ const arr=isCA?(window.CANADA_FISHERIES_SEED?.lessons||[]):(window.QEXUS_DATA?.modules||[]);
+ const old=(map[id]||[]).map(n=>arr.find(x=>String(x.id)===String(n))).filter(Boolean);
+ if(!old.length)return "";
+ return '<details class="qa-legacy"><summary>Дополнительные материалы и практика <span>⌄</span></summary><div class="qa-legacy-content">'+old.map(x=>
+ '<h4>'+E(x.title)+'</h4>'+
+ (x.goal?'<p><b>Цель:</b> '+E(x.goal)+'</p>':'')+
+ (Array.isArray(x.sections)?x.sections.map(z=>'<h5>'+E(z[0])+'</h5><p>'+E(z[1])+'</p>').join(''):'')+
+ (x.theory?'<p>'+E(x.theory)+'</p>':'')+
+ '<div class="qa-legacy-task"><b>Практика:</b> '+E(x.practice||x.task||'')+'</div>'
+ ).join('')+'</div></details>';
+}
 function curriculumHTML(){
-return '<div class="qa-intro"><div class="qa-label">САМОСТОЯТЕЛЬНОЕ ОБУЧЕНИЕ · 12 МОДУЛЕЙ</div><h1>Практический курс</h1><p>Собственная бесплатная программа qexus lab по открытым профессиональным источникам. Она дополняет 10 исходных уроков на сайте; не заменяет практику на судне или обучение у аккредитованного центра.</p></div><div class="qa-course-progress"><strong id="qa-progress">Прогресс —</strong><span>Результаты хранятся только на этом устройстве</span></div>'+
-modules.map(m=>'<details class="qa-lesson" id="qa-lesson-'+m[0]+'"><summary><span class="qa-num">'+m[0]+'</span><span><b>'+E(m[1])+'</b><small>Теория + практика</small></span><span class="qa-chevron">⌄</span></summary><div class="qa-lessonbody"><p>'+E(m[2])+'</p>'+(window.qexusExpansionLesson?.(m[0])||'')+'<div class="qa-exercise"><b>Самостоятельное задание</b><p>'+E(m[3])+'</p></div><label class="qa-done"><input type="checkbox" data-qa-complete="'+m[0]+'"> Я выполнил(а) задание</label></div></details>').join('')+
+return '<div class="qa-intro"><div class="qa-label">САМОСТОЯТЕЛЬНОЕ ОБУЧЕНИЕ · 12 МОДУЛЕЙ</div><h1>Обучение · 12 уроков</h1><p>Единый бесплатный курс qexus lab: 12 подробных уроков, вопросы и задания. Полезные материалы прежних 10 коротких уроков перенесены внутрь соответствующих тем. Этот сайт не выдаёт официальных морских сертификатов.</p></div><div class="qa-course-progress"><strong id="qa-progress">Прогресс —</strong><span>Результаты хранятся только на этом устройстве</span></div>'+
+modules.map(m=>'<details class="qa-lesson" id="qa-lesson-'+m[0]+'"><summary><span class="qa-num">'+m[0]+'</span><span><b>'+E(m[1])+'</b><small>Теория + практика</small></span><span class="qa-chevron">⌄</span></summary><div class="qa-lessonbody"><p>'+E(m[2])+'</p>'+(window.qexusExpansionLesson?.(m[0])||'')+legacyExtras(m[0])+'<div class="qa-exercise"><b>Самостоятельное задание</b><p>'+E(m[3])+'</p></div><label class="qa-done"><input type="checkbox" data-qa-complete="'+m[0]+'"> Я выполнил(а) задание</label></div></details>').join('')+
 '<div class="qa-panel"><h3>20 терминов для начала</h3><div class="qa-terms">'+terms.map(a=>'<div><b>'+E(a[0])+'</b><span>'+E(a[1])+'</span></div>').join('')+'</div></div>';
 }
 function jobsHTML(){
@@ -121,9 +136,11 @@ return '<div class="qa-intro"><div class="qa-label">ПОДГОТОВКА К ПР
 function libraryHTML(){
 return '<div class="qa-intro"><div class="qa-label">ИСТОЧНИКИ И ПРОВЕРКА ФАКТОВ</div><h1>Бесплатная библиотека</h1><p>Оригинальные документы государственных ведомств и курсы провайдеров. Это отправные точки для обновления информации, не готовые доказательства наличия вакансии или разрешения на работу.</p></div>'+
 '<div class="qa-cards">'+workLinks.map(([u,title])=>'<div class="qa-panel"><h3>'+E(title)+'</h3>'+external(u,"Открыть источник")+'</div>').join('')+'</div>'+
-'<div class="qa-panel"><h3>Как устроен платный курс BFISHERMAN</h3><p>На открытой странице описаны 12 модулей: ориентация, дополнительные пищевые сертификаты, флот, документы, снасти, поиск работы, первые дни, налоги, государственные квалификации, базы компаний и итоговый экзамен. В нашем проекте мы самостоятельно создаём справочники по этим темам. Платные видео и закрытые контакты не копируем.</p>'+external(L.training,"Посмотреть открытую программу")+'</div>'+
 '<div class="qa-panel"><h3>Статус информации</h3><p>Требования подтверждаются ссылками на ведомства, цены — страницами провайдеров. Отсутствие цены означает «не проверено», а не «бесплатно». Последняя ручная сверка: 17 ноября 2026. Для актуальных вакансий, курсов и визовых правил требуется повторная проверка перед действием.</p></div>';
 }
+window.qexusAcademyCertificates=certificationHTML;
+window.qexusAcademyCareer=jobsHTML;
+window.qexusAcademySources=libraryHTML;
 const titles={cert:"Сертификаты",curriculum:"12 модулей",jobs:"Трудоустройство",library:"Библиотека"};
 function show(view){
   if(!(view in titles))return;
