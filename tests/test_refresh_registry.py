@@ -9,6 +9,17 @@ class RegistryTests(unittest.TestCase):
         rows=parse_csv('Name,Ref. #,Address,City,Province,Postal Code\n"A, B Fisheries",123,"9 Road",Moncton,NB,A1B2C3\n'.encode())
         self.assertEqual(rows[0]['name'],'A, B Fisheries')
         self.assertEqual(rows[0]['ref'],'123')
+    def test_cfia_live_csv_headers(self):
+        # CFIA's official GetCSV endpoint uses estName/estRefNum/... fields.
+        data='estName,estRefNum,estAddress,estCity,estProvince,estPostalCode\\n'
+        data+=''.join(f'Fishery {i},00{i},Port Road,Gaspé,QC,G0A0A0\\n' for i in range(26))
+        rows=parse_csv(data.encode('utf-8'))
+        out=cfia_companies(rows)
+        self.assertEqual(len(out),26)
+        self.assertEqual(out[0]['province'],'QC')
+        self.assertTrue(out[0]['registration'])
+        self.assertIn('Fishery',out[0]['name'])
+
     def test_cfia_html(self):
         html=b'<table><tr><th>Name</th><th>Ref #</th><th>Address</th><th>City</th><th>Province</th><th>Postal Code</th></tr><tr><td>AB Fisheries</td><td>005</td><td>Road</td><td>Gasp&eacute;</td><td>QC</td><td>ABC</td></tr></table>'
         records=parse_cfia_html(html)
