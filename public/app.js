@@ -16,6 +16,33 @@
   const showLink=(link,label='Источник ↗')=>`<a href="${url(link)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
   const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3200)};
   const navNames={dashboard:'Обзор',companies:'Компании',jobs:'Вакансии',aquaculture:'Аквакультура',course:'Учебник',glossary:'Словарь',documents:'Документы',salary:'Калькулятор',sources:'Источники'};
+
+  // The twelve-lesson Academy uses separate localStorage keys from the legacy UI.
+  // Keep these keys in browser-only JSON backups; never upload user notes.
+  function exportAcademyData(){
+    const snapshot={};
+    try{
+      for(let i=0;i<localStorage.length;i++){
+        const key=localStorage.key(i);
+        if(key && ["qexus-academy-Canada-","qx-expanded-canada-"].some(prefix=>key.startsWith(prefix))){
+          const value=localStorage.getItem(key);
+          if(typeof value==='string'&&value.length<=500000)snapshot[key]=value;
+        }
+      }
+    }catch{}
+    return snapshot;
+  }
+  function restoreAcademyData(snapshot){
+    if(!snapshot||typeof snapshot!=='object'||Array.isArray(snapshot))return;
+    try{
+      for(const [key,value] of Object.entries(snapshot).slice(0,30)){
+        if(!["qexus-academy-Canada-","qx-expanded-canada-"].some(prefix=>key.startsWith(prefix))||typeof value!=='string'||value.length>500000)continue;
+        const parsed=JSON.parse(value);
+        if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))localStorage.setItem(key,value);
+      }
+    }catch{}
+  }
+
   function go(view){state.view=view;state.search='';state.province='ALL';state.category='ALL';state.lesson=null;state.companyLimit=60;render();window.scrollTo({top:0,behavior:'smooth'});$('#sidebar').classList.remove('open');$('#menuToggle')?.setAttribute('aria-expanded','false')}
   const heading=(k,title,sub)=>`<div class="eyebrow">${esc(k)}</div><h1>${esc(title)}</h1><p class="lead">${esc(sub)}</p>`;
   const stat=(n,label)=>`<div class="stat"><strong>${esc(fmt(n))}</strong><small>${esc(label)}</small></div>`;
@@ -58,8 +85,8 @@
     $('#completeLesson')?.addEventListener('click',()=>{state.local.notes[state.lesson]=$('#lessonNote')?.value?.slice(0,20000)||'';if(!state.local.completed.includes(state.lesson))state.local.completed.push(state.lesson);save();state.lesson=null;render();toast('Урок отмечен пройденным')});
     ['hourlyRate','hoursPerWeek','weeksPerYear'].forEach((id,i)=>$('#'+id)?.addEventListener('input',()=>{const inputs=['hourlyRate','hoursPerWeek','weeksPerYear'].map(x=>Math.max(0,Number($('#'+x).value)||0));const [rate,hours,weeks]=inputs;state.salary={rate,hours,weeks};$('#weekPay').textContent=money(rate*hours);$('#monthPay').textContent=money(rate*hours*weeks/12);$('#yearPay').textContent=money(rate*hours*weeks)}));
     document.querySelectorAll('[data-copy]').forEach(e=>e.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(e.dataset.copy);toast('Номер скопирован')}catch{toast('Не удалось скопировать номер')}}));
-    $('#exportNotes')?.addEventListener('click',()=>{const json=JSON.stringify({app:'qexus-fisheries-canada',version:1,saved_at:new Date().toISOString(),data:state.local},null,2);download(new Blob([json],{type:'application/json'}),'qexus-canada-backup.json')});
-    $('#restoreNotes')?.addEventListener('click',async()=>{const file=$('#restoreFile').files?.[0];if(!file)return toast('Выбери JSON-файл');try{if(file.size>3e6)throw Error('слишком большой файл');const val=JSON.parse(await file.text());if(val.app!=='qexus-fisheries-canada'||!val.data)throw Error('неправильный формат');const d=val.data;state.local={completed:Array.isArray(d.completed)?d.completed.filter(x=>typeof x==='string').slice(0,10):[],notes:d.notes&&typeof d.notes==='object'?d.notes:{},favorites:Array.isArray(d.favorites)?d.favorites.slice(0,2000):[],imported:Array.isArray(d.imported)?d.imported.slice(0,10000):[]};save();toast('Восстановлено');render()}catch(e){toast('Ошибка: '+e.message)}});
+    $('#exportNotes')?.addEventListener('click',()=>{const json=JSON.stringify({app:'qexus-fisheries-canada',version:1,saved_at:new Date().toISOString(),data:state.local,academy:exportAcademyData()},null,2);download(new Blob([json],{type:'application/json'}),'qexus-canada-backup.json')});
+    $('#restoreNotes')?.addEventListener('click',async()=>{const file=$('#restoreFile').files?.[0];if(!file)return toast('Выбери JSON-файл');try{if(file.size>3e6)throw Error('слишком большой файл');const val=JSON.parse(await file.text());if(val.app!=='qexus-fisheries-canada'||!val.data)throw Error('неправильный формат');const d=val.data;state.local={completed:Array.isArray(d.completed)?d.completed.filter(x=>typeof x==='string').slice(0,10):[],notes:d.notes&&typeof d.notes==='object'?d.notes:{},favorites:Array.isArray(d.favorites)?d.favorites.slice(0,2000):[],imported:Array.isArray(d.imported)?d.imported.slice(0,10000):[]};save();restoreAcademyData(val.academy);toast('Восстановлено, включая прогресс Академии');render()}catch(e){toast('Ошибка: '+e.message)}});
     $('#importCSV')?.addEventListener('click',async()=>{const file=$('#csvFile').files?.[0];if(!file)return toast('Выбери CSV-файл');try{if(file.size>6e6)throw Error('файл больше 6 МБ');const text=await file.text();const rows=parseCSV(text);if(!rows.length)throw Error('CSV пустой');const found=rows.slice(0,10000).map((r,i)=>rowToCompany(r,i)).filter(Boolean);if(!found.length)throw Error('Не найдены поля компании/сайта и провинции');const map=new Map(state.local.imported.map(x=>[x.id,x]));for(const x of found)map.set(x.id,x);state.local.imported=[...map.values()].slice(0,10000);save();toast(`Импортировано ${found.length} записей`);go('companies')}catch(e){toast('Ошибка импорта: '+e.message)}});
   }
   const norm=s=>String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'');
