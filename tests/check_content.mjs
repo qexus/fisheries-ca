@@ -180,7 +180,7 @@ for(const method of ["qxLocalizedCertification","qxLocalizedJobs","qxLocalizedLi
  assert(academyScript.includes("const translated="+method+"();if(translated)return translated;"),"Academy view must render localized content "+method);
 }
 assert(academyScript.includes("const qxChecklist=")&&academyScript.includes("const qxTranslatedCards="),"Localized card and job datasets must exist");
-assert(academyScript.includes('data-qa-check="'+""+'')===false||academyScript.includes('data-qa-check'),"Job checks must preserve progress attributes");
+assert(academyScript.includes("data-qa-check"),"Job checks must preserve progress attributes");
 assert(academyScript.includes('localStorage.getItem("qexus-academy-"'),"Local progress key must be preserved");
 const certIds=(academyScript.match(/"(ca-[a-z-]+)":\[/g)||[]).length;
 assert(certIds>=24,"Certificate translations must cover both FR and UK for every course card");
@@ -198,3 +198,14 @@ for(const lang of ["fr","uk"]){
 assert(fs.readFileSync("public/academy.js","utf8").includes("localizedJobsHTML"),"Missing translated checklist renderer");
 assert(fs.readFileSync("public/academy.js","utf8").includes("localizedLibraryHTML"),"Missing translated library renderer");
 console.log("20 Academy certificate translations plus career and library UI verified.");
+
+// Sidebar links to translated auxiliary Academy tools must be accessible.
+for(const view of ["cert","jobs","library"]){
+ assert(html.includes('data-qa-view="'+view+'"'),"Sidebar missing interactive Academy "+view+" link");
+}
+for(const label of ["Курсы и цены","План отклика","Библиотека ведомств"]){
+ assert(html.includes(label),"Sidebar must have a readable source label: "+label);
+}
+const translations=fs.readFileSync("public/i18n.js","utf8");
+assert(translations.includes("Cours et tarifs")&&translations.includes("Офіційна бібліотека"),"Auxiliary menu needs French and Ukrainian translations");
+console.log("Translated Academy auxiliary navigation verified.");
