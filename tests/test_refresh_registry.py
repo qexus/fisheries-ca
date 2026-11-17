@@ -11,8 +11,8 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(rows[0]['ref'],'123')
     def test_cfia_live_csv_headers(self):
         # CFIA's official GetCSV endpoint uses estName/estRefNum/... fields.
-        data='estName,estRefNum,estAddress,estCity,estProvince,estPostalCode\\n'
-        data+=''.join(f'Fishery {i},00{i},Port Road,Gaspé,QC,G0A0A0\\n' for i in range(26))
+        data='estName,estRefNum,estAddress,estCity,estProvince,estPostalCode\n'
+        data+=''.join(f'Fishery {i},00{i},Port Road,Gaspé,QC,G0A0A0\n' for i in range(26))
         rows=parse_csv(data.encode('utf-8'))
         out=cfia_companies(rows)
         self.assertEqual(len(out),26)
