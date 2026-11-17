@@ -114,3 +114,9 @@ assert(html.includes('href="guides/"'),"Static guide hub must be linked from app
 console.log("17 Canada static indexable guides validated.");
 
 assert(html.includes('class="country-current" aria-current="page"'),"Current country should be a label, not a self-link");
+
+// Language selector and icon-only branding must not disturb working navigation.
+assert(html.includes('src="i18n.js"')&&html.includes('src="i18n.css"')&&html.includes('src="locale-note.js"'),"RU/FR/UK locale assets required");
+assert(fs.existsSync("public/i18n.js")&&fs.existsSync("public/i18n.css")&&fs.existsSync("public/locale-note.js"),"Language assets must be deployable");
+assert(!/<(?:strong|b)>qexus lab<\/(?:strong|b)>/.test(html),"Clickable icon should not have redundant brand text");
+assert(fs.readFileSync("public/i18n.js","utf8").includes("qx-language-switch"),"Language selector script missing");
