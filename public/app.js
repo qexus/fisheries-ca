@@ -5,7 +5,7 @@
   const provinceNames={QC:'Квебек',NB:'Нью-Брансуик',NS:'Новая Шотландия',NL:'Ньюфаундленд и Лабрадор',PE:'Остров Принца Эдуарда',BC:'Британская Колумбия',ON:'Онтарио',AB:'Альберта',MB:'Манитоба',SK:'Саскачеван',YT:'Юкон',NT:'СЗТ',NU:'Нунавут'};
   const $=s=>document.querySelector(s);
   const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const url=x=>{try{const u=new URL(x);return u.protocol==='https:'?esc(u.href):'#'}catch{return '#'}};
+  const url=x=>{try{const u=new URL(x);return u.protocol==='https:'&&!u.username&&!u.password?esc(u.href):'#'}catch{return '#'}};
   const fmt=x=>Number.isFinite(Number(x))?Number(x).toLocaleString('ru-RU'):String(x);
   const money=x=>Number(x||0).toLocaleString('en-CA',{style:'currency',currency:'CAD',maximumFractionDigits:2});
   const dataFromStorage=()=>{try{const val=JSON.parse(localStorage.getItem(KEY)||'{}');return typeof val==='object'&&val!==null?val:{}}catch{return {}}};
