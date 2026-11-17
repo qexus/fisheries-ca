@@ -185,3 +185,16 @@ assert(academyScript.includes('localStorage.getItem("qexus-academy-"'),"Local pr
 const certIds=(academyScript.match(/"(ca-[a-z-]+)":\[/g)||[]).length;
 assert(certIds>=24,"Certificate translations must cover both FR and UK for every course card");
 console.log("Interactive Academy auxiliary views, prices, official URLs and persistent progress validated.");
+
+// Complete French/Ukrainian Academy certificates, job application checklist and official library.
+assert(html.includes('src="academy-ui.js"')&&html.indexOf('src="academy-ui.js"')<html.indexOf('src="academy.js"'),"Academy UI translations must load before Academy");
+const ui=fs.readFileSync("public/academy-ui.js","utf8");
+for(const lang of ["fr","uk"]){
+ assert(ui.includes('"'+lang+'":'),"Missing Academy UI "+lang);
+ for(const id of ["ca-sdv","ca-dvs","ca-stcw","ca-psc","no-fish","no-med","no-work"]){
+  assert(ui.includes('"'+id+'":'),"Missing translated certificate "+id);
+ }
+}
+assert(fs.readFileSync("public/academy.js","utf8").includes("localizedJobsHTML"),"Missing translated checklist renderer");
+assert(fs.readFileSync("public/academy.js","utf8").includes("localizedLibraryHTML"),"Missing translated library renderer");
+console.log("20 Academy certificate translations plus career and library UI verified.");

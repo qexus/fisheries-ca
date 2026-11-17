@@ -90,6 +90,7 @@ const T={
 };
 const workLinks=isCA?[[L.jobbank,"Job Bank Canada — вакансии"],[L.dfo,"DFO — рыболовная отрасль"],[L.cfia,"CFIA — пищевые требования"],[L.tc,"Transport Canada — требования к рыболовным судам"],[L.schools,"TP 10655 — признанные учебные центры"]]:[[L.nav,"NAV Arbeidsplassen — вакансии"],[L.fdir,"Fiskeridirektoratet — флот"],[L.mat,"Mattilsynet — предприятия"],[L.sdir,"Sjøfartsdirektoratet — морские документы"],[L.udi,"UDI — право на работу"]];
 const cards=isCA?certCA:certNO;
+
 function academyLanguage(){return (new URLSearchParams(location.search).get("lang")||document.documentElement.lang||"ru").toLowerCase()}
 const qxTranslatedCards={
 fr:{
@@ -190,7 +191,52 @@ function qxLocalizedLibrary(){
  '<div class="qa-panel"><h3>'+L.status+'</h3><p>'+L.body+'</p></div>';
 }
 
+function localeAcademyUI(){
+ const language=(new URLSearchParams(location.search).get("lang")||document.documentElement.lang).toLowerCase();
+ return language==="fr"||language==="uk"?{language,data:window.QX_ACADEMY_UI?.[language]}:null;
+}
+function localizedCertificationHTML(){
+ const locale=localeAcademyUI();if(!locale?.data)return null;
+ const fr=locale.language==="fr",d=locale.data;
+ const title=fr?"Certificats et formations":"Сертифікати та навчання";
+ const description=fr?
+ "Les certificats obligatoires dépendent du poste, du navire et du pays. Les prix sont des exemples relevés en novembre 2026 et doivent être reconfirmés avant paiement.":
+ "Обов’язкові сертифікати залежать від посади, судна та країни. Наведені ціни — приклади станом на листопад 2026 року, їх потрібно перевіряти перед оплатою.";
+ const warning=fr?
+ "Cette académie gratuite ne délivre ni certificats STCW/MED, ni attestations médicales, ni qualifications professionnelles officielles. Seuls les organismes reconnus peuvent les délivrer.":
+ "Ця безплатна Академія не видає STCW/MED, медичних довідок чи офіційних професійних посвідчень. Їх видають лише відповідні визнані організації.";
+ let output='<div class="qa-intro"><div class="qa-label">'+(fr?"FORMATIONS ET SOURCES OFFICIELLES":"НАВЧАННЯ ТА ОФІЦІЙНІ ДЖЕРЕЛА")+' · '+country.toUpperCase()+'</div><h1>'+title+'</h1><p>'+description+'</p></div><div class="qa-alert">⚠️ '+warning+'</div><div class="qa-cards">';
+ for(const c of cards){
+  const z=d.certs[c.id];
+  if(!Array.isArray(z)||z.length!==7)return null;
+  output+='<article class="qa-cert"><div class="qa-row"><span class="qa-kicker">'+E(z[0])+'</span><span class="qa-price">'+E(z[2])+'</span></div><h3>'+E(z[1])+'</h3><p>'+E(z[5])+'</p><div class="qa-details"><span>📍 '+E(z[3])+'</span><span>🕒 '+E(z[4])+'</span></div><div class="qa-tip">'+(fr?"Avant de payer : ":"Перед оплатою: ")+E(z[6])+'</div><div class="qa-actions">'+external(c.source,fr?"Règles officielles":"Офіційні вимоги")+external(c.offer,fr?"Cours et fournisseur":"Курс і навчальний заклад")+'</div></article>';
+ }
+ return output+'</div>';
+}
+function localizedJobsHTML(){
+ const locale=localeAcademyUI();if(!locale?.data)return null;
+ const d=locale.data,fr=locale.language==="fr",docs=isCA?d.docs.ca:d.docs.no;
+ const interview=["Tell me about your industrial experience.","What personal protective equipment do you use?","What would you do if a winch or conveyor jams?","Can you work shifts, weekends and in cold conditions?","What training or certificates do you currently hold?","Are you legally authorized to work in this country?"];
+ let output='<div class="qa-intro"><div class="qa-label">'+(fr?"PRÉPARATION À LA CANDIDATURE":"ПІДГОТОВКА ДО ПРАЦЕВЛАШТУВАННЯ")+'</div><h1>'+(fr?"Du registre au contrat":"Від реєстру до контракту")+'</h1><p>'+(fr?"Une feuille de route fondée sur les exigences réelles de l’employeur et de la loi, sans payer de faux recruteurs.":"Практичний план за вимогами роботодавця та закону без оплати фальшивим посередникам.")+'</p></div>';
+ output+='<div class="qa-steps">'+docs.map((a,i)=>'<div class="qa-step"><span>'+(i+1)+'</span><div><h3>'+E(a[0])+'</h3><p>'+E(a[1])+'</p></div></div>').join('')+'</div>';
+ output+='<div class="qa-panel"><h3>'+(fr?"Liste de vérification avant de postuler":"Перелік перед поданням заявки")+'</h3>'+d.checklist.map((x,i)=>'<label class="qa-check"><input type="checkbox" data-qa-check="'+i+'"> '+E(x)+'</label>').join('')+'</div>';
+ output+='<div class="qa-panel"><h3>'+(fr?"Questions d’entrevue en anglais":"Запитання на співбесіді англійською")+'</h3><div class="qa-terms">'+interview.map(t=>'<div>'+E(t)+'</div>').join('')+'</div></div>';
+ output+='<div class="qa-panel"><h3>'+(fr?"Contrat et prévention des fraudes":"Контракт і захист від шахрайства")+'</h3><p>'+(fr?"Confirmez le taux fixe ou le partage des prises, les heures garanties, les heures supplémentaires, les vacances, les assurances, les repas, le transport, les retenues, la devise et la résiliation. Identifiez l’employeur légal et qui paie la formation. Ne payez jamais pour une prétendue place garantie.":
+ "Уточніть ставку чи частку від улову, гарантовані години, понаднормові, відпустку, страхування, харчування, транспорт, утримання, валюту та розірвання договору. Перевірте юридичного роботодавця й хто оплачує навчання. Не платіть за «гарантовану вакансію».")+'</p></div>';
+ return output;
+}
+function localizedLibraryHTML(){
+ const locale=localeAcademyUI();if(!locale?.data)return null;
+ const d=locale.data,fr=locale.language==="fr",labels=isCA?d.library.ca:d.library.no;
+ if(labels.length!==workLinks.length)return null;
+ let output='<div class="qa-intro"><div class="qa-label">'+(fr?"DOCUMENTS ET SOURCES":"ДОКУМЕНТИ ТА ДЖЕРЕЛА")+'</div><h1>'+(fr?"Bibliothèque gratuite":"Безплатна бібліотека")+'</h1><p>'+(fr?"Liens directs vers les autorités et les centres de formation. Une source officielle ne prouve pas l’existence d’une offre actuelle ni votre droit de travailler.":"Прямі посилання на державні органи та навчальні центри. Офіційне джерело не підтверджує актуальної вакансії чи права працювати.")+'</p></div>';
+ output+='<div class="qa-cards">'+workLinks.map(([u],i)=>'<div class="qa-panel"><h3>'+E(labels[i])+'</h3>'+external(u,fr?"Ouvrir la source":"Відкрити джерело")+'</div>').join('')+'</div>';
+ output+='<div class="qa-panel"><h3>'+(fr?"Validité des informations":"Актуальність відомостей")+'</h3><p>'+(fr?"Les règles sont rapprochées des sources officielles et les tarifs des prestataires. Un prix absent n’indique pas un cours gratuit. Dernière vérification manuelle : 17 novembre 2026. Revérifiez avant toute candidature ou dépense.":"Вимоги звіряються з державними джерелами, ціни — з навчальними закладами. Відсутність ціни не означає, що курс безплатний. Остання ручна перевірка: 17 листопада 2026 року. Уточнюйте дані перед поданням чи витратами.")+'</p></div>';
+ return output;
+}
 function certificationHTML(){
+const localized=localizedCertificationHTML();if(localized)return localized;
+
 const translated=qxLocalizedCertification();if(translated)return translated;
 return '<div class="qa-intro"><div class="qa-label">ПОДТВЕРЖДЕННЫЕ ПРОВАЙДЕРЫ · '+country.toUpperCase()+'</div><h1>Сертификаты и обучение</h1><p>Никаких «обязательных восьми дипломов для всех». Здесь собраны требования ведомств и примеры предложений учебных центров. Цены — снимок на ноябрь 2026; перед оплатой перепроверь условия, доступность мест и признание сертификата.</p></div>'+
 '<div class="qa-alert">⚠️ Бесплатная академия qexus lab НЕ выдаёт STCW, MED, медицинские заключения или дипломы Maricert. Официальные квалификации оформляются только через соответствующих провайдеров и органы.</div>'+
@@ -242,6 +288,8 @@ modules.map(m=>'<details class="qa-lesson" id="qa-lesson-'+m[0]+'"><summary><spa
 '<div class="qa-panel"><h3>20 терминов для начала</h3><div class="qa-terms">'+terms.map(a=>'<div><b>'+E(a[0])+'</b><span>'+E(a[1])+'</span></div>').join('')+'</div></div>';
 }
 function jobsHTML(){
+const localized=localizedJobsHTML();if(localized)return localized;
+
 const translated=qxLocalizedJobs();if(translated)return translated;
 const interview=["Tell me about your industrial experience.","What personal protective equipment do you use?","What would you do if a winch or conveyor jams?","Can you work shifts, weekends and in cold conditions?","What training or certificates do you currently hold?","Are you legally authorized to work in this country?"];
 return '<div class="qa-intro"><div class="qa-label">ПОДГОТОВКА К ПРИЁМУ НА РАБОТУ</div><h1>От реестра до контракта</h1><p>Пошаговая дорожная карта вместо покупки непроверенного списка email. Обязательные требования устанавливаются работодателем и законом, а не рекламой курсов.</p></div>'+
@@ -260,6 +308,8 @@ return '<div class="qa-intro"><div class="qa-label">ПОДГОТОВКА К ПР
 '<div class="qa-panel"><h3>Проверка договора и мошенничества</h3><p>Уточни фиксированную ставку или оплату от улова, гарантированные часы, сверхурочные, отпускные, страховку, питание, транспорт, удержания, валюту и порядок расторжения. Проверь, кто юридически нанимает и кто оплачивает обучение. Избегай работодателей, требующих личные платежи до письменного контракта.</p></div>';
 }
 function libraryHTML(){
+const localized=localizedLibraryHTML();if(localized)return localized;
+
 const translated=qxLocalizedLibrary();if(translated)return translated;
 return '<div class="qa-intro"><div class="qa-label">ИСТОЧНИКИ И ПРОВЕРКА ФАКТОВ</div><h1>Бесплатная библиотека</h1><p>Оригинальные документы государственных ведомств и курсы провайдеров. Это отправные точки для обновления информации, не готовые доказательства наличия вакансии или разрешения на работу.</p></div>'+
 '<div class="qa-cards">'+workLinks.map(([u,title])=>'<div class="qa-panel"><h3>'+E(title)+'</h3>'+external(u,"Открыть источник")+'</div>').join('')+'</div>'+
