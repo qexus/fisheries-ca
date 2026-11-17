@@ -129,7 +129,8 @@ for(const lang of ["fr","uk"]){
  assert(start.includes('<html lang="'+lang+'">'),"Localized project hub needs HTML lang");
  assert(hub.includes('<html lang="'+lang+'">'),"Localized guide hub needs HTML lang");
  assert(hub.includes('rel="canonical" href="https://qexus.github.io/fisheries-ca/'+lang+'/guides/"'),"Missing self-canonical");
- assert((hub.match(/class="lesson-card"/g)||[]).length===12,"All 12 translated lessons must appear");
+ assert((hub.match(/href="lesson-\d{2}\.html"/g)||[]).length===12,"All 12 translated lesson links must appear");
+ assert((hub.match(/href="(?:professions|employers|registries|glossary)\.html"/g)||[]).length===4,"All four translated references must appear");
  for(let i=1;i<=12;i++){
   const id=String(i).padStart(2,"0");
   const file=base+"guides/lesson-"+id+".html";
@@ -145,3 +146,27 @@ for(const lang of ["fr","uk"]){
  }
 }
 console.log("Static FR/UK localized project hubs and 24 lessons verified.");
+
+// New source-aligned FR/UK professional guides and interactive courses.
+assert(html.includes('src="academy-content.js"')&&html.includes('src="academy.js"'),"Localized Academy scripts must be loaded in the right order");
+assert(fs.existsSync("public/academy-content.js"),"Compiled localized curricula must exist");
+const acad=fs.readFileSync("public/academy-content.js","utf8");
+for(const lang of ["fr","uk"]){
+ const re=new RegExp('id":"[0-1][0-9]"','g');
+ assert((acad.match(re)||[]).length>=24,"All twelve translated interactive lessons for both languages must be present");
+ for(const guide of ["professions","employers","registries","glossary"]){
+  const file="public/"+lang+"/guides/"+guide+".html";
+  const content=fs.readFileSync(file,"utf8");
+  const url="https://qexus.github.io/fisheries-ca/"+lang+"/guides/"+guide+".html";
+  assert(content.includes('<html lang="'+lang+'">'),"Translated guide needs html lang: "+file);
+  assert(content.includes('rel="canonical" href="'+url+'"'),"Translated guide needs own canonical: "+file);
+  assert(content.includes('hreflang="fr"')&&content.includes('hreflang="uk"'),"Translated guide needs hreflang: "+file);
+  assert(content.includes('href="https://')&&content.includes('target="_blank"'),"Official/reference links missing: "+file);
+  if(lang==="fr")assert(!/[А-Яа-яЁё]/.test(content),"Russian prose remains in French guide: "+file);
+ }
+ const professions=fs.readFileSync("public/"+lang+"/guides/professions.html","utf8");
+ assert.equal((professions.match(/<article class="panel">/g)||[]).length,7,"Exactly seven profession cards");
+ const glossary=fs.readFileSync("public/"+lang+"/guides/glossary.html","utf8");
+ assert.equal((glossary.match(/<tr><td>/g)||[]).length,56,"All glossary entries must be preserved");
+}
+console.log("All four translated references and interactive curricula validated.");
