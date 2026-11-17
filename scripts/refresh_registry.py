@@ -118,11 +118,11 @@ def parse_cfia_html(payload: bytes) -> list[dict]:
 def cfia_companies(rows: list[dict]) -> list[dict]:
     output=[];seen=set()
     for r in rows:
-        name=choose(r,'Name','Legal Name','Establishment Name')
-        ref=choose(r,'Ref #','Ref. #','Reference Number','Reference','Ref','Reference #','Number')
-        city=choose(r,'City','Ville')
-        province=choose(r,'Province','Prov').upper().strip()
-        address=choose(r,'Address','Street address')
+        name=choose(r,'estName','Name','Legal Name','Establishment Name')
+        ref=choose(r,'Ref #','Ref. #','Reference Number','Reference','Ref','Reference #','Number','estRefNum')
+        city=choose(r,'estCity','City','Ville')
+        province=choose(r,'estProvince','Province','Prov').upper().strip()
+        address=choose(r,'estAddress','Address','Street address')
         if not name or province not in VALID_PROVINCES or len(name)<3:continue
         key=(normalize(ref),normalize(name),normalize(city))
         if key in seen:continue
