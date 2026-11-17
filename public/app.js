@@ -70,5 +70,6 @@
   document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
   $('#menuToggle').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
   document.addEventListener('click',e=>{if(window.innerWidth<=740&&!e.target.closest('.sidebar')&&!e.target.closest('#menuToggle'))$('#sidebar').classList.remove('open')});
+  window.qexusNavigate=go;
   render();registry();
 })();
