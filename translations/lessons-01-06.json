@@ -1,0 +1,348 @@
+{
+  "lessons": [
+    {
+      "n": 1,
+      "fr": {
+        "title": "Où travailler : navire, usine, ferme ou maintenance",
+        "lead": "Quatre milieux de travail, des exigences et des parcours différents.",
+        "sections": [
+          [
+            "Comprendre le secteur",
+            "L’industrie des pêches réunit au moins quatre marchés du travail : la capture à bord d’un bateau, la transformation à terre, l’élevage de poissons et l’entretien technique. En usine, l’hygiène, la régularité et le travail par quarts comptent beaucoup. À bord d’un bateau, il faut aussi respecter les procédures de sécurité maritime et accepter des voyages prolongés. En aquaculture, on utilise des pompes, des capteurs d’oxygène, des filets et des systèmes de surveillance. Les postes techniques peuvent toucher la mécanique, l’hydraulique, l’automatisation et l’informatique."
+          ],
+          [
+            "Choisir un parcours",
+            "Vérifiez d’abord votre droit de travailler dans le pays visé, puis choisissez le secteur et enfin un poste précis. Comparez l’expérience demandée, les langues, l’horaire, le logement et les formations exigées. N’achetez pas une formation STCW uniquement parce qu’une annonce emploie le mot « seafood » : les postes à terre et à bord ne suivent pas automatiquement les mêmes règles."
+          ],
+          [
+            "Débuter sans expérience maritime",
+            "Cherchez notamment « processing operator », « plant labourer », « production technician », « maintenance helper », « farm technician » ou « deckhand trainee ». L’expérience en convoyeurs, refroidissement, maintenance ou RAS peut aider. Comparez trois offres réelles : une entreprise inscrite dans un registre public n’est pas nécessairement en recrutement."
+          ]
+        ],
+        "task": "Choisissez deux métiers et trois employeurs. Créez un tableau : langue, lieu, horaire, autorisation de travail, formation, conditions et contacts. Indiquez quelles informations sont confirmées par une source officielle.",
+        "questions": [
+          "Quelle vérification faut-il faire avant de choisir une offre ?",
+          "Tous les employés d’une usine de transformation doivent-ils posséder un certificat STCW ?",
+          "Que faut-il vérifier pour travailler dans une ferme aquacole éloignée ?"
+        ]
+      },
+      "uk": {
+        "title": "Де працювати: судно, завод, ферма чи технічна служба",
+        "lead": "Чотири сфери праці з різними обов’язками та вимогами.",
+        "sections": [
+          [
+            "Як улаштована галузь",
+            "У рибній галузі є щонайменше чотири ринки праці: вилов на судні, перероблення риби на березі, вирощування на фермах і технічне обслуговування. На заводі важливі гігієна, стабільність і позмінна робота; на промисловому судні — морська безпека, витривалість, дисципліна та готовність до тривалих рейсів. В аквакультурі застосовують помпи, датчики кисню, сітки й системи моніторингу. Технічні вакансії стосуються механіки, гідравліки, автоматизації та IT."
+          ],
+          [
+            "Як обрати шлях",
+            "Спочатку перевірте право працювати в країні, потім оберіть сектор і конкретну вакансію. Для кожної посади з’ясуйте досвід, мову, графік, житло, навчання й сертифікати. Не купуйте курс STCW лише через слово «seafood» в оголошенні: працівник берегового заводу не обов’язково є моряком. Вимоги до роботи на березі й у судновому екіпажі різні."
+          ],
+          [
+            "Початок без морського стажу",
+            "Шукайте посади «processing operator», «plant labourer», «production technician», «maintenance helper», «farm technician», «deckhand trainee». Корисний досвід конвеєрів, охолодження, техобслуговування чи RAS. Порівняйте три реальні вакансії: реєстрація компанії у державному реєстрі не доводить, що вона зараз наймає."
+          ]
+        ],
+        "task": "Оберіть дві посади й трьох роботодавців. Складіть таблицю: мова, місце, графік, дозвіл на роботу, навчання, умови та контакт. Позначте вимоги, підтверджені офіційними джерелами.",
+        "questions": [
+          "Що потрібно перевірити перед вибором вакансії?",
+          "Чи кожному працівникові рибного заводу потрібен морський STCW?",
+          "Що слід уточнити для віддаленої аквакультурної ферми?"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "fr": {
+        "title": "Types de navires et tâches à bord",
+        "lead": "Comprendre les bateaux de pêche, les équipes et les quarts de travail.",
+        "sections": [
+          [
+            "Les principaux navires",
+            "Un chalutier tire son filet derrière le navire; un senneur entoure un banc de poissons à l’aide d’une senne coulissante; un palangrier utilise de nombreuses lignes et hameçons; un crabier se sert de casiers. Un navire-usine congélateur peut transformer et congeler les prises à bord. L’équipage peut comprendre capitaine, personnel de quart, mécaniciens, matelots, opérateurs d’usine et cuisinier. Sur les petits bateaux, les rôles se chevauchent parfois."
+          ],
+          [
+            "Le travail pendant un quart",
+            "Sur le pont : préparer et remonter les engins, trier et déplacer les prises. Dans l’atelier de transformation à bord : découper, emballer, étiqueter, nettoyer et contrôler la qualité. Les quarts peuvent se dérouler dans le froid, la nuit, avec du roulis et peu d’espace privé. Demandez la durée des voyages, les rotations, les couchettes, les repas, la connexion et le retour au domicile."
+          ],
+          [
+            "Fonctions et responsabilités",
+            "Le capitaine assume la responsabilité du navire, de la route et de la sécurité; chaque membre suit les procédures de sa fonction. Les certificats exigés du capitaine, d’un officier de quart ou d’un mécanicien de marine ne deviennent pas automatiquement obligatoires pour tout matelot. Les rôles techniques peuvent demander de l’expérience en sécurité électrique, pompes, diesel, hydraulique et réparation."
+          ]
+        ],
+        "task": "Sur le site officiel d’un armateur, trouvez cinq tâches d’une offre à bord. Classez-les en sécurité, production, technique ou commandement.",
+        "questions": [
+          "Qu’est-ce qu’un navire-usine congélateur (« factory freezer vessel ») ?",
+          "Les exigences sont-elles identiques pour un capitaine et un employé de transformation à bord ?",
+          "Quel est le rôle d’un mécanicien de marine ?"
+        ]
+      },
+      "uk": {
+        "title": "Типи суден і робота на борту",
+        "lead": "Основні риболовні судна, обов’язки екіпажу та зміни.",
+        "sections": [
+          [
+            "Основні судна",
+            "Траулер тягне трал за судном; сейнер оточує косяк риби кошельковим неводом; ярусолов використовує гачки й довгі лінії; краболов — пастки. Судно-фабрика може обробляти й заморожувати улов на борту. До екіпажу можуть входити капітан, вахтові, механіки, матроси, працівники перероблення та кухар. На малих суднах одна людина виконує кілька функцій."
+          ],
+          [
+            "Робота під час зміни",
+            "На палубі готують і вибирають снасті, сортують і переміщують улов. На судновій фабриці обробляють, пакують, маркують, прибирають і контролюють якість. Працювати доводиться в холоді, уночі, під час хитавиці й за обмеженого особистого простору. Уточніть тривалість рейсів, зміни, спальне місце, харчування, зв’язок і повернення додому."
+          ],
+          [
+            "Відповідальність на борту",
+            "Капітан відповідає за судно, маршрут і безпеку; інші працівники виконують інструкції своїх посад. Посвідчення капітана, вахтового чи суднового механіка не є автоматично обов’язковими для кожного матроса. Технічним фахівцям можуть знадобитися навички електробезпеки, роботи з помпами, дизелем, гідравлікою й ремонтом."
+          ]
+        ],
+        "task": "Знайдіть на офіційному сайті судновласника п’ять завдань однієї суднової вакансії. Розділіть їх на безпеку, виробництво, техніку та управління.",
+        "questions": [
+          "Що таке «factory freezer vessel»?",
+          "Чи однакові вимоги до капітана та рядового працівника перероблення?",
+          "Чим займається судновий механік?"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "fr": {
+        "title": "Engins de pêche, treuils, hydraulique et zones dangereuses",
+        "lead": "Reconnaître les risques mécaniques avant de travailler sur le pont.",
+        "sections": [
+          [
+            "Comment les poissons sont capturés",
+            "Le chalut de fond évolue près du fond marin; le chalut pélagique travaille dans la colonne d’eau. Une senne coulissante entoure un banc et se ferme par le bas. La palangre comporte de nombreux hameçons et avançons; les casiers servent notamment à capturer les crabes. Les espèces, les périodes de pêche, les zones et le matériel autorisé sont réglementés localement."
+          ],
+          [
+            "Dangers mécaniques majeurs",
+            "Treuils, câbles, poulies, tambours et circuits hydrauliques peuvent accumuler beaucoup d’énergie. Un câble sous tension peut revenir brutalement : la « snap-back zone » est potentiellement mortelle. Attention aux pièces mobiles, points de pincement, pont glissant, charges suspendues et démarrage inattendu. N’entrez jamais dans une zone dangereuse et ne dégagez pas une machine coincée alors qu’elle est alimentée."
+          ],
+          [
+            "Communication et arrêt sécuritaire",
+            "Avant l’opération, confirmez les signaux, qui commande la machine et qui peut ordonner l’arrêt. En cas de défaut, avertissez le capitaine ou le responsable, signalez le danger et suivez la procédure d’arrêt, d’isolement des énergies et d’autorisation. Les principes de cadenassage sont utiles, mais les consignes propres au navire priment."
+          ]
+        ],
+        "task": "Dessinez un treuil, un câble, l’engin de pêche et la « snap-back zone ». Préparez cinq commandes courtes et cinq gestes à suivre lorsqu’une machine se bloque.",
+        "questions": [
+          "Que ne faut-il jamais faire avec un treuil coincé ?",
+          "Qu’est-ce que la « snap-back zone » ?",
+          "Qu’est-ce qu’un point de pincement ?"
+        ]
+      },
+      "uk": {
+        "title": "Снасті, лебідки, гідравліка та небезпечні зони",
+        "lead": "Як розпізнавати механічні ризики на палубі.",
+        "sections": [
+          [
+            "Як ловлять рибу",
+            "Донний трал працює поблизу дна, пелагічний — у товщі води. Кошельковий невід оточує косяк і стягується знизу. Ярус має багато гачків і повідців; пастки використовують, зокрема, для крабів. Види риби, сезони, райони та дозволені снасті визначають місцеві правила."
+          ],
+          [
+            "Основні механічні небезпеки",
+            "Лебідки, троси, блоки, барабани й гідравліка працюють із великим натягом. Трос може різко відскочити — «snap-back zone» смертельно небезпечна. Також є рухомі частини, точки защемлення, слизька палуба, підвішені вантажі та неочікуваний запуск. Не заходьте до небезпечної зони й не звільняйте заклинений механізм під напругою."
+          ],
+          [
+            "Безпечний зв’язок",
+            "Перед початком роботи перевірте сигнали, хто керує обладнанням і хто має право зупинити операцію. У разі несправності повідомте капітана або відповідального, позначте ризик і дійте за процедурою зупинки та ізоляції енергії. Принципи lockout/tagout корисні, але потрібно знати саме суднові інструкції."
+          ]
+        ],
+        "task": "Намалюйте лебідку, снасть, трос і «snap-back zone». Складіть п’ять коротких команд і п’ять дій у разі заклинювання.",
+        "questions": [
+          "Чого не можна робити із заклиненою лебідкою?",
+          "Що означає «snap-back zone»?",
+          "Що таке точка защемлення?"
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "fr": {
+        "title": "Sécurité maritime, alarmes et premiers secours",
+        "lead": "Comprendre pourquoi les cours pratiques officiels sont indispensables.",
+        "sections": [
+          [
+            "Pourquoi une formation en personne est nécessaire",
+            "Enfiler une combinaison d’immersion, éteindre un incendie, abandonner un navire et utiliser un radeau de sauvetage ne s’apprennent pas uniquement par vidéo ou texte. Les formations réglementées se font dans des centres reconnus. Les qualifications requises dépendent du pays, du navire et des responsabilités de chaque personne."
+          ],
+          [
+            "Cinq urgences à connaître",
+            "Préparez-vous aux incendies, voies d’eau, personnes à la mer, pertes de propulsion ou de contrôle et évacuations. Localisez les moyens de sauvetage, les postes de rassemblement (« muster stations »), les issues, les extincteurs et les communications. Déclenchez l’alarme et suivez le plan du navire : ne remplacez pas les procédures par des improvisations."
+          ],
+          [
+            "Santé et conditions de vie",
+            "Le roulis, le froid, la fatigue, l’isolement et les efforts physiques influent sur la sécurité. Certains postes exigent un certificat médical délivré par un médecin maritime agréé. Ne promettez pas votre aptitude médicale avant vérification. Demandez quels sont les moyens de premiers secours, d’accès à l’eau, aux médicaments, aux communications et à une évacuation médicale."
+          ]
+        ],
+        "task": "Tracez un plan fictif de navire avec quatre points de rassemblement ou équipements, trois alarmes et quatre questions au responsable de la sécurité.",
+        "questions": [
+          "Ce cours en ligne remplace-t-il la formation pratique officiellement exigée ?",
+          "Quelle est votre première obligation lorsqu’un incendie est signalé ?",
+          "Que signifie « muster station » ?"
+        ]
+      },
+      "uk": {
+        "title": "Морська безпека, тривоги та перша допомога",
+        "lead": "Чому обов’язкові практичні курси не замінити онлайн-текстом.",
+        "sections": [
+          [
+            "Навіщо потрібне очне навчання",
+            "Надягання гідрокостюма, гасіння пожежі, залишення судна й користування рятувальним плотом неможливо повністю опанувати за відео або текстом. Регламентоване навчання проходять у визнаному центрі. Вимоги до кваліфікації залежать від країни, судна та обов’язків члена екіпажу."
+          ],
+          [
+            "П’ять основних надзвичайних ситуацій",
+            "Готуйтеся до пожежі, надходження води, падіння людини за борт, втрати керування чи руху та евакуації. Знайте розташування рятувальних засобів, місця збору («muster station»), виходів, протипожежного обладнання й зв’язку. Подавайте тривогу та виконуйте судновий план, а не вигадуйте власний порядок."
+          ],
+          [
+            "Здоров’я та побутові ризики",
+            "Хитавиця, холод, втома, ізоляція й фізичне навантаження впливають на безпечну роботу. Для деяких посад потрібна довідка від уповноваженого морського лікаря. Не підтверджуйте медичну придатність без огляду. З’ясуйте умови першої допомоги, доступу до води, ліків, зв’язку та медичної евакуації."
+          ]
+        ],
+        "task": "Створіть схему умовного судна: чотири місця збору чи обладнання, три сигнали тривоги та чотири запитання відповідальному за безпеку.",
+        "questions": [
+          "Чи замінює онлайн-Академія офіційне навчання виживанню?",
+          "Що треба зробити насамперед під час пожежі?",
+          "Що означає «muster station»?"
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "fr": {
+        "title": "Transformation du poisson, HACCP et chaîne du froid",
+        "lead": "Comprendre la production, la traçabilité et les risques alimentaires.",
+        "sections": [
+          [
+            "Le parcours d’un produit",
+            "Réception, tri, découpe, refroidissement ou congélation, emballage, entreposage et expédition font partie d’une même chaîne. La qualité dépend du respect des températures, de la propreté et d’un étiquetage exact. Les employés consignent les lots et signalent les emballages endommagés, les écarts de température et toute contamination."
+          ],
+          [
+            "Le principe HACCP",
+            "HACCP signifie analyse des dangers et maîtrise des points critiques. Les dangers peuvent être biologiques, chimiques ou physiques. Il faut appliquer le plan propre à l’installation : quels paramètres mesurer, où consigner les résultats, quels écarts sont critiques et qui doit être averti. Une température prétendument sûre pour « tous les poissons » ne se devine pas : consultez les normes applicables."
+          ],
+          [
+            "Hygiène et sécurité du personnel",
+            "Les couteaux, convoyeurs, produits de nettoyage, sols mouillés, bruits, froid et gestes répétitifs présentent des dangers en plus des risques sanitaires. Portez l’équipement de protection prescrit, séparez les zones propres et sales, ne contournez pas les protections et signalez blessures et défaillances. Les ressources gratuites des organismes publics ne constituent pas, à elles seules, un certificat professionnel individuel."
+          ]
+        ],
+        "task": "Décrivez toutes les étapes de la réception à l’expédition. Relevez cinq dangers possibles et proposez une mesure de contrôle pour chacun.",
+        "questions": [
+          "Que signifie HACCP ?",
+          "Que faire lorsqu’un lot n’a plus d’étiquette ?",
+          "Pourquoi enregistrer l’identifiant d’un lot ?"
+        ]
+      },
+      "uk": {
+        "title": "Перероблення риби, HACCP і холодовий ланцюг",
+        "lead": "Виробнича послідовність, гігієна та простежуваність.",
+        "sections": [
+          [
+            "Виробничий процес",
+            "Приймання, сортування, оброблення, охолодження чи заморожування, пакування, зберігання й відвантаження утворюють єдиний ланцюг. Якість залежить від температури, чистих поверхонь і правильного маркування. Працівник фіксує партію та повідомляє про пошкодження тари, відхилення температури й забруднення."
+          ],
+          [
+            "Що таке HACCP",
+            "HACCP — аналіз небезпек і контроль критичних точок. Ризики бувають біологічні, хімічні та фізичні. Дійте за планом конкретного підприємства: що вимірювати, де записувати, які відхилення критичні й кому повідомляти. Не вгадуйте «безпечну температуру» для всіх видів риби: потрібні норми та внутрішні інструкції."
+          ],
+          [
+            "Гігієна й безпека працівника",
+            "Крім харчових ризиків, небезпечні ножі, конвеєри, холод, шум, мокра підлога, мийна хімія й повторювані рухи. Використовуйте визначені ЗІЗ, не змішуйте чисті й брудні зони, не обходьте огорожі, повідомляйте про порізи та несправності. Безплатні державні матеріали самі по собі не є індивідуальним професійним сертифікатом."
+          ]
+        ],
+        "task": "Опишіть шлях продукту від приймання до відвантаження. Знайдіть п’ять ризиків і запропонуйте контроль для кожного.",
+        "questions": [
+          "Що означає HACCP?",
+          "Що робити, якщо партія не має маркування?",
+          "Навіщо фіксувати номер партії?"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "fr": {
+        "title": "Aquaculture, fermes, systèmes RAS et équipements",
+        "lead": "Comprendre l’élevage et le fonctionnement des circuits d’eau recirculée.",
+        "sections": [
+          [
+            "Ferme et usine : quelle différence ?",
+            "En milieu marin, les employés s’occupent des poissons, des filets, de l’alimentation, de la qualité de l’eau, des quais et des bateaux de service. Dans les écloseries et les systèmes RAS, l’eau est filtrée puis réutilisée. Les opérateurs surveillent les indicateurs, observent les poissons et réagissent aux alarmes selon les procédures établies."
+          ],
+          [
+            "Les principaux systèmes RAS",
+            "Un système d’aquaculture en recirculation peut comprendre filtration mécanique, biofiltration, pompes, oxygénation, élimination du CO₂, capteurs et alarmes. Le biofiltre est sensible aux changements : une panne de pompe peut menacer simultanément les poissons et la sécurité du personnel. Ne modifiez jamais arbitrairement les paramètres chimiques ou les alarmes."
+          ],
+          [
+            "Compétences transférables",
+            "L’expérience en pompes, convoyeurs, tuyaux, moteurs électriques, entretien préventif, capteurs et tenue de registres peut être plus pertinente qu’un ancien titre de poste. Lors d’une entrevue, expliquez comment vous détectez une panne, mettez l’installation en sécurité, prévenez l’équipe et documentez l’intervention."
+          ]
+        ],
+        "task": "Dessinez un circuit d’eau fermé et une fiche de panne de pompe : alarme, conséquences, communication et interventions autorisées par les procédures.",
+        "questions": [
+          "Quel est le rôle du biofiltre dans un système RAS ?",
+          "Peut-on désactiver librement une alarme d’oxygène ?",
+          "Que surveillent les capteurs d’une installation RAS ?"
+        ]
+      },
+      "uk": {
+        "title": "Аквакультура, ферми, RAS та обладнання",
+        "lead": "Чим ферма відрізняється від заводу та як працює рециркуляція води.",
+        "sections": [
+          [
+            "Ферма та завод",
+            "На морських фермах працівники доглядають рибу, сітки, годування, воду, причали й службові судна. В інкубаторіях та установках RAS воду фільтрують і повертають у систему. Оператори відстежують показники, поведінку риби й реагують на сигнали обладнання за інструкціями."
+          ],
+          [
+            "Основні системи RAS",
+            "Система рециркуляції зазвичай має механічне очищення, біофільтр, помпи, подачу кисню, видалення CO₂, датчики та сигналізацію. Біофільтр чутливий до змін. Поломка помпи може одночасно загрожувати рибі й безпеці працівників. Не змінюйте хімічні параметри або сигнали тривоги без повноважень і регламенту."
+          ],
+          [
+            "Навички, які можна перенести",
+            "Досвід роботи з помпами, конвеєрами, шлангами, електродвигунами, профілактичним обслуговуванням, датчиками та журналами часто важливіший за назву попередньої посади. На співбесіді поясніть, як виявляєте несправність, безпечно зупиняєте систему, повідомляєте про неї та документуєте результат."
+          ]
+        ],
+        "task": "Намалюйте схему замкненого водопостачання та картку відмови помпи: тривога, наслідки, повідомлення і дії лише за процедурою.",
+        "questions": [
+          "Що робить біофільтр у RAS?",
+          "Чи можна довільно вимикати сигналізацію кисню?",
+          "Що контролюють датчики RAS?"
+        ]
+      }
+    }
+  ],
+  "notes": {
+    "no": {
+      "fr": [
+        "Vérifiez d’abord les voies de permis auprès de l’UDI. Un permis de travail canadien n’autorise pas à travailler en Norvège.",
+        "La Direction norvégienne des affaires maritimes (Sjøfartsdirektoratet) impose des qualifications supplémentaires aux capitaines et officiers de quart de certains navires.",
+        "Consultez les exigences de Sjøfartsdirektoratet et les procédures du navire précis.",
+        "Pour les pêcheurs, la formation de sécurité de 50 heures ou un STCW CoP reconnu peut être requis; des exceptions médicales existent pour certains petits navires.",
+        "Mattilsynet publie les exigences alimentaires et les registres des entreprises.",
+        "Mots-clés utiles : driftsoperatør, røkter, tekniker, industrimekaniker, automasjon. Examinez notamment les carrières chez SalMar et Cermaq."
+      ],
+      "uk": [
+        "Спочатку перевірте доступний шлях дозволу через UDI. Канадський дозвіл на роботу не дає права працювати в Норвегії.",
+        "Sjøfartsdirektoratet встановлює додаткові вимоги до капітанів і вахтових на певних суднах.",
+        "Вивчіть правила Sjøfartsdirektoratet та інструкції конкретного судна.",
+        "Для рибалок зазвичай потрібен 50-годинний курс безпеки або прийнятний STCW CoP; для деяких малих суден є винятки щодо медичної довідки.",
+        "Mattilsynet публікує харчові норми й реєстри підприємств.",
+        "Шукайте driftsoperatør, røkter, tekniker, industrimekaniker, automasjon — наприклад на кар’єрних сайтах SalMar та Cermaq."
+      ]
+    },
+    "ca": {
+      "fr": [
+        "Un permis de travail ouvert canadien permet généralement de chercher un employeur sans EIMT distincte, mais des restrictions peuvent figurer sur le document.",
+        "Transports Canada relie certaines qualifications à la jauge brute, à la zone de navigation et aux fonctions de l’équipage.",
+        "Étudiez les procédures écrites de sécurité du navire et les exercices d’urgence décrits par Transports Canada.",
+        "Le document TP 15356 de Transports Canada traite des exigences de sécurité des navires de pêche, notamment SDV-BS/DVS et premiers secours.",
+        "L’ACIA (CFIA) surveille la sécurité alimentaire; d’autres exigences peuvent dépendre de la province et de la licence de l’installation.",
+        "Cherchez hatchery technician, aquaculture technician, farm maintenance et RAS operator. Cermaq Canada constitue un exemple de site carrières."
+      ],
+      "uk": [
+        "Відкритий канадський work permit зазвичай дозволяє шукати роботодавця без окремого LMIA, але документ може мати обмеження щодо місця чи виду роботи.",
+        "Transport Canada пов’язує частину кваліфікацій із валовою місткістю, районом плавання та обов’язками екіпажу.",
+        "Вивчіть письмові суднові інструкції безпеки та навчальні тривоги за вимогами Transport Canada.",
+        "Документ Transport Canada TP 15356 описує суднові вимоги, зокрема SDV-BS/DVS та першу допомогу.",
+        "CFIA регулює безпечне виробництво харчових продуктів; додаткові вимоги можуть залежати від провінції та ліцензії.",
+        "Шукайте hatchery technician, aquaculture technician, farm maintenance і RAS operator; приклад кар’єрного каналу — Cermaq Canada."
+      ]
+    }
+  }
+}
