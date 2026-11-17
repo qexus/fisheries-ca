@@ -111,7 +111,31 @@ function legacyExtras(id){
  '<div class="qa-legacy-task"><b>Практика:</b> '+E(x.practice||x.task||'')+'</div>'
  ).join('')+'</div></details>';
 }
+function translatedCurriculumHTML(){
+ const language=(new URLSearchParams(location.search).get("lang")||document.documentElement.lang).toLowerCase();
+ if(!["fr","uk"].includes(language))return null;
+ const lessons=window.QX_LOCALIZED_LESSONS?.[language];
+ if(!Array.isArray(lessons)||lessons.length!==12)return null;
+ const fr=language==="fr";
+ const intro=fr?"FORMATIONS GRATUITES · 12 LEÇONS":"БЕЗПЛАТНЕ НАВЧАННЯ · 12 УРОКІВ";
+ const title=fr?"Formation · 12 leçons":"Навчання · 12 уроків";
+ const explain=fr?"Douze leçons traduites, avec théorie, exercices, questions et sources officielles. Cette formation autonome ne délivre pas de certificats maritimes.":"Дванадцять перекладених уроків із теорією, вправами, запитаннями та офіційними джерелами. Самостійне навчання не видає морських сертифікатів.";
+ let out='<div class="qa-intro"><div class="qa-label">'+intro+'</div><h1>'+title+'</h1><p>'+explain+'</p></div><div class="qa-course-progress"><strong id="qa-progress">—</strong><span>'+(fr?"Votre progression reste uniquement sur cet appareil.":"Ваш прогрес зберігається лише на цьому пристрої.")+'</span></div>';
+ for(const l of lessons){
+ const url="/"+(isCA?"fisheries-ca":"fisheries")+"/"+language+"/guides/lesson-"+l.id+".html";
+ out+='<details class="qa-lesson" id="qa-lesson-'+E(l.id)+'"><summary><span class="qa-num">'+E(l.id)+'</span><span><b>'+E(l.title)+'</b><small>'+(fr?"Théorie, exercices et questions":"Теорія, вправи й запитання")+'</small></span><span class="qa-chevron">⌄</span></summary><div class="qa-lessonbody"><p>'+E(l.lead)+'</p>';
+ for(const [h,p] of l.sections)out+='<h3>'+E(h)+'</h3><p>'+E(p)+'</p>';
+ out+='<div class="qa-panel"><h3>'+(fr?"Exigences propres au pays":"Вимоги для країни")+'</h3><p>'+E(l.note)+'</p></div>';
+ out+='<div class="qa-exercise"><b>'+(fr?"Exercice pratique":"Практичне завдання")+'</b><p>'+E(l.task)+'</p></div>';
+ out+='<div class="qa-panel"><h3>'+(fr?"Vérifiez vos connaissances":"Перевірте знання")+'</h3><ol>'+l.questions.map(q=>'<li>'+E(q)+'</li>').join('')+'</ol></div>';
+ out+='<p><a href="'+E(url)+'">'+(fr?"Leçon complète et sources officielles":"Повний урок та офіційні джерела")+' ↗</a></p>';
+ out+='<label class="qa-done"><input type="checkbox" data-qa-complete="'+E(l.id)+'"> '+(fr?"J’ai terminé cette activité":"Я виконав(ла) це завдання")+'</label></div></details>';
+ }
+ out+='<div class="qa-panel"><h3>'+(fr?"Glossaire professionnel":"Професійний словник")+'</h3><p>'+(fr?"Consultez les termes des métiers, de la sécurité et de l’aquaculture dans le guide traduit.":"Дивіться перекладені терміни професій, безпеки й аквакультури у словнику.")+'</p><a href="/'+(isCA?"fisheries-ca":"fisheries")+'/'+language+'/guides/glossary.html">'+(fr?"Ouvrir le glossaire":"Відкрити словник")+' ↗</a></div>';
+ return out;
+}
 function curriculumHTML(){
+const localized=translatedCurriculumHTML();if(localized)return localized;
 return '<div class="qa-intro"><div class="qa-label">САМОСТОЯТЕЛЬНОЕ ОБУЧЕНИЕ · 12 МОДУЛЕЙ</div><h1>Обучение · 12 уроков</h1><p>Единый бесплатный курс qexus lab: 12 подробных уроков, вопросы и задания. Полезные материалы прежних 10 коротких уроков перенесены внутрь соответствующих тем. Этот сайт не выдаёт официальных морских сертификатов.</p></div><div class="qa-course-progress"><strong id="qa-progress">Прогресс —</strong><span>Результаты хранятся только на этом устройстве</span></div>'+
 modules.map(m=>'<details class="qa-lesson" id="qa-lesson-'+m[0]+'"><summary><span class="qa-num">'+m[0]+'</span><span><b>'+E(m[1])+'</b><small>Теория + практика</small></span><span class="qa-chevron">⌄</span></summary><div class="qa-lessonbody"><p>'+E(m[2])+'</p>'+(window.qexusExpansionLesson?.(m[0])||'')+legacyExtras(m[0])+'<div class="qa-exercise"><b>Самостоятельное задание</b><p>'+E(m[3])+'</p></div><label class="qa-done"><input type="checkbox" data-qa-complete="'+m[0]+'"> Я выполнил(а) задание</label></div></details>').join('')+
 '<div class="qa-panel"><h3>20 терминов для начала</h3><div class="qa-terms">'+terms.map(a=>'<div><b>'+E(a[0])+'</b><span>'+E(a[1])+'</span></div>').join('')+'</div></div>';
@@ -142,6 +166,7 @@ window.qexusAcademyCertificates=certificationHTML;
 window.qexusAcademyCareer=jobsHTML;
 window.qexusAcademySources=libraryHTML;
 const titles={cert:"Сертификаты",curriculum:"12 модулей",jobs:"Трудоустройство",library:"Библиотека"};
+const translatedViewTitles={fr:{cert:"Certificats",curriculum:"12 leçons",jobs:"Recherche d’emploi",library:"Bibliothèque"},uk:{cert:"Сертифікати",curriculum:"12 уроків",jobs:"Працевлаштування",library:"Бібліотека"}};
 function show(view){
   if(!(view in titles))return;
   const main=document.getElementById("main");if(!main)return;
@@ -149,7 +174,7 @@ function show(view){
   main.innerHTML='<div class="qa-wrap">'+fn()+'</div>';
   document.querySelectorAll('.nav-item[data-view]').forEach(b=>b.classList.remove("active"));
   document.querySelectorAll("[data-qa-view]").forEach(b=>b.classList.toggle("active",b.dataset.qaView===view));
-  const crumb=document.getElementById("crumb")||document.getElementById("viewName");if(crumb)crumb.textContent=titles[view];
+  const crumb=document.getElementById("crumb")||document.getElementById("viewName");if(crumb){const language=(new URLSearchParams(location.search).get("lang")||document.documentElement.lang).toLowerCase();crumb.textContent=translatedViewTitles[language]?.[view]||titles[view];}
   if(view==="curriculum"){
     let done=read("lessons");document.querySelectorAll("[data-qa-complete]").forEach(x=>x.checked=!!done[x.dataset.qaComplete]);progress(done);
   }
@@ -160,7 +185,7 @@ function show(view){
 }
 function read(key){try{return JSON.parse(localStorage.getItem("qexus-academy-"+country+"-"+key)||"{}")}catch{return {}}}
 function write(key,v){try{localStorage.setItem("qexus-academy-"+country+"-"+key,JSON.stringify(v))}catch{}}
-function progress(done){const count=modules.filter(m=>done[m[0]]).length;const e=document.getElementById("qa-progress");if(e)e.textContent="Пройдено "+count+" / "+modules.length;}
+function progress(done){const count=modules.filter(m=>done[m[0]]).length;const e=document.getElementById("qa-progress");if(e){const language=(new URLSearchParams(location.search).get("lang")||document.documentElement.lang).toLowerCase();e.textContent=language==="fr"?"Terminées : "+count+" / "+modules.length:language==="uk"?"Пройдено: "+count+" / "+modules.length:"Пройдено "+count+" / "+modules.length;}}
 document.addEventListener("click",ev=>{
   const b=ev.target.closest("[data-qa-view]");
   if(b){ev.preventDefault();show(b.dataset.qaView);return}
