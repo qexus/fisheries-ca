@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from refresh_jobs import compile_feed, build, UTC
+from refresh_jobs import compile_feed, build, safe_https, UTC
 
 NOW=dt.datetime(2026,11,16,12,tzinfo=UTC)
 def entry(**kw):
@@ -42,4 +42,23 @@ class JobsTests(unittest.TestCase):
             x=build(path,now=NOW)
             self.assertEqual(x["status"],"source_error")
             self.assertFalse(x["verified_live"])
+    def test_private_network_endpoint_rejected(self):
+        for url in ["https://localhost/feed.json","https://127.0.0.1/feed","https://192.168.1.3/job","http://example.com/feed"]:
+            self.assertFalse(safe_https(url))
+        self.assertTrue(safe_https("https://example.org/jobs/feed.json"))
+    def test_authorized_feed_loader(self):
+        from urllib.parse import urlparse
+        def loader(url,token):
+            self.assertEqual(url,"https://example.org/api/jobs")
+            self.assertEqual(token,"secret")
+            return {"source":"Licensed supplier","distribution_authorized":True,"jobs":[entry()]}
+        x=build(now=NOW,feed_url="https://example.org/api/jobs",bearer_token="secret",feed_loader=loader)
+        self.assertEqual(x["status"],"verified")
+        self.assertEqual(len(x["verified_live"]),1)
+    def test_feed_requires_distributor_permission(self):
+        bad=lambda url,token: {"distribution_authorized":False,"jobs":[entry()]}
+        x=build(now=NOW,feed_url="https://example.org/jobs",feed_loader=bad)
+        self.assertEqual(x["status"],"source_error")
+        self.assertEqual(x["verified_live"],[])
+
 if __name__=="__main__":unittest.main()
