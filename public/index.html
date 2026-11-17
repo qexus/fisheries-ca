@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="academy.css">
 <link rel="stylesheet" href="expansion.css">
 <link rel="stylesheet" href="https://qexus.github.io/shared/fisheries-core.css">
+  <link rel="stylesheet" href="https://qexus.github.io/shared/fisheries-router.css">
 
   <link rel="canonical" href="https://qexus.github.io/fisheries-ca/">
   <meta property="og:type" content="website">
@@ -24,26 +25,35 @@
   <meta name="twitter:card" content="summary">
 </head>
 <body>
+<a class="qf-skip" href="#main">Перейти к содержимому</a>
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="logo"><a href="https://qexus.github.io/" aria-label="Главная qexus lab"><img class="qx-brand-image" src="https://qexus.github.io/assets/qx-logo-180.png" width="44" height="44" alt="QX" decoding="async"></a><div><b><a class="brand-home" href="https://qexus.github.io/" title="Все проекты qexus lab">qexus lab</a></b><small>FISHERIES / CANADA</small></div></div>
     <div class="side-label">НАВИГАЦИЯ</div>
-    <nav id="nav" aria-label="Разделы Fisheries">
-      <button class="nav-item active" data-view="dashboard"><span>▣</span> Обзор</button>
-      <button class="nav-item" data-view="companies"><span>▦</span> Предприятия</button>
-      <button class="nav-item" data-view="jobs"><span>▤</span> Объявления</button>
-      <button class="nav-item" data-view="aquaculture"><span>◈</span> Аквакультура</button>
+        <nav id="nav" aria-label="Разделы Fisheries">
+      <button type="button" class="nav-item active" data-view="dashboard"><span>▣</span> Обзор</button>
+      <div class="qf-nav-label">ОТКРЫТЫЕ ДАННЫЕ</div>
+      <button type="button" class="nav-item" data-view="companies"><span>▦</span> Предприятия</button>
+      <button type="button" class="nav-item" data-view="jobs"><span>▤</span> Объявления · архив</button>
+      <button type="button" class="nav-item" data-view="aquaculture"><span>◈</span> Аквакультура</button>
       <div class="nav-divider"></div>
-      <button class="qa-side-link" data-qa-view="curriculum"><span>▧</span> Обучение · 12 уроков</button>
-      <button class="qa-side-link" data-qx-view="matrix"><span>✦</span> Профессии и сертификаты</button>
-      <button class="qa-side-link" data-qx-view="employers"><span>⌕</span> Работа и контакты</button>
+      <div class="qf-nav-label">КАРЬЕРА И ОБУЧЕНИЕ</div>
+      <button type="button" class="qa-side-link" data-qx-view="employers"><span>⌕</span> Работа и контакты</button>
+      <button type="button" class="qa-side-link" data-qx-view="matrix"><span>✦</span> Профессии и сертификаты</button>
+      <button type="button" class="qa-side-link" data-qa-view="curriculum"><span>▧</span> Обучение · 12 уроков</button>
+      <details class="qf-extra"><summary>Справочники и инструменты</summary>
+        <button type="button" class="nav-item" data-view="glossary"><span>›</span> Словарь</button>
+        <button type="button" class="nav-item" data-view="documents"><span>›</span> Документы</button>
+        <button type="button" class="nav-item" data-view="salary"><span>›</span> Калькулятор зарплаты</button>
+        <button type="button" class="nav-item" data-view="sources"><span>›</span> Источники и импорт</button>
+      </details>
     </nav>
     <div class="side-note"><i class="live-dot"></i> Открытые данные<br><small>Личные заметки — только в браузере</small></div>
   </aside>
   <section class="body">
     <header class="header"><button id="menuToggle" aria-label="Открыть меню" aria-controls="sidebar" aria-expanded="false" class="hamburger">☰</button><div class="breadcrumb"><a class="crumb-home" href="https://qexus.github.io/">qexus lab</a> <span>/</span> <span id="viewName">Обзор</span></div><div class="header-r"><nav class="region-nav" aria-label="Выбор страны"><a href="https://qexus.github.io/fisheries/">🇳🇴 <span>Норвегия</span></a><a href="https://qexus.github.io/fisheries-ca/" aria-current="page">🇨🇦 <span>Канада</span></a></nav><span class="version">V1.0</span></div></header>
     <main id="main" class="content"></main>
-    <footer class="footer">qexus lab · Canada Fisheries · прототип 16.11.2026 · не кадровое агентство · не юридическая консультация <a href="https://qexus.github.io/privacy.html" style="color:#8be5d7">Приватность и данные</a> <a href="https://qexus.github.io/status.html" style="color:#4adac2">Состояние баз</a></footer>
+    <footer class="footer">qexus lab · Canada Fisheries · прототип 16.11.2026 · не кадровое агентство · не юридическая консультация <a href="https://qexus.github.io/privacy.html" style="color:#8be5d7">Приватность и данные</a> <a href="https://qexus.github.io/site-map.html" style="color:#8be5d7">Карта разделов</a> <a href="https://qexus.github.io/status.html" style="color:#4adac2">Состояние баз</a></footer>
   </section>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -54,5 +64,6 @@
 <script src="academy.js"></script>
 <script src="expansion.js"></script>
 <script src="https://qexus.github.io/shared/fisheries-core.js"></script>
+<script src="https://qexus.github.io/shared/fisheries-router.js"></script>
 </body>
 </html>
