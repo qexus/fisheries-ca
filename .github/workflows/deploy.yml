@@ -34,6 +34,9 @@ jobs:
       - name: Unit tests
         run: python -m unittest discover -s tests -v
       - name: Generate verified-vacancy status from authorized sources
+        env:
+          FISHERIES_JOBS_FEED_URL: ${{ secrets.FISHERIES_JOBS_FEED_URL }}
+          FISHERIES_JOBS_FEED_TOKEN: ${{ secrets.FISHERIES_JOBS_FEED_TOKEN }}
         run: |
           python scripts/refresh_jobs.py --out public/generated/jobs.json
           python -m json.tool public/generated/jobs.json > /dev/null
