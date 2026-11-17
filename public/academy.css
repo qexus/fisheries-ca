@@ -99,3 +99,29 @@
 .app .sidebar,.shell .sidebar{overflow-y:auto;overscroll-behavior:contain}
 .app .sidebar .side-note,.shell .sidebar .sidebar-bottom{flex-shrink:0}
 @media(max-width:740px){.app .sidebar,.shell .sidebar{height:100dvh;max-height:100dvh;overflow-y:auto}}
+
+
+/* qexus lab — compact navigation and merged Academy sections */
+#nav{padding-bottom:12px}
+#nav .nav-item,#nav .qa-side-link{font-size:13px;min-height:45px}
+#nav .qa-side-link{padding:12px}
+.qx-subsection{border:1px solid #315364;background:#0c2636;border-radius:12px;margin:17px 0;overflow:hidden}
+.qx-subsection>summary{cursor:pointer;color:#a5eee2;font-size:14px;font-weight:750;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:17px 19px}
+.qx-subsection>summary::-webkit-details-marker{display:none}
+.qx-subsection>summary:hover{background:#123648}
+.qx-subsection[open]>summary{border-bottom:1px solid #315364}
+.qx-subsection-content{padding:18px}
+.qx-subsection-content .qa-intro{background:#102c3a;margin-bottom:14px}
+.qx-subtools{margin:18px 0;padding:17px;background:#0b2031;border:1px solid #244052;border-radius:12px}
+.qx-subtools h3{color:#e6f7f9;font-size:14px;margin:0 0 12px}
+.qx-subtools button{background:#163847;color:#bcece5;border:1px solid #3a6170;border-radius:8px;margin:3px 5px 3px 0;padding:9px 12px;cursor:pointer;font:inherit;font-size:12px}
+.qx-subtools button:hover{background:#235260;color:#fff}
+.qa-legacy{background:#102a3a;border:1px solid #335769;border-radius:10px;margin:13px 0}
+.qa-legacy>summary{list-style:none;padding:12px 14px;font-size:12px;font-weight:700;color:#a3ddd2;cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+.qa-legacy>summary::-webkit-details-marker{display:none}
+.qa-legacy-content{padding:0 15px 15px}
+.qa-legacy-content h4{color:#b4f5e6;margin:15px 0 7px;font-size:14px}
+.qa-legacy-content h5{color:#e6f7f9;margin:12px 0 6px;font-size:12px}
+.qa-legacy-content p{font-size:12px;color:#bfdae0;line-height:1.7}
+.qa-legacy-task{padding:10px 12px;background:#15383b;border-left:3px solid #48d6be;border-radius:6px;color:#c0e5dc;font-size:12px;line-height:1.65}
+@media(max-width:740px){.qx-subsection-content{padding:11px}.qx-subsection>summary{padding:14px}.qx-subtools button{width:calc(50% - 13px);min-width:115px}.sidebar nav#nav{padding-bottom:24px}}
