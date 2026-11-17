@@ -1,0 +1,96 @@
+/* qexus lab shared Fisheries Academy / shared navigation, November 2026 */
+:root{--qa-bg:#061422;--qa-panel:#0b2031;--qa-panel2:#102a3b;--qa-line:#244052;--qa-text:#e8f1f6;--qa-muted:#90afbb;--qa-mint:#48d6be;--qa-mint-light:#8be5d7;--qa-warn:#ffc978}
+.qa-side-link{display:flex;align-items:center;gap:11px;text-align:left;width:100%;border:0;background:transparent;color:#bbd0da;padding:12px;border-radius:9px;cursor:pointer;font:inherit;font-size:13px;font-weight:600;margin-bottom:2px}
+.qa-side-link span{font-size:20px;width:20px;text-align:center}
+.qa-side-link:hover,.qa-side-link.active{background:#143446;color:#e8fff8}
+.qa-side-link.active{border-left:3px solid var(--qa-mint);padding-left:9px}
+.qa-side-label{color:#7899a7;font-size:10px;letter-spacing:1.8px;padding:17px 12px 8px;font-weight:750}
+.qa-wrap{color:var(--qa-text);max-width:1300px;margin:0 auto}
+.qa-wrap *{box-sizing:border-box}
+.qa-wrap h1{font-size:clamp(26px,3vw,35px);color:#f1fbff;letter-spacing:-.8px;margin:0 0 10px}
+.qa-wrap h3{color:#e9f8fb;font-size:16px;margin:0 0 9px}
+.qa-wrap p{color:#bdd3dc;font-size:13px;line-height:1.75;margin:9px 0}
+.qa-wrap a{color:#8be5d7;text-underline-offset:3px;font-size:12px;font-weight:700}
+.qa-intro{background:radial-gradient(circle at 85% 15%,#174b55 0%,#0b2535 34%,#0a2033 73%);border:1px solid #285264;border-radius:16px;padding:28px;margin-bottom:18px}
+.qa-intro p{max-width:900px;margin-bottom:0}
+.qa-label{font-size:10px;letter-spacing:1.6px;color:var(--qa-mint);font-weight:800;margin-bottom:9px}
+.qa-alert{border:1px solid #685a36;border-left:3px solid var(--qa-warn);color:#ffe0b5;background:#342d24;padding:14px 16px;border-radius:10px;font-size:12px;margin:18px 0;line-height:1.7}
+.qa-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.qa-cert,.qa-panel{border:1px solid var(--qa-line);border-radius:13px;padding:20px;background:var(--qa-panel);margin-bottom:16px}
+.qa-cert{margin:0}
+.qa-row{display:flex;gap:12px;align-items:start;justify-content:space-between;flex-wrap:wrap;margin-bottom:13px}
+.qa-kicker{font-size:10px;border:1px solid #3b5563;color:#bbdfe2;padding:5px 9px;border-radius:6px;max-width:66%}
+.qa-price{color:#8be5d7;font-weight:800;font-size:14px;text-align:right}
+.qa-cert h3{font-size:17px}
+.qa-details{display:grid;gap:7px;font-size:12px;color:#abc6d2;margin:14px 0}
+.qa-tip{color:#d9e9e9;border-left:3px solid var(--qa-mint);padding:9px 12px;background:#123039;border-radius:5px;font-size:12px;line-height:1.6}
+.qa-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:17px}
+.qa-course-progress{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border:1px solid #2f655f;background:#12352f;border-radius:11px;padding:12px 16px;margin-bottom:15px;font-size:12px;color:#beece3}
+.qa-course-progress strong{color:#83ead3}
+.qa-lesson{border:1px solid var(--qa-line);border-radius:13px;background:var(--qa-panel);margin:0 0 10px;overflow:hidden}
+.qa-lesson>summary{list-style:none;cursor:pointer;padding:17px 19px;display:flex;align-items:center;gap:14px}
+.qa-lesson summary::-webkit-details-marker{display:none}
+.qa-lesson>summary:hover{background:#102c3e}
+.qa-lesson summary b{display:block;color:#eaf8fb}
+.qa-lesson summary small{display:block;color:#90afbb;font-size:11px;margin-top:3px}
+.qa-num{flex:none;display:grid;place-items:center;border-radius:9px;width:40px;height:40px;background:#1a414b;color:#48d6be;font-weight:800}
+.qa-chevron{margin-left:auto;color:#8be5d7}
+.qa-lessonbody{padding:0 20px 20px 73px;color:#bdd3dc}
+.qa-exercise{border:1px solid #265c58;background:#13332f;border-radius:9px;padding:12px 14px}
+.qa-exercise b{color:#8be5d7;font-size:12px}
+.qa-done{display:flex;align-items:center;gap:10px;margin:15px 0 0;color:#d6ebed;font-size:12px;cursor:pointer}
+.qa-done input,.qa-check input{accent-color:#48d6be;width:16px;height:16px;flex:none}
+.qa-panel{margin:16px 0}
+.qa-panel a{word-break:break-word}
+.qa-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px}
+.qa-terms>div{padding:11px 0;border-bottom:1px solid #244052;display:flex;justify-content:space-between;gap:15px;align-items:baseline;color:#bdd3dc;font-size:12px}
+.qa-terms>div b{color:#a4fff0}
+.qa-terms>div span{text-align:right}
+.qa-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.qa-step{display:flex;align-items:start;gap:14px;border:1px solid var(--qa-line);background:var(--qa-panel);border-radius:12px;padding:18px}
+.qa-step>span{display:grid;place-items:center;width:34px;height:34px;flex:none;color:#061f2e;background:#48d6be;border-radius:9px;font-weight:800}
+.qa-step h3{margin-bottom:6px}
+.qa-check{display:flex;align-items:start;gap:10px;font-size:13px;color:#d5e7eb;border-bottom:1px solid #244052;padding:12px 0;cursor:pointer}
+.qa-check:last-child{border-bottom:0}
+@media(max-width:900px){.qa-cards,.qa-steps{grid-template-columns:1fr}}
+@media(max-width:540px){.qa-intro,.qa-panel,.qa-cert{padding:16px}.qa-lessonbody{padding:0 15px 16px}.qa-lesson>summary{padding:12px}.qa-terms{grid-template-columns:1fr}.qa-terms>div{gap:8px}.qa-course-progress{font-size:11px}}
+
+/* Norway's shared shell now follows the Canadian dashboard layout. */
+.shell .sidebar{position:sticky;top:0;height:100dvh;width:255px;flex:0 0 255px;background:#071a2b;border-right:1px solid #244052;padding:24px 13px;overflow-y:auto}
+.shell .brand{display:flex;align-items:center;gap:10px;padding:8px 10px 30px}
+.shell .brand-logo{display:grid;place-items:center;width:43px;height:43px;background:#48d6be;color:#082036;border-radius:11px;font-size:26px;font-weight:900;letter-spacing:-3px;flex:none}
+.shell .brand-logo span{font-size:14px;color:#082036;margin-left:1px;letter-spacing:-2px;vertical-align:baseline}
+.shell .brand strong{font-size:19px}
+.shell .brand small{font-size:10px;font-weight:700;color:#8be5d7;letter-spacing:1.5px;margin-top:3px}
+.shell .aside-head{padding:0 12px 12px;color:#7899a7;font-weight:700;font-size:10px;letter-spacing:1.8px}
+.shell .sidebar nav#nav{display:block}
+.shell .nav-item{border-left:3px solid transparent;padding:12px 9px;border-radius:9px;margin-bottom:2px;align-items:center;color:#bbd0da}
+.shell .nav-item span{width:20px;font-size:20px}
+.shell .nav-item:hover,.shell .nav-item.active{background:#143446;color:#e8fff8}
+.shell .nav-item.active{border-left:3px solid #48d6be;padding-left:9px}
+.shell .nav-rule{border-color:#244052;margin:12px 8px}
+.shell .sidebar-bottom{padding:15px 4px 0;margin:20px 7px 5px;border-top:1px solid #244052;color:#a2cdbb;letter-spacing:0}
+.shell .main-wrap{display:flex;min-width:0;flex:1;flex-direction:column}
+.shell .topbar{height:68px;flex:none;background:#091b2b;padding:0 32px}
+.shell .content{width:100%;flex:1;max-width:1330px;padding:32px}
+.shell .footer{padding:17px 30px}
+.shell .hamburger{display:none;color:#e8f1f6;background:none;border:0;font-size:22px;padding:8px;line-height:1}
+.shell .top-right{gap:12px}
+.shell .pill.version-pill{color:#48d6be;border:1px solid #3e615d}
+@media(max-width:740px){
+ .shell .sidebar{position:fixed;z-index:100;left:0;top:0;height:100dvh;width:255px;transform:translateX(-100%);transition:transform .2s;box-shadow:12px 0 35px #0008;padding:24px 13px}
+ .shell .sidebar.open{transform:none}
+ .shell .sidebar nav#nav{display:block;padding:0;overflow:visible}
+ .shell .nav-item{display:flex;width:100%;min-width:0;white-space:normal;font-size:13px;border:0;padding:12px 9px}
+ .shell .nav-item span{display:block}
+ .shell .nav-item.active{border-left:3px solid #48d6be;padding-left:9px}
+ .shell .aside-head,.shell .sidebar-bottom{display:block}
+ .shell .brand{padding:8px 10px 30px}
+ .shell .hamburger{display:block}
+ .shell .topbar{height:60px;padding:0 14px;gap:9px}
+ .shell .content{padding:19px 14px}
+ .shell .top-right{gap:6px}
+ .shell .country-switch a{font-size:10px;padding:7px 6px}
+ .shell .crumb{font-size:12px}
+ .shell .footer{padding:15px}
+}
