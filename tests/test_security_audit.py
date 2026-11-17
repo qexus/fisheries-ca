@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from security_audit import audit
 
-CSP='<meta http-equiv="Content-Security-Policy" content="script-src \\'self\\'">'
+CSP="""<meta http-equiv="Content-Security-Policy" content="script-src 'self'">"""
 def fixture(root,extra=""):
  (root/"generated").mkdir()
  (root/"index.html").write_text('<!doctype html><head>'+CSP+'</head><body><script src="https://qexus.github.io/shared/fisheries-core.js"></script></body>')
