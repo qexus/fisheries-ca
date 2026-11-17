@@ -16,7 +16,7 @@ for(const l of lessons){
   assert(!ids.has(l.id), "Lesson IDs must be unique");
   ids.add(l.id);
   assert(l.sections.length >= 3, "At least 3 detail sections per module");
-  assert(l.questions.length >= 2, "At least two questions");
+  assert(l.questions.length >= 5, "Each module has at least five questions");
   assert(l.task.length >= 50, "Substantive task required");
   assert(l.references?.canada?.length && l.references?.norway?.length,"Country-specific official reading needed for each lesson");
   for(const country of ["canada","norway"]){
@@ -84,4 +84,4 @@ assert(app.includes("function exportAcademyData()"),"Backup must include new Aca
 assert(app.includes("function restoreAcademyData("),"Old or new backup restoration must support Academy progress");
 assert(app.includes("academy:exportAcademyData()"),"Export must actually save Academy data");
 
-console.log("qexus academy: 12 modules, 24 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
+console.log("qexus academy: 12 modules, 60 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
