@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded',()=>{
  note.className='locale-note';
  note.setAttribute('role','note');
  note.textContent=lang==='fr'
-   ?'Navigation en français. Les longs articles techniques et certains modules restent en russe; vérifiez les exigences dans les sources officielles.'
-   :'Навігація українською. Великі технічні статті й частина навчальних модулів поки доступні російською; перевіряйте вимоги в офіційних джерелах.';
+   ?'Les 12 leçons et les quatre guides de référence sont disponibles en français. Certains outils interactifs et anciens compléments de formation restent en russe; vérifiez toujours les exigences officielles.'
+   :'Усі 12 уроків і чотири довідники доступні українською. Деякі інтерактивні інструменти та додаткові старі матеріали ще російською; завжди звіряйте офіційні вимоги.';
  const main=document.querySelector('main');
  if(main&&main.parentElement)main.parentElement.insertBefore(note,main);
 },{once:true});
