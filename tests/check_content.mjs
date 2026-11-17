@@ -56,7 +56,16 @@ assert(academy.includes("window.qexusExpansionLesson?.(m[0])"),"Detailed lessons
 for(const view of ['matrix','employers'])assert(html.includes('data-qx-view="'+view+'"'),"Missing menu "+view);
 
 const navigation=html.match(/<nav id="nav"[\s\S]*?<\/nav>/)?.[0]||"";
-assert((navigation.match(/<button\b/g)||[]).length===7,"Exactly seven visible main menu sections");
+const extras = navigation.match(/<details class="qf-extra">[\s\S]*?<\/details>/)?.[0] || "";
+const primaryNavigation = navigation.replace(extras, "");
+assert((primaryNavigation.match(/<button\b/g)||[]).length === 7,
+  "Exactly seven primary navigation sections should remain visible");
+assert((extras.match(/<button\b/g)||[]).length === 4,
+  "Four advanced tools must be available in a collapsed disclosure");
+assert(html.includes("shared/fisheries-router.js") && html.includes("shared/fisheries-router.css"),
+  "Shared deep-link navigation assets must be loaded");
+assert(html.includes('href="https://qexus.github.io/site-map.html"'),
+  "HTML site map must be reachable from Fisheries pages");
 const academic=fs.readFileSync("public/academy.js","utf8");
 const expanded=fs.readFileSync("public/expansion.js","utf8");
 assert(!/bfisherman|bfishman/i.test(html+academic),"No commercial course name in public interface");
@@ -69,7 +78,7 @@ assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work"
 
 assert(!app.includes("qexusReloadRegistry"),"Keep visitor-only manual refresh removed");
 
-console.log("qexus compact menu: seven sections; merged course, resources, job registry and tools validated.");
+console.log("qexus navigation: seven primary sections plus four optional tools; course and resources validated.");
 
 
 assert(html.includes('rel="canonical"'),"Public site must declare its canonical URL");
