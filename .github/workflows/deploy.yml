@@ -29,6 +29,10 @@ jobs:
           python-version: '3.12'
       - name: Unit tests
         run: python -m unittest discover -s tests -v
+      - name: Generate verified-vacancy status from authorized sources
+        run: |
+          python scripts/refresh_jobs.py --out public/generated/jobs.json
+          python -m json.tool public/generated/jobs.json > /dev/null
       - name: Validate Academy curriculum and JavaScript
         run: |
           node tests/check_content.mjs
@@ -42,6 +46,7 @@ jobs:
           test -s public/app.js
           test -s public/data.js
           test -s public/generated/registry.json
+          test -s public/generated/jobs.json
           python -m json.tool public/generated/registry.json > /dev/null
           if find public -type f \( -iname '*.pdf' -o -iname '*.docx' -o -iname '*.xlsx' -o -iname '*.env' -o -iname '*resume*' -o -iname '*cv_*' \) | grep .; then
             echo 'Private or unexpected file in public/'
