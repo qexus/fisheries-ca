@@ -171,17 +171,25 @@ def build(previous: dict|None=None,fetch=get) -> dict:
         except Exception as e:
             result['warnings'].append(name+' unavailable: '+clean(str(e),160))
             result['sources'][name]='unavailable'
-    if result['companies'] or result['aquaculture']:
+    # Preserve a *specific* last good dataset if only that source fails.
+    # Never label retained records as freshly downloaded.
+    if result['sources'].get('CFIA')!='ok' and isinstance(previous.get('companies'),list) and previous['companies']:
+        result['companies']=previous['companies']
+        result['sources']['CFIA']='stale'
+        result['warnings'].append('CFIA download failed: keeping prior CFIA company records (stale).')
+    for label in BC_FILES:
+        if result['sources'].get(label)!='ok':
+            old_records=[x for x in previous.get('aquaculture',[]) if isinstance(x,dict) and x.get('category')==label]
+            if old_records:
+                result['aquaculture'].extend(old_records)
+                result['sources'][label]='stale'
+                result['warnings'].append(label+' download failed: keeping '+str(len(old_records))+' prior records (stale).')
+    if any(v=='ok' for v in result['sources'].values()):
         result['status']='fresh' if all(v=='ok' for v in result['sources'].values()) else 'partial'
+    elif result['companies'] or result['aquaculture']:
+        result['status']='stale'
     else:
-        # Do not discard a previous successful dataset; explicitly mark it stale.
-        if previous.get('companies') or previous.get('aquaculture'):
-            result['companies']=previous.get('companies',[])
-            result['aquaculture']=previous.get('aquaculture',[])
-            result['status']='stale'
-            result['warnings'].append('The previous saved public snapshot was retained; it is NOT a fresh download.')
-        else:
-            result['status']='unavailable'
+        result['status']='unavailable'
     return result
 
 
