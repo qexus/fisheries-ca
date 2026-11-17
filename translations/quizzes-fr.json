@@ -1,0 +1,626 @@
+{
+  "01": [
+    [
+      "Quelle question poser d’abord pour un poste ?",
+      [
+        "Quels certificats coûtent le plus cher ?",
+        "Ai-je le droit de travailler à ce poste ?",
+        "Quelle est la couleur de l’uniforme ?"
+      ],
+      1,
+      "Sans droit légal de travailler, une offre adaptée ne permet pas de commencer."
+    ],
+    [
+      "Chaque employé d’une usine de poisson doit-il avoir le STCW ?",
+      [
+        "Oui, sans exception",
+        "Non, cela dépend du rôle et du lieu de travail",
+        "Seulement si le salaire est élevé"
+      ],
+      1,
+      "Les postes en usine à terre et à bord ont des exigences différentes."
+    ],
+    [
+      "Que vérifier pour une ferme aquacole éloignée ?",
+      [
+        "Le logement et le transport",
+        "La couleur de la publicité",
+        "La date du logo"
+      ],
+      0,
+      "L’éloignement influence les déplacements, le logement et le revenu disponible."
+    ],
+    [
+      "Qu’est-ce qui distingue un marin d’un ouvrier à terre ?",
+      [
+        "Uniquement le salaire",
+        "Le lieu de travail et les qualifications maritimes",
+        "La couleur de l’uniforme"
+      ],
+      1,
+      "Les exigences maritimes ne s’appliquent pas automatiquement aux postes à terre."
+    ],
+    [
+      "Quelle première étape convient à un débutant ?",
+      [
+        "Acheter tous les cours",
+        "Étudier le poste et ses conditions",
+        "Envoyer son passeport à un intermédiaire"
+      ],
+      1,
+      "Choisir le rôle avant de payer limite les dépenses inutiles."
+    ]
+  ],
+  "02": [
+    [
+      "Que signifie factory freezer vessel ?",
+      [
+        "Un navire transformant ou congelant le poisson à bord",
+        "Une usine à terre",
+        "Uniquement un navire-école"
+      ],
+      0,
+      "Une partie des prises est transformée à bord pendant le voyage."
+    ],
+    [
+      "Le capitaine et un ouvrier de transformation ont-ils les mêmes exigences ?",
+      [
+        "Oui",
+        "Non",
+        "Elles dépendent de la saison, pas du poste"
+      ],
+      1,
+      "Le commandement et la navigation exigent des certificats particuliers."
+    ],
+    [
+      "Quel est le rôle du mécanicien de marine ?",
+      [
+        "S’occuper des systèmes techniques relevant de ses fonctions",
+        "Délivrer des visas",
+        "Vérifier tous les contrats du pays"
+      ],
+      0,
+      "Les responsabilités techniques à bord exigent une qualification adaptée."
+    ],
+    [
+      "Qu’est-ce qui distingue un senneur d’un chalutier ?",
+      [
+        "L’engin et la méthode de pêche",
+        "Uniquement le port",
+        "Uniquement le salaire du capitaine"
+      ],
+      0,
+      "Le senneur utilise une senne coulissante; le chalutier utilise un chalut."
+    ],
+    [
+      "Que faut-il connaître avant un voyage en mer ?",
+      [
+        "Durée, repas, quarts, communications et logement",
+        "Uniquement l’espèce de poisson",
+        "Uniquement la taille du logo"
+      ],
+      0,
+      "Les conditions de vie et les horaires influencent la sécurité et le confort."
+    ]
+  ],
+  "03": [
+    [
+      "Que ne faut-il jamais faire si un treuil se bloque ?",
+      [
+        "Arrêter le travail et signaler le problème",
+        "Mettre les mains dans le mécanisme sous charge",
+        "Consulter la procédure"
+      ],
+      1,
+      "Les pièces mobiles et l’énergie accumulée présentent un danger grave."
+    ],
+    [
+      "Qu’est-ce qu’une snap-back zone ?",
+      [
+        "Une zone exposée au retour violent d’un câble",
+        "Un entrepôt à glace",
+        "La route du navire"
+      ],
+      0,
+      "Un câble sous tension peut revenir violemment lorsqu’il cède."
+    ],
+    [
+      "Qu’est-ce qu’un point de pincement ?",
+      [
+        "Un endroit où une machine peut coincer une partie du corps",
+        "Un entrepôt frigorifique",
+        "La timonerie"
+      ],
+      0,
+      "Les tambours, poulies et convoyeurs présentent des points de pincement."
+    ],
+    [
+      "Comment se comporter près d’un câble tendu ?",
+      [
+        "Éviter la zone dangereuse et suivre les consignes",
+        "Se placer devant pour observer",
+        "Tenir le câble à la main"
+      ],
+      0,
+      "Un câble tendu peut revenir violemment ou blesser une personne."
+    ],
+    [
+      "Qui peut manœuvrer un treuil ?",
+      [
+        "Toute personne disponible",
+        "Un membre de l’équipe formé et autorisé",
+        "N’importe quel visiteur"
+      ],
+      1,
+      "Ces équipements doivent être utilisés par du personnel compétent."
+    ]
+  ],
+  "04": [
+    [
+      "Cette académie remplace-t-elle une formation officielle de survie ?",
+      [
+        "Oui",
+        "Non",
+        "Seulement au Canada"
+      ],
+      1,
+      "Certains postes à bord nécessitent une formation pratique reconnue."
+    ],
+    [
+      "En cas d’incendie, il faut d’abord…",
+      [
+        "Sauter à l’eau de sa propre initiative",
+        "Donner l’alarme et suivre le plan d’urgence",
+        "Continuer à travailler"
+      ],
+      1,
+      "Une intervention coordonnée selon le plan du navire est essentielle."
+    ],
+    [
+      "Que signifie muster station ?",
+      [
+        "Le poste de rassemblement",
+        "La cale à poisson",
+        "Le service comptable"
+      ],
+      0,
+      "Chaque membre d’équipage doit connaître son poste de rassemblement."
+    ],
+    [
+      "Un texte peut-il remplacer un exercice pratique de sauvetage ?",
+      [
+        "Oui, entièrement",
+        "Non, la formation pratique reconnue reste nécessaire",
+        "Seulement si le cours est gratuit"
+      ],
+      1,
+      "Les compétences d’urgence exigent de la pratique et une validation reconnue."
+    ],
+    [
+      "Comment savoir si vous devez avoir un certificat médical maritime ?",
+      [
+        "Vérifier le rôle et les exigences du régulateur",
+        "Lire la publicité d’un cours",
+        "Suivre un commentaire au hasard"
+      ],
+      0,
+      "Les exigences médicales dépendent du navire, des fonctions et des exceptions."
+    ]
+  ],
+  "05": [
+    [
+      "Que signifie HACCP ?",
+      [
+        "Analyse des dangers et points critiques pour leur maîtrise",
+        "Permis de travail",
+        "Type de navire de pêche"
+      ],
+      0,
+      "HACCP est une méthode de maîtrise de la sécurité alimentaire."
+    ],
+    [
+      "Que faire si un lot n’est pas identifié ?",
+      [
+        "Expédier rapidement",
+        "Avertir le responsable et suivre la procédure",
+        "Inventer une étiquette"
+      ],
+      1,
+      "La traçabilité est nécessaire pour les enquêtes et les rappels."
+    ],
+    [
+      "Pourquoi enregistrer le numéro du lot ?",
+      [
+        "Pour la traçabilité et l’analyse des écarts",
+        "Pour obtenir un visa",
+        "Pour compter l’équipage"
+      ],
+      0,
+      "L’identification permet de suivre l’origine et le parcours des produits."
+    ],
+    [
+      "Quel exemple correspond à une contamination physique ?",
+      [
+        "Un fragment métallique dans le produit",
+        "Un chiffre incorrect dans le contrat",
+        "Un autre poste sur le CV"
+      ],
+      0,
+      "Les dangers physiques comprennent les corps étrangers solides."
+    ],
+    [
+      "Que faire si la température dépasse la limite prévue ?",
+      [
+        "Prévenir le responsable et appliquer les mesures correctives",
+        "Cacher la mesure",
+        "Continuer sans rien noter"
+      ],
+      0,
+      "Les écarts doivent être traités selon la procédure approuvée."
+    ]
+  ],
+  "06": [
+    [
+      "À quoi sert le biofiltre d’un système RAS ?",
+      [
+        "À traiter les déchets produits par les poissons",
+        "À calculer les salaires",
+        "À tenir l’ancre"
+      ],
+      0,
+      "La biofiltration contribue à la qualité de l’eau."
+    ],
+    [
+      "Peut-on désactiver librement une alarme d’oxygène ?",
+      [
+        "Oui",
+        "Non",
+        "Pendant le quart de nuit"
+      ],
+      1,
+      "La désactivation de la surveillance peut mettre en danger les poissons et la production."
+    ],
+    [
+      "Que surveillent les capteurs d’un système RAS ?",
+      [
+        "Les paramètres de l’eau et les équipements",
+        "Uniquement la date du contrat",
+        "Uniquement le compte bancaire"
+      ],
+      0,
+      "La surveillance aide à maintenir des conditions d’élevage stables."
+    ],
+    [
+      "Pourquoi l’arrêt d’une pompe est-il dangereux ?",
+      [
+        "Il peut perturber la circulation et l’oxygénation",
+        "Il est toujours sans danger",
+        "Il modifie le passeport du travailleur"
+      ],
+      0,
+      "Une panne de circulation peut rapidement dégrader les conditions de vie des poissons."
+    ],
+    [
+      "Peut-on modifier la chimie de l’eau sans consignes ?",
+      [
+        "Oui, pour expérimenter",
+        "Non, uniquement selon la procédure et son autorisation",
+        "Seulement après le quart"
+      ],
+      1,
+      "Les interventions chimiques doivent être contrôlées et consignées."
+    ]
+  ],
+  "07": [
+    [
+      "Un certificat HACCP est-il un permis de travail ?",
+      [
+        "Oui",
+        "Non",
+        "Seulement en Norvège"
+      ],
+      1,
+      "La formation sanitaire et le statut d’immigration sont deux choses distinctes."
+    ],
+    [
+      "Quand payer une formation maritime coûteuse ?",
+      [
+        "Avant de choisir le pays",
+        "Après vérification du navire, du rôle et des exigences",
+        "Après une publicité"
+      ],
+      1,
+      "Sinon, la qualification achetée peut ne pas convenir au poste."
+    ],
+    [
+      "Qu’est-ce qui confirme le droit légal de travailler ?",
+      [
+        "Un statut d’immigration valide et adapté",
+        "Un certificat privé d’hygiène alimentaire",
+        "La recommandation d’un ami"
+      ],
+      0,
+      "La formation professionnelle ne remplace pas le droit de travailler."
+    ],
+    [
+      "Quand choisir une formation de capitaine ?",
+      [
+        "Après confirmation de sa nécessité pour le rôle et le navire",
+        "Pour tout employé d’usine",
+        "Avant de chercher un employeur"
+      ],
+      0,
+      "Les qualifications de capitaine ne sont pas requises de tous les membres d’équipage."
+    ],
+    [
+      "Que vérifier pour un certificat maritime étranger ?",
+      [
+        "Sa reconnaissance par le régulateur et sa validité",
+        "Uniquement le papier",
+        "Uniquement la couleur du cachet"
+      ],
+      0,
+      "Un certificat étranger n’est pas nécessairement reconnu automatiquement."
+    ]
+  ],
+  "08": [
+    [
+      "Une entreprise inscrite au registre recrute-t-elle forcément ?",
+      [
+        "Oui",
+        "Non",
+        "Seulement en été"
+      ],
+      1,
+      "L’inscription à un registre ne prouve pas un recrutement."
+    ],
+    [
+      "Quel canal privilégier pour postuler ?",
+      [
+        "La procédure officielle de l’employeur",
+        "Un intermédiaire payant quelconque",
+        "Un lien reçu au hasard"
+      ],
+      0,
+      "Vérifiez le domaine, les conditions et le canal de candidature."
+    ],
+    [
+      "Comment distinguer une page carrières d’une offre active ?",
+      [
+        "Vérifier l’annonce, sa date et son statut",
+        "Le logo suffit",
+        "Tout registre signifie un recrutement"
+      ],
+      0,
+      "Une page carrières peut exister sans poste disponible."
+    ],
+    [
+      "Pourquoi identifier l’employeur légal ?",
+      [
+        "Il signe le contrat et assume les obligations",
+        "C’est une décoration du site",
+        "Il remplace la formation maritime"
+      ],
+      0,
+      "Vérifier l’entité juridique réduit le risque de fraude."
+    ],
+    [
+      "Quel signe est suspect dans un recrutement ?",
+      [
+        "Un paiement pour un poste garanti avant le contrat",
+        "Une description écrite du poste",
+        "Un lien vers le portail officiel"
+      ],
+      0,
+      "Payer d’avance un intermédiaire pour un emploi garanti est un signal d’alerte."
+    ]
+  ],
+  "09": [
+    [
+      "Peut-on annoncer un STCW sur son CV avant de l’avoir obtenu ?",
+      [
+        "Oui, pour augmenter ses chances",
+        "Non",
+        "Si le cours coûte peu"
+      ],
+      1,
+      "Indiquez uniquement les qualifications réellement obtenues."
+    ],
+    [
+      "À quoi sert la méthode STAR ?",
+      [
+        "À structurer un exemple d’expérience réelle",
+        "À calculer les impôts",
+        "À utiliser un chalut"
+      ],
+      0,
+      "STAR aide à décrire brièvement une situation, une action et un résultat."
+    ],
+    [
+      "Que signifie STAR en entrevue ?",
+      [
+        "Situation, Task, Action, Result",
+        "Safety, Trawl, Anchor, Route",
+        "Salary, Tax, Agency, Rent"
+      ],
+      0,
+      "STAR permet de présenter son expérience et ses résultats de façon concrète."
+    ],
+    [
+      "Comment mentionner une formation encore inachevée ?",
+      [
+        "Indiquer son état réel d’avancement",
+        "Affirmer avoir déjà le diplôme",
+        "Inventer un numéro"
+      ],
+      0,
+      "Le CV ne doit pas donner une fausse impression des qualifications."
+    ],
+    [
+      "Qu’est-ce qui compte dans une entrevue sur la sécurité ?",
+      [
+        "Expliquer clairement quoi faire en cas de danger",
+        "Employer des mots complexes mal compris",
+        "Cacher ses difficultés linguistiques"
+      ],
+      0,
+      "Une communication sûre compte plus qu’un vocabulaire impressionnant."
+    ]
+  ],
+  "10": [
+    [
+      "Quelle différence entre gross pay et net pay ?",
+      [
+        "Brut avant retenues, net après retenues",
+        "Aucune",
+        "Le net est toujours supérieur"
+      ],
+      0,
+      "Il faut tenir compte des impôts et des dépenses pour comparer les offres."
+    ],
+    [
+      "Que faire si la rémunération selon les prises est incompréhensible ?",
+      [
+        "Signer et comprendre plus tard",
+        "Demander une explication écrite du calcul",
+        "Payer un agent"
+      ],
+      1,
+      "Une formule de rémunération transparente fait partie de la vérification du contrat."
+    ],
+    [
+      "Que faut-il inclure dans le budget d’un déménagement professionnel ?",
+      [
+        "Impôts, logement, transport et heures garanties",
+        "Uniquement le taux maximal annoncé",
+        "Uniquement le téléphone"
+      ],
+      0,
+      "Le revenu disponible dépend des dépenses, des horaires et des retenues."
+    ],
+    [
+      "Que faut-il obtenir avant d’accepter une offre ?",
+      [
+        "Les conditions écrites et le calcul de la rémunération",
+        "Une promesse orale d’un intermédiaire",
+        "Une capture de publicité"
+      ],
+      0,
+      "Un contrat écrit permet de vérifier l’ensemble des conditions."
+    ],
+    [
+      "Que faire si les retenues pour logement sont floues ?",
+      [
+        "Demander le détail avant de signer",
+        "Signer sans lire",
+        "Les considérer comme une prime"
+      ],
+      0,
+      "Les retenues et les obligations des parties doivent être transparentes."
+    ]
+  ],
+  "11": [
+    [
+      "Que faire si une consigne d’urgence est incomprise ?",
+      [
+        "Acquiescer et agir",
+        "Demander une explication ou une démonstration et confirmer sa compréhension",
+        "Ignorer la consigne"
+      ],
+      1,
+      "Une bonne compréhension est essentielle à la sécurité."
+    ],
+    [
+      "Qu’est-ce qui compte à la relève ?",
+      [
+        "Signaler les défauts réels et les travaux inachevés",
+        "Souhaiter bonne chance seulement",
+        "Ne rien consigner"
+      ],
+      0,
+      "La transmission d’information aide à prévenir les incidents."
+    ],
+    [
+      "Que comprend une bonne transmission de quart ?",
+      [
+        "Les pannes et les tâches en cours",
+        "Uniquement une salutation",
+        "Uniquement l’humeur de l’équipe"
+      ],
+      0,
+      "La relève réduit le risque d’oublier un danger."
+    ],
+    [
+      "Que faire si la langue rend une consigne incompréhensible ?",
+      [
+        "Demander une démonstration et confirmer sa compréhension",
+        "Acquiescer puis improviser",
+        "Ne rien dire"
+      ],
+      0,
+      "Une consigne incomprise peut provoquer une blessure ou un incident."
+    ],
+    [
+      "Comment intervenir face à une action dangereuse ?",
+      [
+        "Suivre la procédure d’arrêt et signaler immédiatement",
+        "Laisser agir uniquement un visiteur",
+        "Ne jamais intervenir, même en danger de mort"
+      ],
+      0,
+      "Il faut appliquer les consignes de sécurité et signaler le danger."
+    ]
+  ],
+  "12": [
+    [
+      "Que comprend un parcours de candidature préparé ?",
+      [
+        "Un cours payant au hasard",
+        "Offres vérifiées, exigences, documents, budget et plan",
+        "Une liste d’entreprises sans contacts"
+      ],
+      1,
+      "Une préparation complète limite les dépenses inutiles."
+    ],
+    [
+      "Où conserver les données personnelles du candidat ?",
+      [
+        "Dans un dépôt public",
+        "Dans des documents privés ou localement",
+        "Sur une page publique"
+      ],
+      1,
+      "GitHub Pages public ne convient pas aux documents personnels."
+    ],
+    [
+      "Pourquoi ne pas déposer son passeport dans un GitHub public ?",
+      [
+        "Le dépôt est accessible à des tiers",
+        "Il est toujours protégé par mot de passe",
+        "GitHub efface automatiquement les données"
+      ],
+      0,
+      "GitHub Pages public n’est pas un espace privé de documents."
+    ],
+    [
+      "Que doit contenir le plan final ?",
+      [
+        "Offres, exigences, budget, documents et calendrier",
+        "Uniquement un logo",
+        "Uniquement des cours publicitaires"
+      ],
+      0,
+      "Un parcours vérifié réunit le droit de travailler, les compétences, la recherche et les frais."
+    ],
+    [
+      "Que signifie réussir ce cours ?",
+      [
+        "Savoir vérifier les exigences, sans obtenir de certificat maritime officiel",
+        "Obtenir automatiquement le STCW",
+        "Avoir un emploi garanti"
+      ],
+      0,
+      "Cette académie autonome ne délivre pas d’autorisation maritime officielle."
+    ]
+  ]
+}

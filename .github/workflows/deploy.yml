@@ -43,6 +43,7 @@ jobs:
       - name: Validate Academy curriculum and JavaScript
         run: |
           node tests/check_content.mjs
+          node tests/check_locales.mjs
           for file in public/*.js; do node --check "$file"; done
       - name: Download official CFIA and DFO BC registries
         # Network/schema problems are reported in the generated JSON; stale snapshots are retained.

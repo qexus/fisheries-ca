@@ -274,7 +274,7 @@ function translatedCurriculumHTML(){
  for(const [h,p] of l.sections)out+='<h3>'+E(h)+'</h3><p>'+E(p)+'</p>';
  out+='<div class="qa-panel"><h3>'+(fr?"Exigences propres au pays":"Вимоги для країни")+'</h3><p>'+E(l.note)+'</p></div>';
  out+='<div class="qa-exercise"><b>'+(fr?"Exercice pratique":"Практичне завдання")+'</b><p>'+E(l.task)+'</p></div>';
- out+='<div class="qa-panel"><h3>'+(fr?"Vérifiez vos connaissances":"Перевірте знання")+'</h3><ol>'+l.questions.map(q=>'<li>'+E(q)+'</li>').join('')+'</ol></div>';
+ out+=(window.qexusExpansionQuiz?.(l.id)||'');
  out+='<p><a href="'+E(url)+'">'+(fr?"Leçon complète et sources officielles":"Повний урок та офіційні джерела")+' ↗</a></p>';
  out+='<label class="qa-done"><input type="checkbox" data-qa-complete="'+E(l.id)+'"> '+(fr?"J’ai terminé cette activité":"Я виконав(ла) це завдання")+'</label></div></details>';
  }
