@@ -155,6 +155,7 @@ function show(view){
   }
   if(view==="jobs"){let data=read("checks");document.querySelectorAll("[data-qa-check]").forEach(x=>x.checked=!!data[x.dataset.qaCheck]);}
   document.getElementById("sidebar")?.classList.remove("open");
+  document.getElementById("menuToggle")?.setAttribute("aria-expanded","false");
   window.scrollTo({top:0,behavior:"instant"});
 }
 function read(key){try{return JSON.parse(localStorage.getItem("qexus-academy-"+country+"-"+key)||"{}")}catch{return {}}}
