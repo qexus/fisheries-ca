@@ -95,11 +95,38 @@
   function parseCSV(source){const line=source.slice(0,4000).split(/\r?\n/).find(x=>x.trim())||'';const counts=[',',';','\t'].map(del=>[del,line.split(del).length]);const delimiter=counts.sort((a,b)=>b[1]-a[1])[0][0];let rows=[],row=[],cell='',quote=false;for(let i=0;i<source.length;i++){const c=source[i];if(c==='"'){if(quote&&source[i+1]==='"'){cell+='"';i++}else quote=!quote}else if(!quote&&c===delimiter){row.push(cell);cell=''}else if(!quote&&(c==='\n'||c==='\r')){if(c==='\r'&&source[i+1]==='\n')i++;row.push(cell);if(row.some(x=>x.trim()))rows.push(row);row=[];cell=''}else cell+=c}row.push(cell);if(row.some(x=>x.trim()))rows.push(row);const headers=rows.shift()?.map(norm)||[];return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,(r[i]||'').trim()])))}
   function rowToCompany(r,i){const take=(...k)=>k.map(norm).map(k=>r[k]).find(Boolean)||'';const name=take('name','nom','legal name','licence holder','licensee','company','site name','facility name','establishment name');const province=take('province','prov','provincial');const city=take('city','ville','municipality','town','community');const reference=take('ref #','reference number','reference','ref','license number','licence number','registration');if(!name||(!province&&!city))return null;const id='manual-'+norm(name).slice(0,28)+'-'+norm(city).slice(0,18)+'-'+i;return {id,name:name.slice(0,180),province:province.slice(0,25),city:city.slice(0,90),registration:reference.slice(0,60),category:'Локальный импорт CSV',source:'https://apps.inspection.canada.ca/webapps/FishList/?lang=en',imported:true,notes:'Добавлено пользователем локально; источник файла необходимо проверить.'}}
   function download(blob,name){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
-  async function registry(){try{const r=await fetch('./generated/registry.json',{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();if(data&&typeof data==='object'){state.registry={status:data.status||'unknown',generated_at:data.generated_at,companies:Array.isArray(data.companies)?data.companies:[],aquaculture:Array.isArray(data.aquaculture)?data.aquaculture:[],warnings:Array.isArray(data.warnings)?data.warnings:[],sources:data.sources||{}};if(!document.querySelector('#main .qa-wrap'))render()}}catch(e){state.registry={...state.registry,status:'unavailable',warnings:['Загружена стартовая версия без дополнительных реестров.']};if(!document.querySelector('#main .qa-wrap'))render()}}
+  async function registry(force=false){
+    try{
+      const endpoint='./generated/registry.json'+(force?'?refresh='+Date.now():'');
+      const r=await fetch(endpoint,{cache:force?'no-store':'no-cache'});
+      if(!r.ok)throw Error('HTTP '+r.status);
+      const data=await r.json();
+      if(!Array.isArray(data.companies)||!Array.isArray(data.aquaculture))throw Error('Неверный формат реестра');
+      if(data.companies.length+data.aquaculture.length===0)throw Error('Опубликованная база пока пуста');
+      const oldDate=state.registry.generated_at;
+      state.registry={status:data.status||'unknown',generated_at:data.generated_at,
+        companies:data.companies,aquaculture:data.aquaculture,
+        warnings:Array.isArray(data.warnings)?data.warnings:[],sources:data.sources||{}};
+      if(!document.querySelector('#main .qa-wrap'))render();
+      return {ok:true,changed:oldDate!==data.generated_at,generated_at:data.generated_at,status:data.status,
+        counts:{companies:data.companies.length,aquaculture:data.aquaculture.length}};
+    }catch(e){
+      // Preserve the previously loaded snapshot after a failed visitor refresh.
+      if(!force){
+        state.registry={...state.registry,status:'unavailable',warnings:['Не удалось загрузить опубликованную базу.']};
+        if(!document.querySelector('#main .qa-wrap'))render();
+      }
+      return {ok:false,error:String(e.message||e)};
+    }
+  }
+
   document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
   $('#menuToggle').addEventListener('click',()=>{const open=$('#sidebar').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',String(open))});
   document.addEventListener('click',e=>{if(window.innerWidth<=740&&!e.target.closest('.sidebar')&&!e.target.closest('#menuToggle')){$('#sidebar').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false')}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#sidebar').classList.contains('open')){$('#sidebar').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false');$('#menuToggle').focus()}});
   window.qexusNavigate=go;
+  window.qexusReloadRegistry=()=>registry(true);
+  window.qexusRegistryInfo=()=>({status:state.registry.status,generated_at:state.registry.generated_at,
+    counts:{companies:state.registry.companies.length,aquaculture:state.registry.aquaculture.length}});
   render();registry();
 })();
