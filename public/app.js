@@ -16,7 +16,7 @@
   const showLink=(link,label='Источник ↗')=>`<a href="${url(link)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
   const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3200)};
   const navNames={dashboard:'Обзор',companies:'Компании',jobs:'Вакансии',aquaculture:'Аквакультура',course:'Учебник',glossary:'Словарь',documents:'Документы',salary:'Калькулятор',sources:'Источники'};
-  function go(view){state.view=view;state.search='';state.province='ALL';state.category='ALL';state.lesson=null;state.companyLimit=60;render();window.scrollTo({top:0,behavior:'smooth'});$('#sidebar').classList.remove('open')}
+  function go(view){state.view=view;state.search='';state.province='ALL';state.category='ALL';state.lesson=null;state.companyLimit=60;render();window.scrollTo({top:0,behavior:'smooth'});$('#sidebar').classList.remove('open');$('#menuToggle')?.setAttribute('aria-expanded','false')}
   const heading=(k,title,sub)=>`<div class="eyebrow">${esc(k)}</div><h1>${esc(title)}</h1><p class="lead">${esc(sub)}</p>`;
   const stat=(n,label)=>`<div class="stat"><strong>${esc(fmt(n))}</strong><small>${esc(label)}</small></div>`;
   function provinces(records){return [...new Set(records.map(x=>x.province).filter(Boolean))].sort()}
@@ -68,8 +68,9 @@
   function download(blob,name){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
   async function registry(){try{const r=await fetch('./generated/registry.json',{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();if(data&&typeof data==='object'){state.registry={status:data.status||'unknown',generated_at:data.generated_at,companies:Array.isArray(data.companies)?data.companies:[],aquaculture:Array.isArray(data.aquaculture)?data.aquaculture:[],warnings:Array.isArray(data.warnings)?data.warnings:[],sources:data.sources||{}};if(!document.querySelector('#main .qa-wrap'))render()}}catch(e){state.registry={...state.registry,status:'unavailable',warnings:['Загружена стартовая версия без дополнительных реестров.']};if(!document.querySelector('#main .qa-wrap'))render()}}
   document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
-  $('#menuToggle').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
-  document.addEventListener('click',e=>{if(window.innerWidth<=740&&!e.target.closest('.sidebar')&&!e.target.closest('#menuToggle'))$('#sidebar').classList.remove('open')});
+  $('#menuToggle').addEventListener('click',()=>{const open=$('#sidebar').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',String(open))});
+  document.addEventListener('click',e=>{if(window.innerWidth<=740&&!e.target.closest('.sidebar')&&!e.target.closest('#menuToggle')){$('#sidebar').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false')}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#sidebar').classList.contains('open')){$('#sidebar').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false');$('#menuToggle').focus()}});
   window.qexusNavigate=go;
   render();registry();
 })();
