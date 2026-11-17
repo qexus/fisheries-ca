@@ -90,7 +90,108 @@ const T={
 };
 const workLinks=isCA?[[L.jobbank,"Job Bank Canada — вакансии"],[L.dfo,"DFO — рыболовная отрасль"],[L.cfia,"CFIA — пищевые требования"],[L.tc,"Transport Canada — требования к рыболовным судам"],[L.schools,"TP 10655 — признанные учебные центры"]]:[[L.nav,"NAV Arbeidsplassen — вакансии"],[L.fdir,"Fiskeridirektoratet — флот"],[L.mat,"Mattilsynet — предприятия"],[L.sdir,"Sjøfartsdirektoratet — морские документы"],[L.udi,"UDI — право на работу"]];
 const cards=isCA?certCA:certNO;
+function academyLanguage(){return (new URLSearchParams(location.search).get("lang")||document.documentElement.lang||"ru").toLowerCase()}
+const qxTranslatedCards={
+fr:{
+"ca-sdv":["SDV-BS — sécurité de base des petits bâtiments","Pour les membres d’équipage de certains bateaux commerciaux et de pêche. Vérifiez le navire, la zone et les exigences de Transports Canada."],
+"ca-sdv-qc":["SDV-BS — formation à l’ÉPAQ","Une formation offerte au Québec. Vérifiez le tarif de l’année, les dates et les préalables auprès de l’ÉPAQ."],
+"ca-dvs":["DVS — sécurité des bâtiments domestiques","Formation aux urgences à bord de certains navires. Elle n’est pas exigée de tous les employés d’usine à terre."],
+"ca-dvs-qc":["DVS — formation à l’ÉPAQ","Cours de sécurité des bâtiments domestiques au Québec; prix historique à reconfirmer."],
+"ca-stcw":["STCW — formation de sécurité de base","Formation maritime reconnue selon les conditions applicables; vérifiez avec Transports Canada si elle correspond à votre poste."],
+"ca-fa":["Premiers secours maritimes","Formation de base ou avancée selon le navire et les responsabilités de l’équipage."],
+"ca-svop":["SVOP — conduite de petits bâtiments","Formation destinée à l’opérateur d’un petit bâtiment admissible, et non à tous les matelots."],
+"ca-radio":["ROC-M / ROC-MC — radio maritime","Certificats radio selon le type d’appareil, le navire et les tâches assignées."],
+"ca-roc-qc":["ROC-MC — cours à l’ÉPAQ","Formation radio maritime commerciale au Québec; vérifiez les conditions auprès de l’école."],
+"ca-psc":["PSC — embarcations et radeaux de survie","Spécialisation avec préalables pour des responsabilités de sauvetage précises."],
+"ca-mfa-qc":["Premiers secours maritimes avancés — ÉPAQ","Formation avancée pour certaines responsabilités à bord, pas une exigence générale en usine."],
+"ca-food":["HACCP et bonnes pratiques alimentaires","Les documents de l’ACIA sont gratuits; ils ne constituent pas à eux seuls une certification individuelle."],
+"no-fish":["Sécurité des pêcheurs — formation de base","Vérifiez les exigences de la Sjøfartsdirektoratet : formation de sécurité des pêcheurs ou certificat STCW admissible."],
+"no-stcw":["STCW Basic Safety — certificat de compétence","Il peut falloir une demande de certificat de compétence distincte de l’attestation de cours."],
+"no-refresh":["STCW — formation de remise à niveau","Formation réservée aux personnes ayant déjà les qualifications requises; ne pas l’acheter comme cours initial."],
+"no-med":["Certificat médical maritime","Visite par un médecin maritime reconnu, sous réserve des exceptions applicables."],
+"no-master":["Capitaine de pêche et officier de quart","Qualifications de commandement suivant la taille du navire et le poste."],
+"no-radio":["Radio maritime et équipement de pont","Qualifications exigées uniquement pour certaines tâches et certains équipements."],
+"no-food":["HACCP, hygiène et sécurité alimentaire","Ressources officielles gratuites et formations privées possibles; ne remplace pas les qualifications maritimes."],
+"no-work":["UDI — autorisation de travailler","Démarche d’immigration, pas un cours. Un permis de travail canadien ne donne pas le droit de travailler en Norvège."]
+},
+uk:{
+"ca-sdv":["SDV-BS — базова безпека малих суден","Для екіпажів певних комерційних і риболовних суден. Уточніть категорію судна, маршрут і правила Transport Canada."],
+"ca-sdv-qc":["SDV-BS — навчання в ÉPAQ","Курс у Квебеку. Перевірте поточну вартість, дати й попередні вимоги."],
+"ca-dvs":["DVS — безпека внутрішніх суден","Підготовка до надзвичайних ситуацій на певних суднах; не обов’язкова для всіх працівників берегового заводу."],
+"ca-dvs-qc":["DVS — навчання в ÉPAQ","Курс безпеки суден у Квебеку; опубліковану раніше ціну треба перевірити."],
+"ca-stcw":["STCW — базова морська безпека","Перевірте, чи відповідає ця підготовка вимогам Transport Canada до вашої посади."],
+"ca-fa":["Морська перша допомога","Базове чи поглиблене навчання залежить від обов’язків екіпажу й типу судна."],
+"ca-svop":["SVOP — оператор малого судна","Курс для керування відповідним малим судном, а не для кожного матроса."],
+"ca-radio":["ROC-M / ROC-MC — морський радіозв’язок","Посвідчення залежить від радіообладнання, типу судна й ваших обов’язків."],
+"ca-roc-qc":["ROC-MC — курс ÉPAQ","Комерційний морський радіозв’язок у Квебеку; уточніть умови навчання."],
+"ca-psc":["PSC — рятувальні шлюпки й плоти","Додаткова спеціалізація з попередніми вимогами для певних посад."],
+"ca-mfa-qc":["Поглиблена морська перша допомога — ÉPAQ","Для відповідальних осіб на окремих суднах; не загальна вимога до працівника берегового заводу."],
+"ca-food":["HACCP та безпечне виробництво їжі","Державні матеріали CFIA безплатні, але самі по собі не є індивідуальним сертифікатом."],
+"no-fish":["Базова безпека рибалок","Перевірте вимоги Sjøfartsdirektoratet щодо підготовки рибалок або прийнятного STCW."],
+"no-stcw":["STCW Basic Safety — сертифікат компетентності","Окрім курсу, може знадобитися окрема заява на сертифікат компетентності."],
+"no-refresh":["STCW — поновлення кваліфікації","Для тих, хто вже має відповідну базову підготовку; не купуйте як початковий курс."],
+"no-med":["Медична довідка моряка","Медогляд у визнаного морського лікаря з урахуванням можливих винятків."],
+"no-master":["Капітан риболовного судна й вахтовий","Кваліфікації командних посад залежно від розміру судна та обов’язків."],
+"no-radio":["Радіозв’язок і палубне обладнання","Додаткові кваліфікації тільки для певних функцій та оснащення."],
+"no-food":["HACCP, гігієна й харчова безпека","Безплатні офіційні матеріали й платні приватні курси; не замінюють морські сертифікати."],
+"no-work":["UDI — дозвіл працювати","Імміграційний шлях, а не курс. Канадський work permit не дає права працювати в Норвегії."]
+}
+};
+const qxStepLabels={
+fr:{ca:[["Autorisation de travailler","Vérifiez que votre permis canadien permet de travailler dans la région et la fonction visées."],["Documents maritimes","Identifiez le navire, la route et les tâches, puis consultez Transports Canada."],["Postes en usine","N’achetez pas une formation maritime sans exigence écrite pour un poste à terre."],["Métiers techniques","Comparez vos compétences, les licences applicables et les exigences de l’employeur."]],
+no:[["Droit de travailler","Déterminez le parcours d’immigration UDI approprié avant toute dépense importante."],["Documents maritimes","Vérifiez auprès de Sjøfartsdirektoratet la formation, les certificats et l’aptitude médicale."],["Usine à terre","Un certificat maritime n’est pas automatiquement exigé pour les postes en usine."],["Métiers techniques","Confirmez les compétences, la langue et les tâches exactes du poste."]]},
+uk:{ca:[["Право на роботу","Перевірте, чи ваш канадський дозвіл дозволяє працювати в обраному регіоні та за посадою."],["Морські документи","З’ясуйте тип судна, маршрут, обов’язки й вимоги Transport Canada."],["Робота на заводі","Не купуйте морський курс без письмової вимоги роботодавця до берегової посади."],["Технічні вакансії","Порівняйте навички, місцеві ліцензії та вимоги роботодавця."]],
+no:[["Право на роботу","З’ясуйте доступний імміграційний шлях UDI до великих витрат."],["Морські документи","Перевірте в Sjøfartsdirektoratet навчання, сертифікати й медичні вимоги."],["Береговий завод","Морський сертифікат не є автоматичною вимогою до роботи на березі."],["Технічні вакансії","Підтвердьте навички, потрібну мову та фактичні обов’язки."]]}}
+;
+const qxChecklist={
+fr:["J’ai vérifié l’existence légale de l’employeur et son site officiel.","L’offre est actuelle ou je dispose d’une page carrières officielle.","J’ai vérifié mon autorisation légale de travailler.","J’ai identifié les certificats réellement exigés pour ce poste.","Mon CV et ma lettre reflètent fidèlement mon expérience.","J’ai posé des questions sur le salaire, le logement, l’assurance et l’horaire.","Je ne paie jamais pour une « embauche garantie » ou une place à bord.","Je dispose d’une offre écrite et d’un statut valide avant de quitter mon poste."],
+uk:["Перевірено юридичну реєстрацію роботодавця та офіційний сайт.","Знайдено актуальну вакансію або офіційну кар’єрну сторінку.","Перевірено законне право працювати.","Визначено обов’язкові сертифікати саме для цієї посади.","CV і лист чесно описують мій досвід.","З’ясовано оплату, житло, страхування та графік.","Я не плачу за «гарантоване місце» або місце на судні.","Перед звільненням є письмова пропозиція та законні підстави працювати."]
+};
+function qxLocalizedCertification(){
+ const lang=academyLanguage();
+ if(!qxTranslatedCards[lang])return null;
+ const fr=lang==="fr";
+ const labels=fr?{k:"QUALIFICATIONS · ",heading:"Certificats et formations",intro:"Comparez les exigences officielles et des exemples de centres de formation. Les montants sont des prix historiques, non des devis; vérifiez la session, les préalables et la reconnaissance du certificat.",warn:"Cette académie gratuite ne délivre aucun certificat STCW, MED, ni certificat médical. Seuls les organismes compétents peuvent les émettre.",fee:"Tarif indicatif",check:"Confirmer avant paiement auprès du fournisseur",rules:"Exigences officielles",offer:"Cours ou fournisseur",more:"Consultez le guide complet des métiers et qualifications."}:
+ {k:"КВАЛІФІКАЦІЇ · ",heading:"Сертифікати й навчання",intro:"Порівняйте офіційні вимоги та приклади навчальних центрів. Суми — історичні приклади, а не актуальні пропозиції; перевірте дати, умови й визнання документа.",warn:"Ця безплатна Академія не видає STCW, MED чи медичних довідок. Офіційні документи оформлюють уповноважені організації.",fee:"Орієнтовна ціна",check:"Перед оплатою уточніть у навчальному закладі",rules:"Офіційні вимоги",offer:"Курс / організація",more:"Докладні вимоги до професій та сертифікатів."};
+ const base="/"+(isCA?"fisheries-ca":"fisheries")+"/"+lang+"/guides/professions.html";
+ return '<div class="qa-intro"><div class="qa-label">'+labels.k+E(country.toUpperCase())+'</div><h1>'+labels.heading+'</h1><p>'+labels.intro+'</p></div>'+
+ '<div class="qa-alert">⚠️ '+labels.warn+'</div>'+
+ '<p><a href="'+base+'">'+labels.more+' ↗</a></p>'+
+ '<div class="qa-cards">'+cards.map(c=>{
+  const translated=qxTranslatedCards[lang][c.id];
+  if(!translated)return "";
+  const fee=(c.price.match(/\d[\d ]*\s(?:CAD|NOK)\b/)||[])[0] || (c.id==="ca-food"?(fr?"Ressources publiques gratuites":"Державні матеріали безплатні"):(fr?"Consulter le fournisseur":"Уточніть у закладі"));
+  return '<article class="qa-cert"><div class="qa-row"><span class="qa-kicker">'+labels.k+'</span><span class="qa-price">'+E(fee)+'</span></div><h3>'+E(translated[0])+'</h3><p>'+E(translated[1])+'</p><div class="qa-tip">'+labels.check+'</div><div class="qa-actions">'+external(c.source,labels.rules)+external(c.offer,labels.offer)+'</div></article>';
+ }).join('')+'</div>';
+}
+function qxLocalizedJobs(){
+ const lang=academyLanguage();
+ if(!qxChecklist[lang])return null;
+ const fr=lang==="fr",n=isCA?"ca":"no";
+ const L=fr?{label:"CANDIDATURES",title:"Du registre à un contrat vérifié",intro:"Une entreprise inscrite dans un registre n’a pas forcément de poste vacant. Vérifiez les exigences officielles, votre droit de travailler et les offres réelles.",check:"Liste de vérification avant de postuler",interview:"Questions d’entrevue (en anglais)",safety:"Contrat et prévention des arnaques",body:"Vérifiez le taux, les heures garanties, le logement, le transport, les retenues, la monnaie et le retour à domicile. Évitez tout paiement pour un emploi garanti."}:
+ {label:"ПРАЦЕВЛАШТУВАННЯ",title:"Від реєстру до перевіреного контракту",intro:"Компанія у реєстрі не обов’язково має вакансії. Перевірте офіційні вимоги, право працювати й реальні оголошення.",check:"Список перевірки перед поданням",interview:"Запитання на співбесіді (англійською)",safety:"Договір і захист від шахраїв",body:"Перевірте ставку, гарантовані години, житло, дорогу, утримання, валюту й повернення додому. Не платіть за гарантоване працевлаштування."};
+ const interview=["Tell me about your industrial experience.","What personal protective equipment do you use?","What would you do if a winch or conveyor jams?","Can you work shifts, weekends and in cold conditions?","What training or certificates do you currently hold?","Are you legally authorized to work in this country?"];
+ return '<div class="qa-intro"><div class="qa-label">'+L.label+'</div><h1>'+L.title+'</h1><p>'+L.intro+'</p></div>'+
+ '<div class="qa-steps">'+qxStepLabels[lang][n].map((x,i)=>'<div class="qa-step"><span>'+(i+1)+'</span><div><h3>'+E(x[0])+'</h3><p>'+E(x[1])+'</p></div></div>').join('')+'</div>'+
+ '<div class="qa-panel"><h3>'+L.check+'</h3>'+qxChecklist[lang].map((x,i)=>'<label class="qa-check"><input type="checkbox" data-qa-check="'+i+'"> '+E(x)+'</label>').join('')+'</div>'+
+ '<div class="qa-panel"><h3>'+L.interview+'</h3><div class="qa-terms">'+interview.map(x=>'<div>'+E(x)+'</div>').join('')+'</div></div>'+
+ '<div class="qa-panel"><h3>'+L.safety+'</h3><p>'+L.body+'</p></div>';
+}
+function qxLocalizedLibrary(){
+ const lang=academyLanguage();
+ if(!qxChecklist[lang])return null;
+ const fr=lang==="fr";
+ const L=fr?{label:"SOURCES OFFICIELLES",title:"Bibliothèque gratuite",intro:"Utilisez les ressources gouvernementales et les sites des organismes de formation pour vérifier les règles et les offres. Un registre ne garantit aucun emploi.",status:"Vérification des données",body:"Règles et tarifs : vérification manuelle le 17 novembre 2026. Les prix et les exigences peuvent avoir changé. Un prix non publié ne signifie pas que la formation est gratuite.",open:"Consulter la source"}:
+ {label:"ОФІЦІЙНІ ДЖЕРЕЛА",title:"Безплатна бібліотека",intro:"Перевіряйте правила та вакансії за державними джерелами й сайтами навчальних закладів. Реєстр не гарантує роботу.",status:"Актуальність даних",body:"Правила й ціни вручну звіряли 17 листопада 2026 року. Вартість і вимоги могли змінитися. Відсутня ціна не означає безплатне навчання.",open:"Відкрити джерело"};
+ const names=isCA?(fr?["Guichet-Emplois — offres","MPO — secteur des pêches","ACIA — salubrité alimentaire","Transports Canada — sécurité des navires","TP 10655 — centres reconnus"]:["Job Bank — вакансії","DFO — рибна галузь","CFIA — харчова безпека","Transport Canada — суднові вимоги","TP 10655 — визнані центри"]):
+ (fr?["NAV — offres d’emploi","Fiskeridirektoratet — flotte","Mattilsynet — entreprises","Sjøfartsdirektoratet — qualifications","UDI — droit de travailler"]:["NAV — вакансії","Fiskeridirektoratet — флот","Mattilsynet — компанії","Sjøfartsdirektoratet — сертифікати","UDI — право на роботу"]);
+ return '<div class="qa-intro"><div class="qa-label">'+L.label+'</div><h1>'+L.title+'</h1><p>'+L.intro+'</p></div>'+
+ '<div class="qa-cards">'+workLinks.map(([url],i)=>'<div class="qa-panel"><h3>'+E(names[i])+'</h3>'+external(url,L.open)+'</div>').join('')+'</div>'+
+ '<div class="qa-panel"><h3>'+L.status+'</h3><p>'+L.body+'</p></div>';
+}
+
 function certificationHTML(){
+const translated=qxLocalizedCertification();if(translated)return translated;
 return '<div class="qa-intro"><div class="qa-label">ПОДТВЕРЖДЕННЫЕ ПРОВАЙДЕРЫ · '+country.toUpperCase()+'</div><h1>Сертификаты и обучение</h1><p>Никаких «обязательных восьми дипломов для всех». Здесь собраны требования ведомств и примеры предложений учебных центров. Цены — снимок на ноябрь 2026; перед оплатой перепроверь условия, доступность мест и признание сертификата.</p></div>'+
 '<div class="qa-alert">⚠️ Бесплатная академия qexus lab НЕ выдаёт STCW, MED, медицинские заключения или дипломы Maricert. Официальные квалификации оформляются только через соответствующих провайдеров и органы.</div>'+
 '<div class="qa-cards">'+cards.map(c=>'<article class="qa-cert"><div class="qa-row"><span class="qa-kicker">'+E(c.kind)+'</span><span class="qa-price">'+E(c.price)+'</span></div><h3>'+E(c.name)+'</h3><p>'+E(c.role)+'</p><div class="qa-details"><span>📍 '+E(c.location)+'</span><span>🕒 '+E(c.duration)+'</span></div><div class="qa-tip">Перед оплатой: '+E(c.todo)+'</div><div class="qa-actions">'+external(c.source,"Правила и требования")+external(c.offer,"Курс / провайдер")+'</div></article>').join('')+'</div>';
@@ -141,6 +242,7 @@ modules.map(m=>'<details class="qa-lesson" id="qa-lesson-'+m[0]+'"><summary><spa
 '<div class="qa-panel"><h3>20 терминов для начала</h3><div class="qa-terms">'+terms.map(a=>'<div><b>'+E(a[0])+'</b><span>'+E(a[1])+'</span></div>').join('')+'</div></div>';
 }
 function jobsHTML(){
+const translated=qxLocalizedJobs();if(translated)return translated;
 const interview=["Tell me about your industrial experience.","What personal protective equipment do you use?","What would you do if a winch or conveyor jams?","Can you work shifts, weekends and in cold conditions?","What training or certificates do you currently hold?","Are you legally authorized to work in this country?"];
 return '<div class="qa-intro"><div class="qa-label">ПОДГОТОВКА К ПРИЁМУ НА РАБОТУ</div><h1>От реестра до контракта</h1><p>Пошаговая дорожная карта вместо покупки непроверенного списка email. Обязательные требования устанавливаются работодателем и законом, а не рекламой курсов.</p></div>'+
 '<div class="qa-steps">'+T.docs.map((a,i)=>'<div class="qa-step"><span>'+(i+1)+'</span><div><h3>'+E(a[0])+'</h3><p>'+E(a[1])+'</p></div></div>').join('')+'</div>'+
@@ -158,6 +260,7 @@ return '<div class="qa-intro"><div class="qa-label">ПОДГОТОВКА К ПР
 '<div class="qa-panel"><h3>Проверка договора и мошенничества</h3><p>Уточни фиксированную ставку или оплату от улова, гарантированные часы, сверхурочные, отпускные, страховку, питание, транспорт, удержания, валюту и порядок расторжения. Проверь, кто юридически нанимает и кто оплачивает обучение. Избегай работодателей, требующих личные платежи до письменного контракта.</p></div>';
 }
 function libraryHTML(){
+const translated=qxLocalizedLibrary();if(translated)return translated;
 return '<div class="qa-intro"><div class="qa-label">ИСТОЧНИКИ И ПРОВЕРКА ФАКТОВ</div><h1>Бесплатная библиотека</h1><p>Оригинальные документы государственных ведомств и курсы провайдеров. Это отправные точки для обновления информации, не готовые доказательства наличия вакансии или разрешения на работу.</p></div>'+
 '<div class="qa-cards">'+workLinks.map(([u,title])=>'<div class="qa-panel"><h3>'+E(title)+'</h3>'+external(u,"Открыть источник")+'</div>').join('')+'</div>'+
 '<div class="qa-panel"><h3>Статус информации</h3><p>Требования подтверждаются ссылками на ведомства, цены — страницами провайдеров. Отсутствие цены означает «не проверено», а не «бесплатно». Последняя ручная сверка: 17 ноября 2026. Для актуальных вакансий, курсов и визовых правил требуется повторная проверка перед действием.</p></div>';
