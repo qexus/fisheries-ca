@@ -130,3 +130,18 @@
 /* Shared QX logo from qexus lab home; no redundant project-specific logo. */
 .sidebar .qx-brand-image{display:block;flex:none;width:44px;height:44px;object-fit:contain;border-radius:11px;box-shadow:0 0 0 1px #31586a,0 3px 12px #17ddce22}
 .sidebar .brand>a,.sidebar .logo>a{display:flex;align-items:center;flex:none;text-decoration:none}
+
+
+/* Accessibility audit: keep the off-canvas menu out of keyboard navigation. */
+@media(max-width:740px){
+  .sidebar:not(.open){visibility:hidden}
+  .sidebar.open{visibility:visible}
+}
+.nav-item:focus-visible,.qa-side-link:focus-visible,.hamburger:focus-visible,
+.qx-subtools button:focus-visible,.qx-grade:focus-visible,.qx-favorite:focus-visible{
+  outline:2px solid #48d6be;
+  outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+  .sidebar,.app .sidebar,.shell .sidebar,.qa-side-link,.nav-item{transition:none!important;scroll-behavior:auto}
+}
