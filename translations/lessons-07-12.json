@@ -1,0 +1,348 @@
+{
+  "lessons": [
+    {
+      "n": 7,
+      "fr": {
+        "title": "Permis de travail, certificats et aptitude médicale",
+        "lead": "Trois catégories de documents à ne pas confondre.",
+        "sections": [
+          [
+            "Trois documents différents",
+            "Le droit de travailler relève de l’immigration; les qualifications maritimes attestent des compétences; le certificat médical confirme l’aptitude pour certaines fonctions. Aucun document ne remplace les deux autres. Certains certificats expirent ou demandent une mise à niveau; d’autres ne concernent que certaines responsabilités à bord."
+          ],
+          [
+            "Dépenser dans le bon ordre",
+            "Choisissez d’abord le pays, l’employeur et le poste. Obtenez des exigences écrites sur le navire, sa taille, ses voyages et vos tâches. Vérifiez ensuite les tableaux du régulateur et les organismes de formation reconnus. Comparez les frais de cours, déplacements, logement, langue de formation, préalables et examen médical. Demandez si l’employeur assume une partie des coûts avant de payer."
+          ],
+          [
+            "Certificats trompeurs",
+            "Une formation en ligne payante peut fournir une simple attestation de participation sans reconnaissance de Transports Canada ou de Sjøfartsdirektoratet. Refusez de payer pour une prétendue garantie d’emploi ou un certificat sans cours. Pour les certificats étrangers, vérifiez leur reconnaissance, leur durée de validité et toute procédure supplémentaire requise."
+          ]
+        ],
+        "task": "Choisissez une vraie offre d’emploi. Séparez les documents obligatoires et facultatifs, puis justifiez chaque élément par un lien vers l’employeur ou le régulateur.",
+        "questions": [
+          "Un certificat HACCP donne-t-il le droit de travailler dans un pays ?",
+          "À quel moment est-il raisonnable de payer une formation maritime coûteuse ?",
+          "Quel document ou statut établit le droit de travailler légalement ?"
+        ]
+      },
+      "uk": {
+        "title": "Дозволи на роботу, сертифікати й медичні довідки",
+        "lead": "Три різні документи, які не можна замінювати один одним.",
+        "sections": [
+          [
+            "Три категорії документів",
+            "Право працювати визначають імміграційні правила; морський сертифікат підтверджує навички; медична довідка — придатність до певної роботи. Це різні речі. Частину сертифікатів потрібно поновлювати, а інші стосуються лише конкретних посад в екіпажі."
+          ],
+          [
+            "Правильний порядок витрат",
+            "Спочатку оберіть країну, роботодавця й посаду. Отримайте письмові вимоги щодо судна, його розміру, маршруту та обов’язків. Потім перегляньте офіційні правила регулятора й знайдіть визнаний навчальний центр. Порівняйте вартість курсів, дороги, житла, мову, попередні вимоги й медогляд. До оплати з’ясуйте, чи відшкодовує витрати роботодавець."
+          ],
+          [
+            "Фальшиві сертифікати",
+            "Платний онлайн-курс може видати лише довідку про проходження, яку не визнають Transport Canada або Sjøfartsdirektoratet. Не платіть за «гарантоване місце» чи сертифікат без навчання. Іноземні документи перевіряйте на визнання, строк дії та потрібні додаткові процедури."
+          ]
+        ],
+        "task": "Оберіть реальну вакансію. Відокремте обов’язкові документи від необов’язкових і підтвердьте кожен вимогою роботодавця або регулятора.",
+        "questions": [
+          "Чи дає сертифікат HACCP право на роботу в країні?",
+          "Коли доцільно оплачувати дорогий морський курс?",
+          "Який документ підтверджує законне право працювати?"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "fr": {
+        "title": "Employeurs, offres d’emploi et vérification des annonces",
+        "lead": "Faire la différence entre un registre, une page carrières et un poste vacant.",
+        "sections": [
+          [
+            "Où chercher",
+            "Commencez par les pages carrières officielles, les bourses d’emploi nationales et les sites des entreprises. Les registres des pêches servent à vérifier l’existence d’une organisation; ils ne prouvent pas que celle-ci recrute. Notez toujours la date de consultation, car une annonce peut disparaître rapidement. Une page sans offre actuelle reste une piste de carrière, pas une offre ouverte."
+          ],
+          [
+            "Créer une fiche de suivi",
+            "Consignez le nom juridique, le site officiel, la région, le secteur, le contact, l’intitulé du poste, le lien direct, la date de publication, les exigences et les preuves. Si l’entreprise exige de postuler par formulaire, n’envoyez pas de CV à une adresse générale. Une adresse publique du service RH ne garantit ni réponse ni soutien pour un visa."
+          ],
+          [
+            "Signaux d’alerte",
+            "Méfiez-vous des frais pour obtenir une place à bord, des noms de domaine suspects, des salaires extravagants sans contrat, des demandes de passeport avant une entrevue ou d’une invitation à cacher une infraction. Vérifiez l’enregistrement légal, l’activité réelle et demandez des conditions écrites."
+          ]
+        ],
+        "task": "Créez un tableau de cinq employeurs avec liens directs. Classez chaque ressource en « offre vérifiée », « page carrières » ou « registre ».",
+        "questions": [
+          "L’inscription d’une entreprise au registre signifie-t-elle qu’elle recrute ?",
+          "Quel canal est préférable pour envoyer une candidature ?",
+          "Comment distinguer une page carrières d’une offre encore active ?"
+        ]
+      },
+      "uk": {
+        "title": "Роботодавці, вакансії та перевірка достовірності",
+        "lead": "Як відрізнити реєстр, кар’єрну сторінку й активне оголошення.",
+        "sections": [
+          [
+            "Де шукати",
+            "Починайте з офіційних кар’єрних сторінок, національних сайтів вакансій і вебсайтів компаній. Рибні реєстри допомагають перевірити існування підприємства, але не підтверджують набір працівників. Завжди фіксуйте дату: вакансія може швидко зникнути. Якщо відкритих посад немає, зберігайте посилання як кар’єрний канал, а не як вакансію."
+          ],
+          [
+            "Картка вакансії",
+            "Занотуйте юридичну назву, сайт, регіон, сектор, контакти, назву посади, пряме посилання, дату публікації, вимоги та джерело. Якщо компанія приймає CV лише через форму, не надсилайте його на загальну адресу. Відкрита пошта HR не гарантує відповіді чи візової підтримки."
+          ],
+          [
+            "Тривожні ознаки",
+            "Платня за місце на судні, підозрілий домен, фантастична зарплата без договору, вимога паспорта до співбесіди або приховування порушень — привід зупинитися. Перевірте офіційну реєстрацію, реальну діяльність і письмові умови."
+          ]
+        ],
+        "task": "Створіть журнал із п’яти роботодавців та прямих посилань. Розділіть їх на «підтверджена вакансія», «кар’єрна сторінка» і «реєстр».",
+        "questions": [
+          "Чи означає запис компанії в реєстрі відкриту вакансію?",
+          "Де безпечніше надсилати резюме?",
+          "Як відрізнити кар’єрну сторінку від активної вакансії?"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "fr": {
+        "title": "CV, lettre, entrevue et langue de travail",
+        "lead": "Préparer une candidature exacte et adaptée au poste.",
+        "sections": [
+          [
+            "Un CV ciblé",
+            "Pour un poste en transformation, mettez en valeur la production, la sécurité, le respect des procédures et le contrôle de qualité. Pour la maintenance, détaillez les diagnostics, pompes, circuits hydrauliques, entretien préventif et rapports seulement si vous avez vraiment effectué ces tâches. Ne vous présentez pas comme « marine engineer » sans qualification reconnue. Une à deux pages factuelles suffisent souvent."
+          ],
+          [
+            "Lettre de motivation",
+            "Rédigez six à neuf phrases : poste recherché, compétences, tâches déjà réalisées, disponibilités et moyen de contact. Soyez précis sur les langues : ne prétendez pas maîtriser l’anglais ou le français si vous débutez. Vous pouvez demander poliment si l’employeur aide au déménagement ou au logement. N’occultez pas un éventuel besoin de permis de travail."
+          ],
+          [
+            "S’entraîner à l’entrevue",
+            "Préparez des exemples sur la sécurité, les quarts, l’arrêt d’urgence et les communications. La méthode STAR décrit Situation, Tâche, Action et Résultat. Des phrases simples sont acceptables; pour travailler en sécurité, vous devez toutefois comprendre les consignes et savoir signaler un danger et arrêter une opération."
+          ]
+        ],
+        "task": "Rédigez un résumé de CV en anglais (55 mots maximum), une courte lettre et deux exemples STAR portant sur l’équipement et la sécurité.",
+        "questions": [
+          "Peut-on inscrire un certificat STCW non terminé sur son CV ?",
+          "À quoi sert la méthode STAR ?",
+          "Que signifient les quatre lettres de STAR ?"
+        ]
+      },
+      "uk": {
+        "title": "CV, супровідний лист, співбесіда та мова",
+        "lead": "Як скласти точне резюме під конкретну посаду.",
+        "sections": [
+          [
+            "Резюме під вакансію",
+            "Для перероблення риби підкресліть виробничий досвід, виконання інструкцій, безпеку й якість. Для техобслуговування згадайте діагностику, помпи, гідравліку, профілактику та документацію лише тоді, коли справді цим займалися. Не називайте себе «marine engineer» без належних повноважень. Однієї-двох охайних сторінок із фактами часто достатньо."
+          ],
+          [
+            "Супровідний лист",
+            "Напишіть 6–9 речень: посада, уміння, конкретні завдання, доступність і контакти. Чесно зазначайте рівень мови: basic English чи beginner French, якщо ви початківець. За потреби запитайте про переїзд чи житло. Не приховуйте потреби в дозволі на роботу."
+          ],
+          [
+            "Підготовка до співбесіди",
+            "Підготуйте приклади щодо безпеки, змінного графіка, аварійної зупинки й зв’язку в команді. Метод STAR: ситуація, завдання, дія, результат. Не обов’язково говорити складними фразами, але важливо розуміти інструкції, повідомляти про ризики та знати, коли зупинити небезпечну роботу."
+          ]
+        ],
+        "task": "Напишіть англомовне резюме-підсумок до 55 слів, короткий лист і два приклади за STAR про обладнання та безпеку.",
+        "questions": [
+          "Чи можна вказувати STCW, якщо курс ще не завершено?",
+          "Для чого потрібен STAR?",
+          "Що означають складові методу STAR?"
+        ]
+      }
+    },
+    {
+      "n": 10,
+      "fr": {
+        "title": "Contrats, horaires, rémunération et impôts",
+        "lead": "Comparer les conditions complètes et non seulement un salaire affiché.",
+        "sections": [
+          [
+            "Calculer la rémunération réelle",
+            "Le taux annoncé est souvent brut, avant impôts. Comparez le salaire horaire ou à la pièce, les heures garanties, la saisonnalité, les heures supplémentaires, les vacances, le logement, les repas et les déplacements. Certains navires rémunèrent une partie du travail selon les prises : demandez la formule exacte et les relevés. Évitez de comparer des salaires nets de pays différents sans tenir compte des retenues et des coûts."
+          ],
+          [
+            "Points à vérifier dans un contrat",
+            "Confirmez le nom juridique de l’employeur, le poste, le lieu, les dates, les quarts, les fonctions, le taux et la devise, la fréquence de paiement, le logement, l’assurance, la fin du contrat, la formation et le retour à domicile. Demandez si les pauses sont payées et qui fournit l’équipement de protection. Ne signez pas de contrat comportant des déductions obscures."
+          ],
+          [
+            "Normes officielles",
+            "La Norvège impose des règles sur les contrats écrits, les congés et certains taux sectoriels. Au Canada, les normes varient selon la province et le domaine, certaines questions maritimes relevant du fédéral. Les taux d’imposition et retenues sont personnels : ne croyez pas les promesses génériques de faible fiscalité sans source officielle."
+          ]
+        ],
+        "task": "Comparez deux offres : salaire brut, heures garanties, transport, logement, repas et périodes non rémunérées. Indiquez les données encore inconnues.",
+        "questions": [
+          "Quelle est la différence entre salaire brut et net ?",
+          "Que faire si le partage des revenus de pêche est mal défini ?",
+          "Quels frais faut-il inclure dans un budget de déménagement ?"
+        ]
+      },
+      "uk": {
+        "title": "Контракти, графіки, зарплата та податки",
+        "lead": "Порівнюйте всю пропозицію, а не лише заявлену ставку.",
+        "sections": [
+          [
+            "Повний розрахунок заробітку",
+            "Заявлена ставка зазвичай валова, до податків. Порівнюйте погодинну чи відрядну оплату, гарантовані години, сезонність, понаднормові, відпустку, вартість житла, їжі та дороги. На суднах можливі виплати залежно від улову — попросіть чітку формулу й порядок розрахунку. Не порівнюйте чисті зарплати різних країн без утримань і витрат."
+          ],
+          [
+            "Що перевірити в договорі",
+            "Юридична назва роботодавця, посада, місце роботи, дати, зміни, обов’язки, ставка й валюта, частота виплат, житло, страхування, розірвання, навчання та дорога додому. Заздалегідь запитайте про оплачувані перерви та ЗІЗ. Не підписуйте документ із незрозумілими утриманнями."
+          ],
+          [
+            "Офіційні трудові норми",
+            "У Норвегії діють правила письмових договорів, відпускних і деяких галузевих ставок. У Канаді норми залежать від провінції та сфери, а частина морських питань регулюється федерально. Податки й утримання індивідуальні: не довіряйте рекламним обіцянкам низьких податків без офіційного підтвердження."
+          ]
+        ],
+        "task": "Порівняйте дві вакансії: валовий дохід, гарантовані години, проїзд, житло, харчування й неоплачуваний час. Позначте невизначені суми.",
+        "questions": [
+          "Чим gross pay відрізняється від net pay?",
+          "Що робити, якщо незрозуміла формула оплати від улову?",
+          "Які витрати врахувати під час переїзду?"
+        ]
+      }
+    },
+    {
+      "n": 11,
+      "fr": {
+        "title": "Premier jour, communication et discipline de travail",
+        "lead": "La sécurité commence dès l’accueil et les consignes initiales.",
+        "sections": [
+          [
+            "Accueil et consignes",
+            "Identifiez votre superviseur, les tâches autorisées, les équipements de protection, les zones interdites et la procédure d’arrêt d’urgence. À bord, repérez le poste de rassemblement, les alarmes, le matériel de survie et la chaîne de communication. En usine, apprenez le stockage des produits chimiques, le verrouillage des équipements, les règles sur les couteaux et les températures. Ne commencez pas un travail dangereux si vous n’avez pas compris la consigne."
+          ],
+          [
+            "Passage de relais",
+            "Lors d’un changement de quart, signalez les travaux inachevés, défauts, alarmes des capteurs, contaminations, zones à risque et maintenances prévues. Notez des faits vérifiés et non des suppositions. Si la langue pose problème, reformulez la consigne et demandez une démonstration physique de la procédure sécuritaire."
+          ],
+          [
+            "Questions pratiques",
+            "Avant de partir en mer, vérifiez itinéraire, durée du voyage, moyens de communiquer avec les proches, médicaments, documents, vêtements, espace personnel et rangement. Dans les fermes isolées, organisez transport et hébergement avant votre arrivée."
+          ]
+        ],
+        "task": "Préparez une liste de douze questions pour votre premier jour, incluant la mise à l’arrêt et la déclaration d’un danger.",
+        "questions": [
+          "Que faire si vous ne comprenez pas un ordre d’urgence ?",
+          "Quelles informations transmettre à la relève ?",
+          "En quoi consiste un bon changement de quart ?"
+        ]
+      },
+      "uk": {
+        "title": "Перший робочий день, зв’язок і дисципліна",
+        "lead": "Безпечна робота починається з інструктажу й зрозумілих команд.",
+        "sections": [
+          [
+            "Перший інструктаж",
+            "Уточніть керівника зміни, дозволені завдання, ЗІЗ, заборонені зони й аварійну зупинку. На судні знайдіть місце збору, тривоги, рятувальні засоби й порядок повідомлень. На заводі дізнайтеся про хімію, блокування обладнання, ножі й температурні зони. Не починайте небезпечну роботу, якщо не зрозуміли інструкцію."
+          ],
+          [
+            "Передавання зміни",
+            "Повідомляйте про незавершені роботи, дефекти, збої датчиків, забруднення, небезпечні зони та планове обслуговування. Записуйте факти, а не припущення. За мовних труднощів повторіть ключову команду своїми словами й попросіть показати правильну безпечну дію."
+          ],
+          [
+            "Побутові питання",
+            "До відплиття з’ясуйте маршрут, тривалість рейсу, зв’язок із рідними, ліки, документи, спорядження, особисте місце й правила зберігання речей. На віддалених фермах заздалегідь домовтеся про транспорт і житло."
+          ]
+        ],
+        "task": "Складіть перелік із 12 запитань для першого дня, зокрема про зупинку обладнання та повідомлення про небезпеку.",
+        "questions": [
+          "Що робити, якщо не зрозуміли аварійну команду?",
+          "Що повідомляти під час передавання зміни?",
+          "Якою має бути якісна передача зміни?"
+        ]
+      }
+    },
+    {
+      "n": 12,
+      "fr": {
+        "title": "Projet final : des compétences à une candidature réelle",
+        "lead": "Constituer un dossier, un budget et un plan d’action sur 90 jours.",
+        "sections": [
+          [
+            "Dossier de candidature",
+            "Préparez un ensemble : CV adapté, courte lettre, preuves d’expérience, diplômes, certificats obtenus, journal des employeurs et références sur les qualifications requises. Notez la date et la validité de chaque pièce. Ne déposez jamais de passeport ou de documents personnels dans un dépôt GitHub public."
+          ],
+          [
+            "Budget et calendrier de 90 jours",
+            "Sélectionnez deux métiers, au plus cinq employeurs prioritaires au début et tous les documents vraiment obligatoires. Calculez seulement les coûts vérifiés : cours, examen médical, transport, hébergement, traductions et frais d’immigration. Planifiez des semaines pour les langues, les candidatures, les entrevues d’entraînement et l’analyse des offres authentiques."
+          ],
+          [
+            "Critères de préparation",
+            "Vous pouvez postuler lorsque vous comprenez les tâches, les consignes essentielles de sécurité, les conditions du travail légal et les certificats qui sont réellement requis. N’achetez pas de prétendus « forfaits de placement garantis ». Gardez des liens datés vers les sources : les prix et les règles changent."
+          ]
+        ],
+        "task": "Préparez un tableau de dix entreprises, cinq pages carrières, une matrice documentaire pour deux métiers, un calendrier sur 90 jours et une candidature prête à envoyer.",
+        "questions": [
+          "À quoi reconnaît-on un parcours de candidature prêt ?",
+          "Où conserver ses documents personnels ?",
+          "Pourquoi éviter de déposer son passeport sur un GitHub public ?"
+        ]
+      },
+      "uk": {
+        "title": "Підсумковий проєкт: шлях від навичок до вакансії",
+        "lead": "Папка кандидата, бюджет і план дій на 90 днів.",
+        "sections": [
+          [
+            "Портфоліо кандидата",
+            "Зберіть адаптоване CV, короткий лист, підтвердження досвіду, дипломи, отримані сертифікати, журнал роботодавців і посилання на обов’язкові вимоги. Позначте дату та строк чинності кожного документа. Ніколи не публікуйте паспорт чи особисті файли у відкритому GitHub."
+          ],
+          [
+            "Бюджет і план на 90 днів",
+            "Оберіть дві посади, не більш як п’ять першочергових роботодавців і всі справді обов’язкові документи. Порахуйте лише підтверджені витрати: курси, медогляд, дорогу, житло, переклади й імміграційні збори. Заплануйте тижні для мов, заявок, тренувальних співбесід і перевірки реальних пропозицій."
+          ],
+          [
+            "Критерії готовності",
+            "Ви готові подаватися, якщо розумієте роботу й основні правила безпеки, маєте законний статус для обраного маршруту та знаєте обов’язкові сертифікати. Не купуйте непідтверджені «пакети працевлаштування». Зберігайте датовані посилання: правила й ціни змінюються."
+          ]
+        ],
+        "task": "Підготуйте таблицю 10 компаній, 5 кар’єрних сторінок, матрицю документів для двох професій, календар на 90 днів і одну готову заявку.",
+        "questions": [
+          "Що означає готовий шлях до вакансії?",
+          "Де зберігати особисті документи кандидата?",
+          "Чому не варто викладати паспорт у відкритий GitHub?"
+        ]
+      }
+    }
+  ],
+  "notes": {
+    "no": {
+      "fr": [
+        "En Norvège, Sjøfartsdirektoratet prévoit une formation de base des pêcheurs ou un STCW CoP admissible, et un certificat médical selon les cas; les qualifications de commandement dépendent du navire et de la fonction.",
+        "En Norvège, NAV Arbeidsplassen et les carrières de SalMar, Havfisk ou Mowi sont des pistes à vérifier régulièrement.",
+        "En Norvège, l’employeur peut exiger le norvégien ou un anglais suffisant pour communiquer en sécurité. Vérifiez avant de postuler.",
+        "En Norvège, Arbeidstilsynet explique les contrats écrits, les congés payés (feriepenger) et les heures de travail. Vérifiez les taux applicables.",
+        "En Norvège, les règles et consignes de travail dépendent du bateau et de l’employeur. Conservez votre contrat et les coordonnées utiles.",
+        "Bilan Norvège : avant de payer une formation maritime, vérifiez une voie réaliste de permis auprès de l’UDI et les exigences de qualification de Sjøfartsdirektoratet."
+      ],
+      "uk": [
+        "У Норвегії Sjøfartsdirektoratet передбачає базове навчання рибалок або прийнятний STCW CoP, а за певних умов медичну довідку; командні сертифікати залежать від судна й посади.",
+        "У Норвегії перевіряйте NAV Arbeidsplassen та кар’єрні сайти SalMar, Havfisk, Mowi й інших роботодавців.",
+        "У Норвегії для безпечної роботи можуть вимагати норвезьку або достатню англійську. Уточнюйте до подання заявки.",
+        "У Норвегії Arbeidstilsynet пояснює письмові договори, відпускні (feriepenger) та робочий час; перевіряйте чинні ставки.",
+        "У Норвегії трудові інструкції залежать від судна й роботодавця. Зберігайте договір і важливі контакти.",
+        "Підсумок для Норвегії: перед оплатою морських курсів перевірте реальний шлях дозволу через UDI та вимоги Sjøfartsdirektoratet."
+      ]
+    },
+    "ca": {
+      "fr": [
+        "Pour un bateau de pêche opérant à moins de 25 milles marins de la côte, TP 15356 mentionne le SDV-BS pour chaque membre d’équipage; au-delà, d’autres exigences peuvent s’appliquer, notamment la DVS.",
+        "Au Canada, le Guichet-Emplois (Job Bank) indique souvent l’employeur, la rémunération et la procédure pour postuler. Vérifiez les conditions liées à votre statut.",
+        "Au Québec, préparez une version française du CV; dans les provinces atlantiques, l’anglais sera souvent nécessaire. Suivez la langue de l’offre.",
+        "Au Canada, comparez les retenues fiscales et les normes provinciales. Le calculateur du site ne donne qu’une approximation du salaire brut.",
+        "Transports Canada souligne l’importance de la familiarisation à bord et des procédures écrites de sécurité avant le départ.",
+        "Bilan Canada : déterminez où votre permis vous autorise à travailler et quel centre de formation est le plus proche pour le rôle visé."
+      ],
+      "uk": [
+        "Для риболовного судна менш ніж за 25 морських миль від берега TP 15356 вказує SDV-BS для кожного члена екіпажу; у дальших рейсах можуть діяти інші вимоги, зокрема DVS.",
+        "У Канаді Job Bank часто показує роботодавця, оплату й спосіб подання. Перевіряйте, чи приймають кандидатів із вашим статусом.",
+        "Для Квебеку підготуйте французьке CV, а для Атлантичної Канади частіше потрібна англійська. Орієнтуйтеся на мову вакансії.",
+        "У Канаді порівнюйте податки та трудові норми різних провінцій. Калькулятор на сайті дає лише приблизний валовий дохід.",
+        "Transport Canada підкреслює важливість суднового ознайомлення й письмових процедур безпеки до виходу в море.",
+        "Підсумок для Канади: з’ясуйте, де вам дозволено працювати за документом, і який найближчий центр навчання підходить до посади."
+      ]
+    }
+  }
+}
