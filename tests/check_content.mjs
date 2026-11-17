@@ -97,3 +97,14 @@ assert(app.includes("function restoreAcademyData("),"Old or new backup restorati
 assert(app.includes("academy:exportAcademyData()"),"Export must actually save Academy data");
 
 console.log("qexus academy: 12 modules, 60 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
+
+// Static educational HTML must be available independently of JavaScript.
+for (const file of ["index.html","professions.html","employers.html","registries.html","glossary.html",...Array.from({length:12},(_,i)=>"lesson-"+String(i+1).padStart(2,"0")+".html")]) {
+ const content=fs.readFileSync("public/guides/"+file,"utf8");
+ assert(content.includes('<link rel="canonical"'),"Static canonical missing in "+file);
+ assert(content.includes('<meta name="description"'),"Static meta description missing in "+file);
+ assert(content.includes("<h1>"),"Static heading missing in "+file);
+}
+assert(fs.existsSync("public/guides/guide.css"),"Missing static guide CSS");
+assert(html.includes('href="guides/"'),"Static guide hub must be linked from app");
+console.log("17 Canada static indexable guides validated.");
