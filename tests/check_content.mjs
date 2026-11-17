@@ -161,7 +161,8 @@ for(const lang of ["fr","uk"]){
   assert(content.includes('<html lang="'+lang+'">'),"Translated guide needs html lang: "+file);
   assert(content.includes('rel="canonical" href="'+url+'"'),"Translated guide needs own canonical: "+file);
   assert(content.includes('hreflang="fr"')&&content.includes('hreflang="uk"'),"Translated guide needs hreflang: "+file);
-  assert(content.includes('href="https://')&&content.includes('target="_blank"'),"Official/reference links missing: "+file);
+  if(guide!=="glossary")assert(content.includes('href="https://')&&content.includes('target="_blank"'),"Official/reference links missing: "+file);
+  else assert(content.includes('class="terms"')&&content.includes('href="../../?view='),"Glossary must preserve terms and interactive directory");
   if(lang==="fr")assert(!/[А-Яа-яЁё]/.test(content),"Russian prose remains in French guide: "+file);
  }
  const professions=fs.readFileSync("public/"+lang+"/guides/professions.html","utf8");
