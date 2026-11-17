@@ -72,4 +72,9 @@ assert(app.includes('id="loadMoreCompanies"'),"Canada catalog must support loadi
 assert(app.includes("state.companyLimit+=60"),"More button must show additional records");
 assert(app.includes("$('#menuToggle').setAttribute('aria-expanded'"),"Menu expanded state must be updated");
 
+
+assert(app.includes("function exportAcademyData()"),"Backup must include new Academy data");
+assert(app.includes("function restoreAcademyData("),"Old or new backup restoration must support Academy progress");
+assert(app.includes("academy:exportAcademyData()"),"Export must actually save Academy data");
+
 console.log("qexus academy: 12 modules, 24 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
