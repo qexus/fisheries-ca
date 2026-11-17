@@ -11,3 +11,8 @@
 @media(max-width:900px){.header{gap:8px}.header-r{gap:5px}.region-nav a{padding:7px 8px;font-size:11px}.version{display:none}}
 @media(max-width:450px){.breadcrumb{font-size:11px}.header{padding:0 9px}.region-nav{gap:3px}.region-nav a{padding:7px 6px;gap:2px;font-size:10px}}
 @media(max-width:365px){.region-nav a span{display:none}.region-nav a{font-size:15px;padding:5px 8px}}
+
+/* Current country is a label, never a link to this exact page. */
+.region-nav .country-current{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;border:1px solid #39cfbb;background:#154a4a;color:#adfff1;text-decoration:none;padding:8px 11px;border-radius:11px;font-weight:750;font-size:12px;letter-spacing:0}
+@media(max-width:720px){.region-nav .country-current{padding:6px 8px;font-size:11px}}
+@media(max-width:480px){.region-nav .country-current{padding:5px 8px;font-size:15px}.region-nav .country-current span{display:none}}

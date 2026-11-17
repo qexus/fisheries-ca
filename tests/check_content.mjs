@@ -64,8 +64,12 @@ assert((extras.match(/<button\b/g)||[]).length === 4,
   "Four advanced tools must be available in a collapsed disclosure");
 assert(html.includes("shared/fisheries-router.js") && html.includes("shared/fisheries-router.css"),
   "Shared deep-link navigation assets must be loaded");
-assert(html.includes('href="https://qexus.github.io/site-map.html"'),
-  "HTML site map must be reachable from Fisheries pages");
+assert(html.includes('href="https://qexus.github.io/work.html"'),
+  "Country page needs a contextual return to the career hub");
+assert(!html.includes('href="https://qexus.github.io/site-map.html"') && !html.includes('href="https://qexus.github.io/status.html"'),
+  "Maps and registry status belong to the career hub, not duplicated in every footer");
+assert((html.match(/<a href="guides\//g)||[]).length === 1,
+  "One entry into the static Academy is enough");
 const academic=fs.readFileSync("public/academy.js","utf8");
 const expanded=fs.readFileSync("public/expansion.js","utf8");
 assert(!/bfisherman|bfishman/i.test(html+academic),"No commercial course name in public interface");
@@ -108,3 +112,5 @@ for (const file of ["index.html","professions.html","employers.html","registries
 assert(fs.existsSync("public/guides/guide.css"),"Missing static guide CSS");
 assert(html.includes('href="guides/"'),"Static guide hub must be linked from app");
 console.log("17 Canada static indexable guides validated.");
+
+assert(html.includes('class="country-current" aria-current="page"'),"Current country should be a label, not a self-link");
