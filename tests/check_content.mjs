@@ -61,4 +61,15 @@ assert(app.includes("generated/registry.json"),"Public registry auto-load must r
 assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work");
 console.log("qexus compact menu: seven sections; merged course, resources, job registry and tools validated.");
 
+
+assert(html.includes('rel="canonical"'),"Public site must declare its canonical URL");
+assert(!html.includes("noindex,nofollow"),"Public educational pages must not be blocked from indexing");
+assert(html.includes('aria-controls="sidebar"') && html.includes('aria-expanded="false"'),"Mobile menu needs accessible state");
+assert(app.includes("if(!document.querySelector('#main .qa-wrap'))render()"),"Do not replace an open Academy view after registry fetch");
+
+assert(app.includes("companyLimit:60"),"Canada catalog must paginate on mobile");
+assert(app.includes('id="loadMoreCompanies"'),"Canada catalog must support loading next page");
+assert(app.includes("state.companyLimit+=60"),"More button must show additional records");
+assert(app.includes("$('#menuToggle').setAttribute('aria-expanded'"),"Menu expanded state must be updated");
+
 console.log("qexus academy: 12 modules, 24 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
