@@ -83,6 +83,8 @@ function show(view){
  window.scrollTo({top:0,behavior:"instant"});
 }
 document.addEventListener("click",e=>{
+ const tool=e.target.closest(".qx-subtools button[data-view]");
+ if(tool){e.preventDefault();window.qexusNavigate?.(tool.dataset.view);document.querySelectorAll("[data-qx-view]").forEach(b=>b.classList.remove("active"));return}
  const btn=e.target.closest("[data-qx-view]");
  if(btn){e.preventDefault();show(btn.dataset.qxView);return}
  if(e.target.closest("[data-view],[data-qa-view]"))document.querySelectorAll("[data-qx-view]").forEach(b=>b.classList.remove("active"));
