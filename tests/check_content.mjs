@@ -60,8 +60,8 @@ const extras = navigation.match(/<details class="qf-extra">[\s\S]*?<\/details>/)
 const primaryNavigation = navigation.replace(extras, "");
 assert((primaryNavigation.match(/<button\b/g)||[]).length === 7,
   "Exactly seven primary navigation sections should remain visible");
-assert((extras.match(/<button\b/g)||[]).length === 4,
-  "Four advanced tools must be available in a collapsed disclosure");
+assert((extras.match(/<button\b/g)||[]).length === 7,
+  "All seven advanced tools must be available in a collapsed disclosure");
 assert(html.includes("shared/fisheries-router.js") && html.includes("shared/fisheries-router.css"),
   "Shared deep-link navigation assets must be loaded");
 assert(html.includes('href="https://qexus.github.io/work.html"'),
