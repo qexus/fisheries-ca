@@ -48,6 +48,37 @@ class RegistryTests(unittest.TestCase):
         result=build(previous={'companies':[{'name':'Existing'}]},fetch=fail)
         self.assertEqual(result['status'],'stale')
         self.assertEqual(result['companies'][0]['name'],'Existing')
+    def test_partial_cfia_failure_preserves_older_companies(self):
+        old={'companies':[{'name':'Older CFIA business','province':'QC'}],
+             'aquaculture':[{'name':'Older BC site','category':'BC shellfish'}]}
+        def fetch(url):
+            if url in (CFIA_CSV,CFIA_PAGE): raise ConnectionError('offline CFIA')
+            return b'Licence Holder,Site Name,Licence Number,Community\nNew Farms,Bay A,445,Nanaimo\n'
+        result=build(previous=old,fetch=fetch)
+        self.assertEqual(result['status'],'partial')
+        self.assertEqual(result['sources']['CFIA'],'stale')
+        self.assertEqual(result['companies'][0]['name'],'Older CFIA business')
+        self.assertEqual(len(result['aquaculture']),3) # 3 fresh BC sources
+
+    def test_partial_bc_failure_preserves_only_missing_bc_source(self):
+        old={'companies':[], 'aquaculture':[
+            {'name':'Old shellfish','category':'BC shellfish'},
+            {'name':'Old marine finfish','category':'BC marine finfish'}]}
+        cfia=('estName,estRefNum,estAddress,estCity,estProvince,estPostalCode\n'
+             + ''.join(f'Fishery {i},00{i},Port Road,Quebec,QC,G0A0A0\n' for i in range(26))).encode()
+        def fetch(url):
+            if url==CFIA_CSV:return cfia
+            if url==BC_BASE+BC_FILES['BC shellfish']: raise ConnectionError('offline shellfish')
+            return b'Licence Holder,Site Name,Licence Number,Community\nFresh Farms,Bay B,566,Nanaimo\n'
+        result=build(previous=old,fetch=fetch)
+        self.assertEqual(result['status'],'partial')
+        self.assertEqual(result['sources']['CFIA'],'ok')
+        self.assertEqual(result['sources']['BC shellfish'],'stale')
+        self.assertEqual(len(result['companies']),26)
+        self.assertEqual(len(result['aquaculture']),3)
+        self.assertTrue(any(x['name']=='Old shellfish' for x in result['aquaculture']))
+        self.assertFalse(any(x['name']=='Old marine finfish' for x in result['aquaculture']))
+
     def test_no_private_identifiers(self):
         csv_text='Name,Ref #,Address,City,Province,Postal Code\n'+''.join(f'Fish Plant {i},{i},Road,Town,NB,X0X0X0\n' for i in range(26))
         result=cfia_companies(parse_csv(csv_text.encode()))
