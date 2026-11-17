@@ -47,4 +47,18 @@ for(const path of ["lessons-extended.js","reference-data.js","academy.js","expan
 const academy=fs.readFileSync("public/academy.js","utf8");
 assert(academy.includes("window.qexusExpansionLesson?.(m[0])"),"Detailed lessons not integrated");
 for(const view of ['matrix','employers'])assert(html.includes('data-qx-view="'+view+'"'),"Missing menu "+view);
+
+const navigation=html.match(/<nav id="nav"[\s\S]*?<\/nav>/)?.[0]||"";
+assert((navigation.match(/<button\b/g)||[]).length===7,"Exactly seven visible main menu sections");
+const academic=fs.readFileSync("public/academy.js","utf8");
+const expanded=fs.readFileSync("public/expansion.js","utf8");
+assert(!/bfisherman|bfishman/i.test(html+academic),"No commercial course name in public interface");
+assert(academic.includes("function legacyExtras"),"Old course materials must be merged, not discarded");
+assert(expanded.includes("qexusAcademyCertificates")&&expanded.includes("qexusAcademyCareer"),"Certification and career knowledge remain accessible");
+assert(expanded.includes("qx-subtools"),"Tools should remain accessible outside main navigation");
+const app=fs.readFileSync("public/app.js","utf8");
+assert(app.includes("generated/registry.json"),"Public registry auto-load must remain enabled");
+assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work");
+console.log("qexus compact menu: seven sections; merged course, resources, job registry and tools validated.");
+
 console.log("qexus academy: 12 modules, 24 quizzes, 14 role paths, 13 employer career links, script wiring OK.");
