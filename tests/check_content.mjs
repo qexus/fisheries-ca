@@ -18,6 +18,10 @@ for(const l of lessons){
   assert(l.sections.length >= 3, "At least 3 detail sections per module");
   assert(l.questions.length >= 2, "At least two questions");
   assert(l.task.length >= 50, "Substantive task required");
+  assert(l.references?.canada?.length && l.references?.norway?.length,"Country-specific official reading needed for each lesson");
+  for(const country of ["canada","norway"]){
+    assert(l.references[country].every(u=>/^https:\/\//.test(u)),"Official learning reference must use HTTPS");
+  }
   for(const q of l.questions){
     assert(q.length === 4 && Array.isArray(q[1]), "Quiz is [prompt,choices,correct,explanation]");
     assert(q[1].length >= 3 && Number.isInteger(q[2]) && q[2]>=0 && q[2]<q[1].length, "Correct answer index");
@@ -40,6 +44,9 @@ for(const country of ["canada","norway"]){
  }
 }
 const html=fs.readFileSync("public/index.html","utf8");
+assert(html.includes('shared/fisheries-core.js') && html.includes('shared/fisheries-core.css'),"Shared cross-country modules must be linked");
+assert(html.includes('http-equiv="Content-Security-Policy"'),"CSP must be applied to Fisheries shell");
+
 for(const path of ["lessons-extended.js","reference-data.js","academy.js","expansion.js","expansion.css","academy.css"]){
  assert(html.includes(path), "Missing linked asset "+path);
  assert(fs.existsSync("public/"+path), "Missing asset "+path);
