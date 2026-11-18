@@ -23,3 +23,23 @@
 .header .qx-language-switch{flex:none;z-index:9}
 @media(max-width:800px){.header{height:auto;min-height:60px;flex-wrap:wrap;gap:5px;padding-top:8px;padding-bottom:8px}.header .qx-language-switch{margin-left:auto}.header .header-r{margin-left:auto}}
 @media(max-width:480px){.header .qx-language-switch a{min-width:30px;padding:5px 6px}.header .qx-language-switch{gap:2px}}
+
+/* Mobile header: two predictable rows; locale controls never overlap country navigation. */
+@media(max-width:800px){
+  .body>.header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;gap:8px!important;height:auto!important;min-height:65px;padding:9px 13px!important}
+  .header>.hamburger{grid-column:1;grid-row:1}
+  .header>.breadcrumb{grid-column:2;grid-row:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .header>.qx-language-switch{grid-column:3;grid-row:1;margin:0}
+  .header>.header-r{grid-column:1/-1;grid-row:2;justify-self:end;margin:0;max-width:100%;min-width:0;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+  .header .region-nav{max-width:100%;flex-wrap:wrap;justify-content:flex-end}
+}
+
+/* Article-directory link: visible breathing room before the shared footer. */
+.seo-static-guides{display:flex;align-items:center;max-width:1320px;margin:0 auto;
+  padding:12px clamp(16px,3vw,35px) 26px;min-width:0}
+.seo-static-guides a{display:inline-flex;align-items:center;max-width:100%;border:1px solid #315467;
+  background:#102c3d;border-radius:10px;padding:10px 14px;color:#a6e8dc;
+  font-size:12px;font-weight:700;line-height:1.45;text-decoration:none}
+.seo-static-guides a:hover{border-color:#4adac2;background:#164050}
+.seo-static-guides a:focus-visible{outline:2px solid #4adac2;outline-offset:3px}
+@media(max-width:680px){.seo-static-guides{padding:12px 16px 24px}}
