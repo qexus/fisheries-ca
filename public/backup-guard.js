@@ -35,6 +35,12 @@ window.qxValidateBackup=(snapshot,country)=>{
   for(const key of ['completed','favorites'])if(d[key]!==undefined&&(!Array.isArray(d[key])||d[key].length>20000||d[key].some(x=>typeof x!=='string')))fail();
  }else fail();
  map(snapshot.academy,['string']);
+ // Validate candidate journey BEFORE any existing backup data is changed.
+ // Older backups lacking a journey remain valid.
+ if(snapshot.journey!==undefined){
+  if(!window.qxCandidateJourney||typeof window.qxCandidateJourney.validateSnapshot!=='function'||
+     !window.qxCandidateJourney.validateSnapshot(snapshot.journey,country))fail();
+ }
  return true;
 };
 })();
