@@ -244,18 +244,20 @@ return '<div class="qa-intro"><div class="qa-label">ПОДТВЕРЖДЕННЫЕ
 }
 
 function legacyExtras(id){
+ const translations=window.QX_APP_I18N?.[academyLanguage()];
+ const copy=text=>translations?.[text]||text;
  const map=isCA
  ?{"01":["01"],"02":["02"],"04":["06"],"05":["05","07"],"06":["08"],"07":["04"],"08":["03"],"09":["10"],"10":["09"]}
  :{"01":[1],"03":[4],"04":[3],"05":[5],"06":[6],"07":[7],"08":[2],"09":[9],"10":[8],"11":[10]};
  const arr=isCA?(window.CANADA_FISHERIES_SEED?.lessons||[]):(window.QEXUS_DATA?.modules||[]);
  const old=(map[id]||[]).map(n=>arr.find(x=>String(x.id)===String(n))).filter(Boolean);
  if(!old.length)return "";
- return '<details class="qa-legacy"><summary>Дополнительные материалы и практика <span>⌄</span></summary><div class="qa-legacy-content">'+old.map(x=>
- '<h4>'+E(x.title)+'</h4>'+
+ return '<details class="qa-legacy"><summary>'+E(copy('Дополнительные материалы и практика'))+' <span>⌄</span></summary><div class="qa-legacy-content">'+old.map(x=>
+ '<h4>'+E(copy(x.title))+'</h4>'+
  (x.goal?'<p><b>Цель:</b> '+E(x.goal)+'</p>':'')+
  (Array.isArray(x.sections)?x.sections.map(z=>'<h5>'+E(z[0])+'</h5><p>'+E(z[1])+'</p>').join(''):'')+
- (x.theory?'<p>'+E(x.theory)+'</p>':'')+
- '<div class="qa-legacy-task"><b>Практика:</b> '+E(x.practice||x.task||'')+'</div>'
+ (x.theory?'<p>'+E(copy(x.theory))+'</p>':'')+
+ '<div class="qa-legacy-task"><b>'+E(copy('Практика:'))+'</b> '+E(copy(x.practice||x.task||''))+'</div>'
  ).join('')+'</div></details>';
 }
 function translatedCurriculumHTML(){
@@ -274,6 +276,7 @@ function translatedCurriculumHTML(){
  for(const [h,p] of l.sections)out+='<h3>'+E(h)+'</h3><p>'+E(p)+'</p>';
  out+='<div class="qa-panel"><h3>'+(fr?"Exigences propres au pays":"Вимоги для країни")+'</h3><p>'+E(l.note)+'</p></div>';
  out+='<div class="qa-exercise"><b>'+(fr?"Exercice pratique":"Практичне завдання")+'</b><p>'+E(l.task)+'</p></div>';
+ if(isCA)out+=legacyExtras(l.id);
  out+=(window.qexusExpansionQuiz?.(l.id)||'');
  out+='<p><a href="'+E(url)+'">'+(fr?"Leçon complète et sources officielles":"Повний урок та офіційні джерела")+' ↗</a></p>';
  out+='<label class="qa-done"><input type="checkbox" data-qa-complete="'+E(l.id)+'"> '+(fr?"J’ai terminé cette activité":"Я виконав(ла) це завдання")+'</label></div></details>';

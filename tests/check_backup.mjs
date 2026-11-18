@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const window={};vm.runInNewContext(fs.readFileSync('public/backup-guard.js','utf8'),{window});
+const check=window.qxValidateBackup;
+const no={app:'qexus-fishing',companies:[{name:'Test',id:'a'}],vessels:[{ship:'Test',company:'Test'}],lessons:{'01':true},statuses:{'a':'Изучаю'}};
+const ca={app:'qexus-fisheries-canada',data:{imported:[{name:'Test',id:'a'}],notes:{'a':'<script>literal note</script>'},completed:['01'],favorites:['a']}};
+assert(check(no,'norway'));assert(check(ca,'canada'));
+for(const value of [null,[],{...no,companies:[null]},{...no,vessels:[{ship:{}}]},{...no,statuses:[]},{...no,checks:{a:{b:true}}},{...no,companies:Array(10001).fill({name:'x'})}])assert.throws(()=>check(value,'norway'));
+assert.throws(()=>check({...ca,data:{imported:[null]}},'canada'));
+assert.throws(()=>check({...ca,data:{notes:{a:[]}}},'canada'));
+assert.throws(()=>check({...no,academy:JSON.parse('{"__proto__":"x"}')},'norway'));
+assert.throws(()=>check({...ca,data:{favorites:[{}]}},'canada'));
+assert.equal(ca.data.notes.a,'<script>literal note</script>','Validation must not alter user content');
+console.log('Passed: valid local backups, invalid records, state types, oversized arrays, prototype keys; no mutation.');
