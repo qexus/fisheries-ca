@@ -41,6 +41,7 @@ jobs:
           node tests/check_locales.mjs
           node tests/check_backup.mjs
           node tests/check_app_locales.mjs
+          node tests/check_layout.mjs
           for file in public/*.js; do node --check "$file"; done
       - name: Download official CFIA and DFO BC registries
         # Network/schema problems are reported in the generated JSON; stale snapshots are retained.
