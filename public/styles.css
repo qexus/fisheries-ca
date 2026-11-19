@@ -59,3 +59,7 @@
 @container (max-width:250px){
   .province-panel .province-map{grid-template-columns:minmax(0,1fr)}
 }
+
+/* Keep the footer out of the first viewport while the official registry UI hydrates.
+   Prevents a mobile layout shift from the short crawlable fallback to the dashboard. */
+#main.content{min-height:100vh;min-height:100svh}
