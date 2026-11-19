@@ -7,7 +7,7 @@
 const isCA=/fisheries-ca(?:\/|$)/.test(location.pathname);
 const country=isCA?"Canada":"Norway";
 const E=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const external=(url,text)=>'<a target="_blank" rel="noopener noreferrer" href="'+E(url)+'">'+E(text||"Официальная информация")+' ↗</a>';
+const external=(url,text)=>{try{const u=new URL(String(url??''));if(u.protocol!=='https:'||u.username||u.password||u.href.length>2048)return '';return '<a target="_blank" rel="noopener noreferrer" href="'+E(u.href)+'">'+E(text||"Официальная информация")+' ↗</a>'}catch{return ''}};
 const L={
   tc:"https://tc.canada.ca/en/marine-transportation/publications/tp-15356-small-vessel-compliance-program-fishing-vessel-svcp-f-detailed-compliance-report-guidance-notes-06-2024",
   schools:"https://tc.canada.ca/en/marine-transportation/publications/tp-10655e-recognized-institutions-approved-training-courses-11-2025",
