@@ -213,3 +213,18 @@ for(const label of ["Курсы и цены","План отклика","Библ
 assert(html.includes('src="https://qexus.github.io/shared/site-i18n.js" defer'),"Shared translation dictionary must be enabled");
 assert(!fs.existsSync("public/i18n.js"),"Redundant local dictionary must not be published");
 console.log("Translated Academy auxiliary navigation verified.");
+
+
+// External Academy anchors must reject non-HTTPS schemes, embedded credentials and markup injection.
+const academyLinkHelpers=academy.split('\n').filter(line=>/^const (?:E|external)=/.test(line));
+assert.equal(academyLinkHelpers.length,2,'Expected isolated Academy HTML escaping + external URL helpers');
+const academyExternal=vm.runInNewContext(academyLinkHelpers.join('\n')+'\nexternal',{URL});
+const safeLink=academyExternal('https://example.org/sources?item=1&lang=fr','Reference');
+assert(safeLink.includes('href="https://example.org/sources?item=1&amp;lang=fr"'),'Encode URL attribute entities');
+assert(safeLink.includes('rel="noopener noreferrer"'),'Use safe new-tab link attributes');
+for(const candidate of ['javascript:alert(1)','data:text/html,<svg onload=alert(1)>','http://example.org/','https://name:password@example.org/','not-a-url']) {
+ assert.equal(academyExternal(candidate,'unsafe'),'','Reject unsafe Academy source '+candidate);
+}
+const escapedLabel=academyExternal('https://example.org/','<img src=x onerror=alert(1)>');
+assert(!escapedLabel.includes('<img')&&escapedLabel.includes('&lt;img'),'Do not insert untrusted link labels as HTML');
+console.log('Academy external-link URL and markup hardening verified.');
