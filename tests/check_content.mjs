@@ -208,6 +208,8 @@ for(const view of ["cert","jobs","library"]){
 for(const label of ["Курсы и цены","План отклика","Библиотека ведомств"]){
  assert(html.includes(label),"Sidebar must have a readable source label: "+label);
 }
-const translations=fs.readFileSync("public/i18n.js","utf8");
-assert(translations.includes("Cours et tarifs")&&translations.includes("Офіційна бібліотека"),"Auxiliary menu needs French and Ukrainian translations");
+// The dictionary is centrally versioned at qexus.github.io/shared/site-i18n.js;
+// local copies are deliberately excluded to prevent translations drifting.
+assert(html.includes('src="https://qexus.github.io/shared/site-i18n.js" defer'),"Shared translation dictionary must be enabled");
+assert(!fs.existsSync("public/i18n.js"),"Redundant local dictionary must not be published");
 console.log("Translated Academy auxiliary navigation verified.");
