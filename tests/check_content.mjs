@@ -84,13 +84,13 @@ assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work"
 
 assert(!app.includes("qexusReloadRegistry"),"Keep visitor-only manual refresh removed");
 
-console.log("qexus navigation: seven primary sections plus four optional tools; course and resources validated.");
+console.log("qexus navigation: eight primary sections and advanced tools; course and resources validated.");
 
 
 assert(html.includes('rel="canonical"'),"Public site must declare its canonical URL");
 assert(!html.includes("noindex,nofollow"),"Public educational pages must not be blocked from indexing");
 assert(html.includes('aria-controls="sidebar"') && html.includes('aria-expanded="false"'),"Mobile menu needs accessible state");
-assert(app.includes("if(!document.querySelector('#main .qa-wrap'))render()"),"Do not replace an open Academy view after registry fetch");
+assert(app.includes("if(!document.querySelector('#main .qa-wrap,#main .qj-wrap'))render()"),"Do not replace an open Academy or candidate journey after registry fetch");
 
 assert(app.includes("companyLimit:60"),"Canada catalog must paginate on mobile");
 assert(app.includes('id="loadMoreCompanies"'),"Canada catalog must support loading next page");
