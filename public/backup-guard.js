@@ -35,6 +35,10 @@ window.qxValidateBackup=(snapshot,country)=>{
   for(const key of ['completed','favorites'])if(d[key]!==undefined&&(!Array.isArray(d[key])||d[key].length>20000||d[key].some(x=>typeof x!=='string')))fail();
  }else fail();
  map(snapshot.academy,['string']);
+ if(snapshot.desk!==undefined){
+  if(!window.qxCandidateDesk||typeof window.qxCandidateDesk.validateSnapshot!=='function'||
+     !window.qxCandidateDesk.validateSnapshot(snapshot.desk,country))fail();
+ }
  // Validate candidate journey BEFORE any existing backup data is changed.
  // Older backups lacking a journey remain valid.
  if(snapshot.journey!==undefined){
