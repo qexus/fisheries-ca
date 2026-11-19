@@ -58,8 +58,8 @@ for(const view of ['matrix','employers'])assert(html.includes('data-qx-view="'+v
 const navigation=html.match(/<nav id="nav"[\s\S]*?<\/nav>/)?.[0]||"";
 const extras = navigation.match(/<details class="qf-extra">[\s\S]*?<\/details>/)?.[0] || "";
 const primaryNavigation = navigation.replace(extras, "");
-assert((primaryNavigation.match(/<button\b/g)||[]).length === 8,
-  "Eight primary sections: seven existing plus the candidate journey");
+assert((primaryNavigation.match(/<button\b/g)||[]).length === 9,
+  "Nine primary sections: candidate journey and practical training added");
 assert(primaryNavigation.includes('data-qj-view="journey"'),
   "Candidate journey must be reachable without opening the advanced-tools disclosure");
 assert((extras.match(/<button\b/g)||[]).length === 8,
@@ -84,13 +84,13 @@ assert(app.includes("window.qexusNavigate"),"Extra tools navigation should work"
 
 assert(!app.includes("qexusReloadRegistry"),"Keep visitor-only manual refresh removed");
 
-console.log("qexus navigation: eight primary sections and eight advanced tools; course and resources validated.");
+console.log("qexus navigation: nine primary sections and eight advanced tools; course and resources validated.");
 
 
 assert(html.includes('rel="canonical"'),"Public site must declare its canonical URL");
 assert(!html.includes("noindex,nofollow"),"Public educational pages must not be blocked from indexing");
 assert(html.includes('aria-controls="sidebar"') && html.includes('aria-expanded="false"'),"Mobile menu needs accessible state");
-assert(app.includes("if(!document.querySelector('#main .qa-wrap,#main .qj-wrap,#main .qd-wrap'))render()"),"Do not replace an open Academy or candidate journey after registry fetch");
+assert(app.includes("if(!document.querySelector('#main .qa-wrap,#main .qj-wrap,#main .qd-wrap,#main .qp-wrap'))render()"),"Do not replace an open Academy or candidate journey after registry fetch");
 
 assert(app.includes("companyLimit:60"),"Canada catalog must paginate on mobile");
 assert(app.includes('id="loadMoreCompanies"'),"Canada catalog must support loading next page");
