@@ -32,4 +32,4 @@ After each successful deployment, visual-qa.yml verifies live browser flows on d
     node tests/check_switch_labels.mjs
     python3 -m http.server 8080 --directory public
 
-See SOURCES_AND_LIMITATIONS.md for the detailed source licensing and provenance constraints, and docs/JOBS_FEEDS.md for potential future permitted job feeds. No on-demand public data refresh has been added.
+See SOURCES_AND_LIMITATIONS.md for published source licensing and provenance constraints. Historical job snapshots are not a live vacancy feed. No on-demand public data refresh has been added.
