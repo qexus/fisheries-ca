@@ -118,10 +118,10 @@ console.log("17 Canada static indexable guides validated.");
 assert(html.includes('class="country-current" aria-current="page"'),"Current country should be a label, not a self-link");
 
 // Language selector and icon-only branding must not disturb working navigation.
-assert(html.includes('src="i18n.js"')&&html.includes('href="i18n.css"')&&html.includes('src="app-locale.js"'),"RU/FR/UK locale assets required");
-assert(fs.existsSync("public/i18n.js")&&fs.existsSync("public/i18n.css")&&fs.existsSync("public/app-locale.js"),"Language assets must be deployable");
+assert(html.includes('src="https://qexus.github.io/shared/site-i18n.js"')&&html.includes('href="i18n.css"')&&html.includes('src="app-locale.js"'),"Shared RU/FR/UA locale assets required");
+assert(!fs.existsSync("public/i18n.js")&&fs.existsSync("public/i18n.css")&&fs.existsSync("public/app-locale.js"),"Remove redundant localization bundle and retain needed locale assets");
 assert(!/<(?:strong|b)>qexus lab<\/(?:strong|b)>/.test(html),"Clickable icon should not have redundant brand text");
-assert(fs.readFileSync("public/i18n.js","utf8").includes("qx-language-switch"),"Language selector script missing");
+assert(html.includes('<script src="https://qexus.github.io/shared/site-i18n.js" defer>'),"Central localization selector script missing");
 
 // Localized static course quality: every lesson must be a crawlable self-canonical page.
 for(const lang of ["fr","uk"]){
