@@ -58,8 +58,10 @@ for(const view of ['matrix','employers'])assert(html.includes('data-qx-view="'+v
 const navigation=html.match(/<nav id="nav"[\s\S]*?<\/nav>/)?.[0]||"";
 const extras = navigation.match(/<details class="qf-extra">[\s\S]*?<\/details>/)?.[0] || "";
 const primaryNavigation = navigation.replace(extras, "");
-assert((primaryNavigation.match(/<button\b/g)||[]).length === 7,
-  "Exactly seven primary navigation sections should remain visible");
+assert((primaryNavigation.match(/<button\b/g)||[]).length === 8,
+  "Eight primary sections: seven existing plus the candidate journey");
+assert(primaryNavigation.includes('data-qj-view="journey"'),
+  "Candidate journey must be reachable without opening the advanced-tools disclosure");
 assert((extras.match(/<button\b/g)||[]).length === 7,
   "All seven advanced tools must be available in a collapsed disclosure");
 assert(html.includes("shared/fisheries-router.js") && html.includes("shared/fisheries-router.css"),
