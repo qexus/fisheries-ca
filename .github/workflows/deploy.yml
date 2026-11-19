@@ -39,6 +39,7 @@ jobs:
         run: |
           node tests/check_content.mjs
           node tests/check_locales.mjs
+          node tests/check_switch_labels.mjs
           node tests/check_backup.mjs
           node tests/check_app_locales.mjs
           node tests/check_layout.mjs
