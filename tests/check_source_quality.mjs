@@ -33,7 +33,7 @@ assert(/^2026-\d{2}-\d{2}$/.test(snapshot.checked));
 for(const c of ['norway','canada']){
  assert(snapshot.roles[c].length>=6&&snapshot.employers[c].length>=6,'Country sector coverage required');
  for(const role of snapshot.roles[c]){
-  assert(role.checked==='2026-11-17','Regulatory claims must retain their original manual review date');
+  assert(/^2026-11-(17|18)$/.test(role.checked),'Each role requires a truthful manual source check date');
   assert(['public_authority','employer_information'].includes(role.sourceKind));
   assert(['shore','farm','maintenance','fisher','factoryvessel','master','engineer','deck','offshore','svop','qa'].includes(role.roleScope));
   assert(/^https:\/\//.test(role.source)&&!role.source.includes('@'),'Role sources must be HTTPS with no credentials');
@@ -47,6 +47,7 @@ for(const c of ['norway','canada']){
  }
 }
 assert(snapshot.roles.norway.find(x=>x.id==='shore').source.includes('arbeidstilsynet.no'),'Shore role must not point to vessel-only qualifications');
+assert(snapshot.roles.norway.find(x=>x.id==='shore').checked==='2026-11-18','Rechecked shore safety source has review date');
 assert(snapshot.roles.canada.find(x=>x.id==='maintenance').source.includes('marketreport/requirements/17095'),'Maintenance role uses Job Bank occupation requirements');
 assert(appCode.includes('Архивный снимок')||appCode.includes('Архив Job Bank'),'Old ads must be visibly archived');
 for(const lang of ['ru','fr','uk']){
