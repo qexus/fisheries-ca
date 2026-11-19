@@ -32,10 +32,12 @@ def audit(root=ROOT):
     if not p.is_file():continue
     if p.suffix.lower() in {".pem",".key",".p12",".pfx",".env",".sqlite",".db"}:
         errors.append("Prohibited public file type: "+str(p.relative_to(root)))
-    if p.suffix.lower() not in ALLOWED:continue
+    if p.suffix.lower() not in ALLOWED:
+        errors.append("Unexpected public file type: "+str(p.relative_to(root)))
+        continue
     if p.stat().st_size>2_000_000:
         warnings.append("Large public file: "+str(p.relative_to(root)))
-        continue
+    # Large JSON/JS payloads must still be scanned for secrets.
     source=p.read_text(encoding="utf-8",errors="replace")
     for key,pattern in SECRETS.items():
         if pattern.search(source):
