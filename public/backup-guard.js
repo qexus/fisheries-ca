@@ -35,6 +35,10 @@ window.qxValidateBackup=(snapshot,country)=>{
   for(const key of ['completed','favorites'])if(d[key]!==undefined&&(!Array.isArray(d[key])||d[key].length>20000||d[key].some(x=>typeof x!=='string')))fail();
  }else fail();
  map(snapshot.academy,['string']);
+ if(snapshot.practice!==undefined){
+  if(!window.qxPracticum||typeof window.qxPracticum.validateSnapshot!=='function'||
+     !window.qxPracticum.validateSnapshot(snapshot.practice,country))fail();
+ }
  if(snapshot.desk!==undefined){
   if(!window.qxCandidateDesk||typeof window.qxCandidateDesk.validateSnapshot!=='function'||
      !window.qxCandidateDesk.validateSnapshot(snapshot.desk,country))fail();
