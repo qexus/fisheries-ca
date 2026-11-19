@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const html=fs.readFileSync('public/index.html','utf8');
+const app=fs.readFileSync('public/app.js','utf8');
+const guard=fs.readFileSync('public/backup-guard.js','utf8');
+const desk=html.indexOf('src="https://qexus.github.io/shared/candidate-desk.js"');
+const router=html.indexOf('src="https://qexus.github.io/shared/fisheries-router.js"');
+assert(html.includes('data-qd-view="desk"'),'Candidate desk should appear in advanced navigation');
+assert(html.includes('candidate-desk.css'),'Candidate desk responsive CSS link missing');
+assert(desk>0&&router>desk,'Candidate desk script must load before router');
+assert(app.includes('desk:window.qxCandidateDesk?.exportState?.()'),'JSON backup must include CV and applications');
+assert(app.includes('window.qxCandidateDesk.restoreState('),'JSON restoration must restore candidate desk');
+assert(app.includes('#main .qa-wrap,#main .qj-wrap,#main .qd-wrap'),'Background registry update must not replace an open candidate form');
+assert(guard.includes('validateSnapshot(snapshot.desk,country)'),'Candidate desk backups must be schema checked');
+const window={qxCandidateJourney:{validateSnapshot:()=>true},
+  qxCandidateDesk:{validateSnapshot:(d,c)=>d.version===1&&d.country===c}};
+vm.runInNewContext(guard,{window});
+const fixture={app:'qexus-fisheries-canada',data:{imported:[],completed:[],favorites:[],notes:{}}};
+const country='canada';
+assert(window.qxValidateBackup({...fixture,desk:{version:1,country}},country),'Valid candidate desk JSON accepted');
+assert(window.qxValidateBackup(fixture,country),'Old backup without a candidate desk remains supported');
+assert.throws(()=>window.qxValidateBackup({...fixture,desk:{version:1,country:'other'}},country),'Cross-country desk backup rejected');
+window.qxCandidateDesk.validateSnapshot=()=>false;
+assert.throws(()=>window.qxValidateBackup({...fixture,desk:{version:1,country}},country),'Malformed desk rejected before changing user data');
+console.log('Passed: candidate desk navigation, deployable assets, local backup, safe restoration and open form.');
