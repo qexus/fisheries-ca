@@ -53,8 +53,8 @@ for(const lang of ['ru','fr','uk']){
  const x=contextFor(lang);
  x.handlers.click({target:{closest(sel){
    if(sel==='[data-qx-view]')return {dataset:{qxView:'employers'}};
-   return null;},
-   preventDefault(){}}
+   return null;}},
+   preventDefault(){}
  });
  assert(x.state.grid.innerHTML.includes('qx-source-evidence'),'Every career card must show provenance');
  assert(x.state.grid.innerHTML.includes('2026-11-18'),'Recently rechecked source dates must be displayed');
