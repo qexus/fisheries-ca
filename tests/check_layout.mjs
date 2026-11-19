@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const read = p => fs.readFileSync(p,'utf8');
 const main=read('public/index.html'), css=read('public/styles.css');
+assert(css.includes('#main.content{min-height:100vh;min-height:100svh}'),'Hydration must reserve a full viewport and avoid footer layout shifts');
 assert(main.includes('https://qexus.github.io/shared/qx-footer.css'),'Shared footer stylesheet must load');
 assert(main.includes('class="footer qx-footer"'),'Interactive page needs unified footer');
 assert(main.includes('class="qx-footer__links"')&&main.includes('class="qx-footer__note"'),'Footer needs explicit links and disclosure');
