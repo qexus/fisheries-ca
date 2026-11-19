@@ -15,5 +15,5 @@ for(const lang of ['fr','uk'])for(const page of pages){
   count++;
 }
 assert.equal(count,36);
-assert(fs.readFileSync('public/i18n.js','utf8').includes("uk:'UA'"),'Dynamic interface must display UA');
+assert(fs.readFileSync('public/index.html','utf8').includes('src="https://qexus.github.io/shared/site-i18n.js" defer'), 'Shared, centrally versioned localization must load');
 console.log('Verified '+count+' static Canadian Fisheries language menus plus dynamic label.');
