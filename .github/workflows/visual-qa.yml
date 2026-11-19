@@ -38,7 +38,7 @@ jobs:
         working-directory: qexus-qa/qa
         env:
           CI: 'true'
-          QA_canada: canada
+          QA_SITE: canada
         run: npx playwright test
       - name: Preserve browser screenshots, report and failure traces
         if: ${{ !cancelled() }}
