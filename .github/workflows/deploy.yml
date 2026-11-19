@@ -44,6 +44,7 @@ jobs:
           node tests/check_layout.mjs
           node tests/check_journey.mjs
           node tests/check_desk.mjs
+          node tests/check_practicum.mjs
           for file in public/*.js; do node --check "$file"; done
       - name: Download official CFIA and DFO BC registries
         # Network/schema problems are reported in the generated JSON; stale snapshots are retained.
