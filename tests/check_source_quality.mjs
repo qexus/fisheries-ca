@@ -62,11 +62,11 @@ for(const lang of ['ru','fr','uk']){
    x.state.grid.innerHTML.includes(lang==='fr'?'langue de travail':lang==='uk'?'робоча мова':'рабочий язык'),'Hiring must not be implied');
  assert(!x.state.grid.innerHTML.includes('<script'),'Escaping source cards prevents injected scripts');
  const y=contextFor(lang);
- y.handlers.click({target:{closest(sel){if(sel==='[data-qx-view]')return {dataset:{qxView:'matrix'}};return null},preventDefault(){}}});
+ y.handlers.click({target:{closest(sel){if(sel==='[data-qx-view]')return {dataset:{qxView:'matrix'}};return null}},preventDefault(){}});
  assert(y.state.main.innerHTML.includes(lang==='fr'?'Applicabilité au poste':lang==='uk'?'Застосовність до посади':'Применимость к роли'),'Explain role applicability');
  assert(y.state.main.innerHTML.includes(lang==='fr'?'Date de vérification du profil':lang==='uk'?'Дата перевірки профілю':'Дата проверки профиля'),'Reveal requirements review date');
  const old=contextFor(lang,true);
- old.handlers.click({target:{closest(sel){if(sel==='[data-qx-view]')return {dataset:{qxView:'employers'}};return null},preventDefault(){}}});
+ old.handlers.click({target:{closest(sel){if(sel==='[data-qx-view]')return {dataset:{qxView:'employers'}};return null}},preventDefault(){}});
  assert(old.state.grid.innerHTML.includes('qx-source-stale'),'A stale source must show explicit warning');
 }
 console.log('Source quality: both catalogues, 3 languages, archive warnings, per-record provenance, role scope, and expiry rule validated.');
