@@ -379,6 +379,9 @@
     ["Remote Accounting Service", "Service de comptabilité à distance", "Служба віддаленого бухгалтерського обліку"],
     ["Recirculating Aquaculture System", "Système aquacole en recirculation", "Рециркуляційна система аквакультури"],
     ["Risk Authorization Status", "Statut d’autorisation du risque", "Статус дозволу щодо ризику"],
+    ["Архив Job Bank — проверяй актуальность","Archives du Guichet-Emplois — vérifier les offres","Архів Job Bank — перевіряй актуальність"],
+    ["Архивный снимок 16.11.2026 · статус вакансии неизвестен","Archive du 16.11.2026 · offre non vérifiée","Архівний знімок 16.11.2026 · стан вакансії невідомий"],
+    ["Проверить номер на Job Bank ↗","Vérifier le numéro au Guichet-Emplois ↗","Перевірити номер на Job Bank ↗"],
   ];
   window.QX_APP_I18N = Object.fromEntries(
     ['fr', 'uk'].map((language, index) => [
