@@ -1,6 +1,6 @@
 {
   "status": "fresh",
-  "generated_at": "2026-11-19T14:41:38.095998+00:00",
+  "generated_at": "2026-11-23T20:31:02.885082+00:00",
   "sources": {
     "CFIA": "ok",
     "BC shellfish": "ok",
@@ -9278,6 +9278,18 @@
       "city": "DARTMOUTH",
       "province": "NS",
       "registration": "CS1459337",
+      "category": "Рыбопереработка / экспортный реестр",
+      "source": "https://apps.inspection.canada.ca/webapps/FishList/?lang=en",
+      "registry": "CFIA export approved",
+      "notes": "Есть в открытом реестре CFIA; вакансия и контакт не подтверждены.",
+      "imported": true
+    },
+    {
+      "id": "cfia-1159-1e56",
+      "name": "Nova Scotian Glass Eels Inc.",
+      "city": "Dartmouth",
+      "province": "NS",
+      "registration": "1E56",
       "category": "Рыбопереработка / экспортный реестр",
       "source": "https://apps.inspection.canada.ca/webapps/FishList/?lang=en",
       "registry": "CFIA export approved",
