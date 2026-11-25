@@ -22,7 +22,7 @@ def audit(root=ROOT):
  html=(root/"index.html").read_text(encoding="utf-8")
  if 'http-equiv="Content-Security-Policy"' not in html:
     errors.append("Missing CSP in main HTML")
- if re.search(r"<script(?:\s[^>]*)?>\s*[^<\s][\s\S]*?</script>",html,re.I):
+ if re.search(r"<script(?![^>]*application/ld\+json)(?:\s[^>]*)?>\s*[^<\s][\s\S]*?</script>",html,re.I):
     errors.append("Inline executable script prevents strict script CSP")
  if "noindex,nofollow" in html:
     warnings.append("Public pages are noindexed")
