@@ -22,7 +22,7 @@ def audit(root=ROOT):
  html=(root/"index.html").read_text(encoding="utf-8")
  if 'http-equiv="Content-Security-Policy"' not in html:
     errors.append("Missing CSP in main HTML")
- if re.search(r"<script(?:\s[^>]*)?>\s*[^<\s][\s\S]*?</script>",html,re.I):
+ if re.search(r"<script(?![^>]*application/ld\+json)(?:\s[^>]*)?>\s*[^<\s][\s\S]*?</script>",html,re.I):
     errors.append("Inline executable script prevents strict script CSP")
  if "noindex,nofollow" in html:
     warnings.append("Public pages are noindexed")
@@ -30,6 +30,8 @@ def audit(root=ROOT):
     errors.append("Missing shared first-party enhancement")
  for p in root.rglob("*"):
     if not p.is_file():continue
+    if p.suffix.lower()==".html" and 'http-equiv="Content-Security-Policy"' not in p.read_text(encoding="utf-8"):
+        errors.append("Missing CSP: "+str(p.relative_to(root)))
     if p.suffix.lower() in {".pem",".key",".p12",".pfx",".env",".sqlite",".db"}:
         errors.append("Prohibited public file type: "+str(p.relative_to(root)))
     if p.suffix.lower() not in ALLOWED:

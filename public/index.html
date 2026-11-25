@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' https: data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071829">
@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="https://qexus.github.io/shared/fisheries-core.css">
   <link rel="stylesheet" href="https://qexus.github.io/shared/fisheries-router.css">
 <link rel="stylesheet" href="i18n.css">
-<link rel="stylesheet" href="https://qexus.github.io/shared/qx-footer.css">
 <link rel="stylesheet" href="https://qexus.github.io/shared/candidate-journey.css">
 <link rel="stylesheet" href="https://qexus.github.io/shared/candidate-desk.css">
 <link rel="stylesheet" href="https://qexus.github.io/shared/practicum.css">
@@ -30,9 +29,13 @@
   <meta property="og:title" content="Fisheries Canada — qexus lab">
   <meta property="og:description" content="Рыбная отрасль Канады: открытые реестры CFIA и DFO, архивные объявления Job Bank, бесплатное обучение и требования к квалификациям.">
   <meta property="og:url" content="https://qexus.github.io/fisheries-ca/">
-  <meta property="og:image" content="https://qexus.github.io/assets/qx-logo-180.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://qexus.github.io/assets/og-fisheries-ca.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <script src="https://qexus.github.io/shared/site-i18n.js" defer></script>
+<meta property="og:site_name" content="Fisheries Canada">
+<meta property="og:locale" content="ru_RU">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://qexus.github.io/fisheries-ca/", "name": "qexus lab · Fisheries Canada", "description": "Рыбная отрасль Канады: открытые реестры CFIA и DFO, архивные объявления Job Bank, бесплатное обучение и требования к квалификациям.", "inLanguage": "ru", "isPartOf": {"@type": "WebSite", "name": "Fisheries Canada", "url": "https://qexus.github.io/fisheries-ca/"}, "publisher": {"@type": "Organization", "name": "qexus lab", "url": "https://qexus.github.io/", "logo": "https://qexus.github.io/assets/qx-logo-180.png", "sameAs": ["https://github.com/qexus"]}}</script>
+<link rel="stylesheet" href="https://qexus.github.io/shared/qx-footer.css">
 </head>
 <body>
 <a class="qf-skip" href="#main">Перейти к содержимому</a>
@@ -74,18 +77,7 @@
       <p><a href="./guides/">Читать статьи и 12 уроков</a></p>
     </main>
     <nav class="seo-static-guides" aria-label="Учебные статьи"><a href="guides/">Статьи и 12 уроков →</a></nav>
-<footer class="footer qx-footer">
-  <div class="qx-footer__inner">
-    <div class="qx-footer__meta">
-      <span class="qx-footer__brand">© 2026 qexus lab · Fisheries Canada</span>
-      <span class="qx-footer__note">qexus lab · Canada Fisheries · прототип 16.11.2026 · не кадровое агентство · не юридическая консультация</span>
-    </div>
-    <div class="qx-footer__links">
-      <a href="https://qexus.github.io/work.html">Все проекты о работе</a>
-      <a href="https://qexus.github.io/privacy.html">Приватность и данные</a>
-    </div>
-  </div>
-</footer>
+<footer class="qx-footer" data-qx-footer="v2"><div class="qx-footer__inner"><div class="qx-footer__meta"><span class="qx-footer__brand">© 2026 qexus lab · Fisheries Canada</span><span class="qx-footer__note">Независимая справочная информация, сверено с официальными источниками 17.11.2026. Перед действием проверяйте актуальные требования. Не кадровое агентство и не орган сертификации.</span></div><nav class="qx-footer__links" aria-label="Ссылки qexus lab"><a href="https://qexus.github.io/">Главная</a><a href="https://qexus.github.io/work.html">Проекты о работе</a><a href="https://qexus.github.io/site-map.html">Карта сайта</a><a href="https://qexus.github.io/status.html">Статус данных</a><a href="https://qexus.github.io/privacy.html">Приватность</a><a href="https://github.com/qexus" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></footer>
   </section>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>

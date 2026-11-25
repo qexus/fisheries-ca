@@ -63,3 +63,14 @@
 /* Keep the footer out of the first viewport while the official registry UI hydrates.
    Prevents a mobile layout shift from the short crawlable fallback to the dashboard. */
 #main.content{min-height:100vh;min-height:100svh}
+/* Overview cards and rows that lead somewhere are real buttons/links (keyboard + touch). */
+.stat-link,.checkline-link,.listrow-link{appearance:none;-webkit-appearance:none;font:inherit;color:inherit;text-align:left;width:100%;cursor:pointer;position:relative;text-decoration:none;transition:border-color .15s,background-color .15s,transform .15s}
+.stat-link{display:block}
+.checkline-link{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding-right:34px}
+.listrow-link{display:block;background:transparent;border:0;border-bottom:1px solid var(--line);padding-right:34px}
+.stat-link:hover,.stat-link:focus-visible{border-color:#4adac2;transform:translateY(-1px)}
+.checkline-link:hover,.listrow-link:hover,.checkline-link:focus-visible,.listrow-link:focus-visible{background:rgba(74,218,194,.06)}
+.stat-link:focus-visible,.checkline-link:focus-visible,.listrow-link:focus-visible{outline:2px solid #4adac2;outline-offset:3px}
+.stat-go{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#4adac2;opacity:.55;font-weight:700}
+.stat-link .stat-go{top:16px;transform:none}
+.stat-link:hover .stat-go,.checkline-link:hover .stat-go,.listrow-link:hover .stat-go{opacity:1}

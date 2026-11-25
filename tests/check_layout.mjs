@@ -4,7 +4,7 @@ const read = p => fs.readFileSync(p,'utf8');
 const main=read('public/index.html'), css=read('public/styles.css');
 assert(css.includes('#main.content{min-height:100vh;min-height:100svh}'),'Hydration must reserve a full viewport and avoid footer layout shifts');
 assert(main.includes('https://qexus.github.io/shared/qx-footer.css'),'Shared footer stylesheet must load');
-assert(main.includes('class="footer qx-footer"'),'Interactive page needs unified footer');
+assert(main.includes('<footer class="qx-footer" data-qx-footer="v2">'),'Interactive page needs unified footer');
 assert(main.includes('class="qx-footer__links"')&&main.includes('class="qx-footer__note"'),'Footer needs explicit links and disclosure');
 assert(main.includes('href="https://qexus.github.io/privacy.html"'),'Privacy link is mandatory');
 assert(main.includes('href="https://qexus.github.io/work.html"'),'Career-hub link is mandatory');
