@@ -68,8 +68,8 @@ assert(html.includes("shared/fisheries-router.js") && html.includes("shared/fish
   "Shared deep-link navigation assets must be loaded");
 assert(html.includes('href="https://qexus.github.io/work.html"'),
   "Country page needs a contextual return to the career hub");
-assert(!html.includes('href="https://qexus.github.io/site-map.html"') && !html.includes('href="https://qexus.github.io/status.html"'),
-  "Maps and registry status belong to the career hub, not duplicated in every footer");
+assert(html.includes('<footer class="qx-footer" data-qx-footer="v2">'),
+  "Country page uses the same shared footer as every other qexus page (see tests/check_footer.mjs)");
 assert((html.match(/<a href="guides\//g)||[]).length === 1,
   "One entry into the static Academy is enough");
 const academic=fs.readFileSync("public/academy.js","utf8");
