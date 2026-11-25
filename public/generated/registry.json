@@ -1,6 +1,6 @@
 {
   "status": "fresh",
-  "generated_at": "2026-11-23T20:31:02.885082+00:00",
+  "generated_at": "2026-11-25T20:21:46.276293+00:00",
   "sources": {
     "CFIA": "ok",
     "BC shellfish": "ok",
@@ -141,7 +141,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1144-1785",
+      "id": "cfia-1143-1785",
       "name": "MARSAN FOODS ULC",
       "city": "Edmonton",
       "province": "AB",
@@ -189,7 +189,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1134-7085",
+      "id": "cfia-1133-7085",
       "name": "SOBEYS CAPITAL INCORPORATED/ALBERTA CENTRAL KITCHEN",
       "city": "ROCKY VIEW",
       "province": "AB",
@@ -321,7 +321,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1143-6436",
+      "id": "cfia-1142-6436",
       "name": "1044660 B.C. Ltd. / Viking Wind",
       "city": "Jordan River",
       "province": "BC",
@@ -1317,7 +1317,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1133-1e32",
+      "id": "cfia-1132-1e32",
       "name": "EZ Link Logistics LTD.",
       "city": "Delta",
       "province": "BC",
@@ -1545,7 +1545,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1139-1e35",
+      "id": "cfia-1138-1e35",
       "name": "Fukurai Shellfish Inc",
       "city": "Powell River",
       "province": "BC",
@@ -1869,7 +1869,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1142-7080",
+      "id": "cfia-1141-7080",
       "name": "HPP Tolling Facility Canada Ltd./HPP Canada",
       "city": "DELTA",
       "province": "BC",
@@ -2361,7 +2361,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1137-1e34",
+      "id": "cfia-1136-1e34",
       "name": "Lux Nutrition Inc.",
       "city": "Richmond",
       "province": "BC",
@@ -2409,7 +2409,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1120-1e14",
+      "id": "cfia-1119-1e14",
       "name": "Marbros Fishing Ltd. - Janatlee",
       "city": "Ucluelet",
       "province": "BC",
@@ -2421,7 +2421,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1118-1e13",
+      "id": "cfia-1117-1e13",
       "name": "Marbros Fishing Ltd./Pakalot",
       "city": "Ucluelet",
       "province": "BC",
@@ -2709,7 +2709,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1123-1e17",
+      "id": "cfia-1122-1e17",
       "name": "NovasPure Nutrition Inc.",
       "city": "Burnaby",
       "province": "BC",
@@ -2721,7 +2721,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1117-1e12",
+      "id": "cfia-1116-1e12",
       "name": "NovasTown Health Inc.",
       "city": "Burnaby",
       "province": "BC",
@@ -2745,7 +2745,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1122-1e16",
+      "id": "cfia-1121-1e16",
       "name": "OCEAN DELIGHT ENTERPRISE LTD.",
       "city": "Richmond",
       "province": "BC",
@@ -3021,7 +3021,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1129-0740",
+      "id": "cfia-1128-0740",
       "name": "Pacific Northwest Shellfish Company Ltd.",
       "city": "Richmond",
       "province": "BC",
@@ -3117,7 +3117,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1121-1e15",
+      "id": "cfia-1120-1e15",
       "name": "Paul David Robinson/Concord 101",
       "city": "Tofino",
       "province": "BC",
@@ -3705,7 +3705,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1153-1e45",
+      "id": "cfia-1152-1e45",
       "name": "SunBiom Health Inc.",
       "city": "Coquitlam",
       "province": "BC",
@@ -3729,7 +3729,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1131-1e26",
+      "id": "cfia-1130-1e26",
       "name": "Sysco Canada, Inc./Sysco Island Premium Seafood",
       "city": "Victoria",
       "province": "BC",
@@ -4041,7 +4041,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1158-1d14",
+      "id": "cfia-1157-1d14",
       "name": "Viva Pharmaceutical Inc.",
       "city": "Richmond",
       "province": "BC",
@@ -4053,7 +4053,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1147-1497094",
+      "id": "cfia-1146-1497094",
       "name": "Wah Loong Ltd.",
       "city": "Richmond",
       "province": "BC",
@@ -4173,7 +4173,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1127-304",
+      "id": "cfia-1126-304",
       "name": "Zinetti Food Products Ltd.",
       "city": "Surrey",
       "province": "BC",
@@ -4521,7 +4521,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1154-1e43",
+      "id": "cfia-1153-1e43",
       "name": "Benson Lobster Co Ltd / Benson Seafood Products",
       "city": "Grand Manan",
       "province": "NB",
@@ -5109,7 +5109,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1152-7097",
+      "id": "cfia-1151-7097",
       "name": "Nova Cold Logistics ULC / Nova Cold Logistics",
       "city": "Saint John",
       "province": "NB",
@@ -5481,7 +5481,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1150-7074",
+      "id": "cfia-1149-7074",
       "name": "Trenton Cold Storage (Moncton) Inc.",
       "city": "Scoudouc",
       "province": "NB",
@@ -6777,7 +6777,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1119-cs1402886",
+      "id": "cfia-1118-cs1402886",
       "name": "St. Anthony Basin Cold Storage Limited",
       "city": "St. Anthony",
       "province": "NL",
@@ -6957,7 +6957,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1157-1e53",
+      "id": "cfia-1156-1e53",
       "name": "4660106 Nova Scotia Limited / Atlantic Cold Water Seafood",
       "city": "Popes Harbour",
       "province": "NS",
@@ -7641,7 +7641,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1148-1e40",
+      "id": "cfia-1147-1e40",
       "name": "CHA3 Yarmouth Ltd.",
       "city": "Rockville",
       "province": "NS",
@@ -8889,7 +8889,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1151-7091",
+      "id": "cfia-1150-7091",
       "name": "Lightfoot Logistics Solutions Limited / Lightfoot Logistics Solutions",
       "city": "Port Williams",
       "province": "NS",
@@ -9285,7 +9285,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1159-1e56",
+      "id": "cfia-1158-1e56",
       "name": "Nova Scotian Glass Eels Inc.",
       "city": "Dartmouth",
       "province": "NS",
@@ -9453,7 +9453,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1126-1e21",
+      "id": "cfia-1125-1e21",
       "name": "old atlantic shore natural foods ltd.",
       "city": "Hacketts Cove",
       "province": "NS",
@@ -9789,7 +9789,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1116-1448",
+      "id": "cfia-1115-1448",
       "name": "Scallops Unlimited Incorporated",
       "city": "Hillsburn",
       "province": "NS",
@@ -9842,18 +9842,6 @@
       "city": "SEABROOK",
       "province": "NS",
       "registration": "6414",
-      "category": "Рыбопереработка / экспортный реестр",
-      "source": "https://apps.inspection.canada.ca/webapps/FishList/?lang=en",
-      "registry": "CFIA export approved",
-      "notes": "Есть в открытом реестре CFIA; вакансия и контакт не подтверждены.",
-      "imported": true
-    },
-    {
-      "id": "cfia-1113-1323",
-      "name": "SEA BROOK FISHERIES LIMITED",
-      "city": "DIGBY",
-      "province": "NS",
-      "registration": "1323",
       "category": "Рыбопереработка / экспортный реестр",
       "source": "https://apps.inspection.canada.ca/webapps/FishList/?lang=en",
       "registry": "CFIA export approved",
@@ -10197,7 +10185,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1128-1e22",
+      "id": "cfia-1127-1e22",
       "name": "Transformation Seafoods Inc.",
       "city": "Summerville",
       "province": "NS",
@@ -10437,7 +10425,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1156-1e52",
+      "id": "cfia-1155-1e52",
       "name": "Freshwater Fish Marketing Corporation / NWT Fresh Fish",
       "city": "Hay River",
       "province": "NT",
@@ -10677,7 +10665,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1114-1e07",
+      "id": "cfia-1113-1e07",
       "name": "Bill Beauty & Health Products Ltd.",
       "city": "SCARBOROUGH",
       "province": "ON",
@@ -10713,7 +10701,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1124-s957",
+      "id": "cfia-1123-s957",
       "name": "Can-Am Logistics INC",
       "city": "Caledon",
       "province": "ON",
@@ -10773,7 +10761,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1149-1e41",
+      "id": "cfia-1148-1e41",
       "name": "Capsule Factory Nutraceuticals Ltd.",
       "city": "Woodstock",
       "province": "ON",
@@ -11517,7 +11505,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1132-1e29",
+      "id": "cfia-1131-1e29",
       "name": "NuGale Pharmaceutical Inc.",
       "city": "Scarborough",
       "province": "ON",
@@ -11565,7 +11553,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1155-1e49",
+      "id": "cfia-1154-1e49",
       "name": "Ocean Packers Inc.",
       "city": "Etobicoke",
       "province": "ON",
@@ -11745,7 +11733,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1145-1e38",
+      "id": "cfia-1144-1e38",
       "name": "Stonetown Foods Inc.",
       "city": "Granton",
       "province": "ON",
@@ -11829,7 +11817,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1140-s918",
+      "id": "cfia-1139-s918",
       "name": "THOMAS, LARGE & SINGER INC / Emblem Logistics Inc.",
       "city": "Brampton",
       "province": "ON",
@@ -11865,7 +11853,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1130-1e00",
+      "id": "cfia-1129-1e00",
       "name": "Vital Life Pharmaceutical Inc.",
       "city": "Scarborough",
       "province": "ON",
@@ -11985,7 +11973,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1138-1e36",
+      "id": "cfia-1137-1e36",
       "name": "Baie Ste Anne Seafoods 2014 Inc.",
       "city": "Alberton",
       "province": "PE",
@@ -12237,7 +12225,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1115-1e08",
+      "id": "cfia-1114-1e08",
       "name": "Kildare Fisheries Ltd / Kildare Cold Storage",
       "city": "Alberton",
       "province": "PE",
@@ -12297,7 +12285,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1146-1e39",
+      "id": "cfia-1145-1e39",
       "name": "Murphy Oyster Company Ltd.",
       "city": "Margate",
       "province": "PE",
@@ -12549,7 +12537,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1135-1e33",
+      "id": "cfia-1134-1e33",
       "name": "12935180 Canada inc./Pêcheries S.B.L Distribution",
       "city": "Saint-Raymond",
       "province": "QC",
@@ -12969,7 +12957,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1141-1e37",
+      "id": "cfia-1140-1e37",
       "name": "EUROPENA INGRÉDIENTS INC.",
       "city": "Rigaud",
       "province": "QC",
@@ -13617,7 +13605,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1125-1e19",
+      "id": "cfia-1124-1e19",
       "name": "Poissonnerie des iles Renaud Inc.",
       "city": "Saint-Eustache",
       "province": "QC",
@@ -13917,7 +13905,7 @@
       "imported": true
     },
     {
-      "id": "cfia-1136-1932",
+      "id": "cfia-1135-1932",
       "name": "Icy Waters Ltd. / Chuck's Yukon Char",
       "city": "Whitehorse",
       "province": "YT",
@@ -17139,7 +17127,7 @@
       "name": "Baynes Sound Oyster Co. Ltd.",
       "city": "",
       "province": "BC",
-      "registration": "144954",
+      "registration": "153650",
       "category": "BC shellfish",
       "source": "https://open.canada.ca/data/dataset/522d1b67-30d8-4a34-9b62-5da99b1035e6",
       "registry": "DFO BC aquaculture",
@@ -17175,7 +17163,7 @@
       "name": "Super Shell Enterprises Ltd",
       "city": "",
       "province": "BC",
-      "registration": "148690",
+      "registration": "153670",
       "category": "BC shellfish",
       "source": "https://open.canada.ca/data/dataset/522d1b67-30d8-4a34-9b62-5da99b1035e6",
       "registry": "DFO BC aquaculture",
@@ -18327,7 +18315,7 @@
       "name": "Super Shell Enterprises Ltd",
       "city": "",
       "province": "BC",
-      "registration": "145158",
+      "registration": "153690",
       "category": "BC shellfish",
       "source": "https://open.canada.ca/data/dataset/522d1b67-30d8-4a34-9b62-5da99b1035e6",
       "registry": "DFO BC aquaculture",
